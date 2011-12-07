@@ -11,8 +11,7 @@
     <name>Faces demo</name>
 
     <properties>
-        <org.richfaces.bom.version>4.0.0.Final</org.richfaces.bom.version>
-        <jsf.version>2.1.5</jsf.version>
+        <org.richfaces.bom.version>4.1.0.CR2</org.richfaces.bom.version>
     </properties>
 
     <modules>
@@ -41,14 +40,14 @@
                 <type>pom</type>
             </dependency>
             <dependency>
-                <groupId>com.sun.faces</groupId>
+                <groupId>javax.faces</groupId>
                 <artifactId>jsf-api</artifactId>
-                <version>${jsf.version}</version>
+                <version>2.1</version>
             </dependency>
             <dependency>
-                <groupId>com.sun.faces</groupId>
-                <artifactId>jsf-impl</artifactId>
-                <version>${jsf.version}</version>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.faces</artifactId>
+                <version>2.1.5</version>
             </dependency>
             <dependency>
                 <groupId>org.richfaces.ui</groupId>
