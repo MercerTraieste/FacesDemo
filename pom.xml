@@ -16,7 +16,7 @@
 
     <modules>
         <module>icefaces</module>
-        <module>primeface</module>
+        <module>primefaces</module>
         <module>richfaces</module>
     </modules>
 
