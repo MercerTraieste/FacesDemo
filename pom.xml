@@ -45,11 +45,6 @@
                 <artifactId>javax.faces</artifactId>
                 <version>2.1.5</version>
             </dependency>
-            <dependency>
-                <groupId>com.sun.facelets</groupId>
-                <artifactId>jsf-facelets</artifactId>
-                <version>1.1.14</version>
-            </dependency>
 
             <!--richfaces-->
             <dependency>
@@ -71,7 +66,16 @@
                 <artifactId>validation-api</artifactId>
                 <version>1.0.0.GA</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.6.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.6.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
