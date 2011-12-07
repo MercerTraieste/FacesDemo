@@ -55,6 +55,13 @@
                 <type>pom</type>
             </dependency>
 
+            <!--prime faces-->
+            <dependency>
+                <groupId>org.primefaces</groupId>
+                <artifactId>primefaces</artifactId>
+                <version>3.0.M4</version>
+            </dependency>
+
             <!--tools-->
             <dependency>
                 <groupId>org.hibernate</groupId>
