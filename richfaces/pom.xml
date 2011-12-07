@@ -18,6 +18,10 @@
     <dependencies>
         <dependency>
             <groupId>org.richfaces.ui</groupId>
+            <artifactId>richfaces-components-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.richfaces.ui</groupId>
             <artifactId>richfaces-components-ui</artifactId>
         </dependency>
         <dependency>
@@ -36,7 +40,14 @@
             <groupId>com.sun.facelets</groupId>
             <artifactId>jsf-facelets</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -50,5 +61,6 @@
                 </configuration>
             </plugin>
         </plugins>
+
     </build>
 </project>
