@@ -10,17 +10,28 @@
     <ui:define name="title">RichFaces Sample</ui:define>
 
     <ui:define name="body">
-        <h:form prependId="false">
-            <h:outputLabel value="Name:" for="nameInput"/>
-            <h:inputText id="nameInput" value="#{richBean.name}">
-                <a4j:ajax event="keyup" render="output"/>
-            </h:inputText>
-            <h:panelGroup id="output">
-                <h:outputText value="Hello #{richBean.name}!"
-                              rendered="#{not empty richBean.name}"/>
-            </h:panelGroup>
-            <rich:calendar/>
-        </h:form>
+        <rich:panel header="RichFaces Sample">
+            <h:graphicImage value="http://richfaces-showcase.appspot.com/images/icons/common/rf.png"
+                            style="float:right" alt="rf"/>
+            <h:form prependId="false">
+                <ul>
+                    <li>
+                        <h:outputLabel value="Name:" for="nameInput"/>
+                        <a4j:ajax event="keyup" render="output"/>
+                        <h:inputText id="nameInput" value="#{richBean.name}"/>
+                    </li>
+                    <li>
+                        <h:panelGroup id="output">
+                            <h:outputText value="Hello #{richBean.name}!"
+                                          rendered="#{not empty richBean.name}"/>
+                        </h:panelGroup>
+                    </li>
+                    <li>
+                        <rich:calendar/>
+                    </li>
+                </ul>
+            </h:form>
+        </rich:panel>
     </ui:define>
 </ui:composition>
 </body>
