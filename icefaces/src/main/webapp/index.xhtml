@@ -1,21 +1,24 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:icecore="http://www.icefaces.org/icefaces/core"
-      xmlns:ice="http://www.icesoft.com/icefaces/component">
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:ace="http://www.icefaces.org/icefaces/components">
 <f:view>
     <h:head>
-
-        <title>Basic Calendar Tutorial</title>
-
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+        <title>Icefaces Demo</title>
     </h:head>
     <h:body>
         <ice:form>
-
-            <ice:outputText id="text" value="Today is: "/>
-            <ice:outputText id="defaultSelectedDate" value="#{dateSelect.date}">
-                <f:convertDateTime pattern="dd/MM/yyyy" timeZone="#{dateSelect.timeZone}"/>
-            </ice:outputText>
-
+            <ice:panelGrid columns="1" style="border:1px dotted silver;" width="100px">
+                <ice:outputText id="text" value="Today is: "/>
+                <ice:outputText id="defaultSelectedDate" value="#{dateSelect.date}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" timeZone="#{dateSelect.timeZone}"/>
+                </ice:outputText>
+                <ace:dateTimeEntry id="cal" value="#{dateselect.date}" renderAsPopup="true"/>
+            </ice:panelGrid>
         </ice:form>
     </h:body>
 </f:view>
