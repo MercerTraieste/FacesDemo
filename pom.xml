@@ -12,6 +12,7 @@
 
     <properties>
         <org.richfaces.bom.version>4.1.0.CR2</org.richfaces.bom.version>
+        <icefaces.version>2.0.2</icefaces.version>
     </properties>
 
     <modules>
@@ -66,7 +67,17 @@
             <dependency>
                 <groupId>org.icefaces</groupId>
                 <artifactId>icefaces</artifactId>
-                <version>2.0.2</version>
+                <version>${icefaces.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.icefaces</groupId>
+                <artifactId>icefaces-ace</artifactId>
+                <version>${icefaces.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.icefaces</groupId>
+                <artifactId>icefaces-compat</artifactId>
+                <version>${icefaces.version}</version>
             </dependency>
 
             <!--tools-->
