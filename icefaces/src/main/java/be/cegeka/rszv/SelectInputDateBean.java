@@ -1,22 +1,16 @@
 package be.cegeka.rszv;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.TimeZone;
 
-/**
- * Managed bean to display the current date
- *
- * @author Adelina Caramet
- * Date: 7/12/11
- * Time: 15:53
- */
-@ManagedBean(name="dateSelect")
-@RequestScoped
-public class SelectInputDateBean {
+public class SelectInputDateBean implements Serializable {
 
-    private Date date = new Date();
+    private Date date;
+
+    public SelectInputDateBean() {
+        this.date = new Date();
+    }
 
     public Date getDate() {
         return date;

@@ -11,13 +11,10 @@
         <title>Icefaces Demo</title>
     </h:head>
     <h:body>
-        <ice:form styleClass="ice-skin-rime">
-            <ice:panelGrid columns="1" >
-                <ice:outputText id="text" value="Today is: "/>
-                <ice:outputText id="defaultSelectedDate" value="#{dateSelect.date}">
-                    <f:convertDateTime pattern="dd/MM/yyyy" timeZone="#{dateSelect.timeZone}"/>
-                </ice:outputText>
-                <ace:dateTimeEntry id="cal" value="#{dateselect.date}" renderAsPopup="true"/>
+        <ice:form id="dateForm">
+            <ice:panelGrid columns="1">
+                <ace:dateTimeEntry value="${dateSelected.date}" renderAsPopup="true" pattern="dd/MM/yyyy">
+                </ace:dateTimeEntry>
             </ice:panelGrid>
         </ice:form>
     </h:body>

@@ -12,7 +12,7 @@
 
     <properties>
         <org.richfaces.bom.version>4.1.0.CR2</org.richfaces.bom.version>
-        <icefaces.version>2.0.2</icefaces.version>
+        <icefaces.version>3.0.0.RC1</icefaces.version>
     </properties>
 
     <modules>
