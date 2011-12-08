@@ -21,7 +21,7 @@
                                  value="#{localeBean.localeCode}">
                         <a4j:ajax event="selectitem"
                                   listener="#{localeBean.localeChanged}"
-                                  render="label1"/>
+                                  render="@all"/>
                         <f:selectItems value="#{localeBean.languages}"/>
                     </rich:select>
                     <br/>
