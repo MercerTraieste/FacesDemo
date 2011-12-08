@@ -7,9 +7,9 @@ import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
-@ManagedBean(name = "language")
+@ManagedBean
 @SessionScoped
-public class LanguageBean implements Serializable {
+public class LocaleBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -23,7 +23,7 @@ public class LanguageBean implements Serializable {
         countries.put("Italian", Locale.ITALIAN);
     }
 
-    public LanguageBean() {
+    public LocaleBean() {
         localeCode = "en";
     }
 
