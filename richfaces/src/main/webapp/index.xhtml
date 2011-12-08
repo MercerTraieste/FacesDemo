@@ -5,15 +5,32 @@
       xmlns:rich="http://richfaces.org/rich">
 
 <body>
+
 <ui:composition template="/templates/template.xhtml">
 
     <ui:define name="title">RichFaces Sample</ui:define>
 
     <ui:define name="body">
         <rich:panel header="RichFaces Sample">
-            <h:graphicImage value="http://richfaces-showcase.appspot.com/images/icons/common/rf.png"
-                            style="float:right" alt="rf"/>
             <h:form prependId="false">
+                <h:panelGrid columns="2">
+                    Language :
+
+
+                    <rich:select id="rfc"
+                                 value="#{language.localeCode}">
+                        <a4j:ajax event="selectitem"
+                                  listener="#{language.countryLocaleCodeChanged}"
+                                  render="label1"></a4j:ajax>
+                        <f:selectItems value="#{language.countriesInMap}"/>
+                    </rich:select>
+                    <br/>
+                    <h:outputText id="label1" value="#{messages['message1']}"></h:outputText>
+
+                </h:panelGrid>
+
+                <h:graphicImage value="http://richfaces-showcase.appspot.com/images/icons/common/rf.png"
+                                style="float:right" alt="rf"/>
                 <ul>
                     <li>
                         <h:outputLabel value="Name:" for="nameInput"/>
