@@ -10,13 +10,11 @@
 
     <ui:define name="title">RichFaces Sample</ui:define>
 
-    <ui:define name="body" >
-        <rich:panel header="RichFaces Sample" >
+    <ui:define name="body">
+        <rich:panel header="RichFaces Sample">
             <h:form prependId="false">
                 <h:panelGrid columns="2">
-                    Language :
-
-
+                    <h:outputText value="#{messages['language']}"/>
                     <rich:select id="rfc"
                                  value="#{localeBean.localeCode}">
                         <a4j:ajax event="selectitem"
@@ -24,24 +22,20 @@
                                   render="@all"/>
                         <f:selectItems value="#{localeBean.languages}"/>
                     </rich:select>
-                    <br/>
-                    <h:outputText id="label1" value="#{messages['message1']}"/>
-
                 </h:panelGrid>
 
                 <h:graphicImage value="http://richfaces-showcase.appspot.com/images/icons/common/rf.png"
                                 style="float:right" alt="rf"/>
                 <ul>
                     <li>
-                        <h:outputLabel value="Name:" for="nameInput"/>
+                        <h:outputText value="#{messages['name']}"/>
                         <a4j:ajax event="keyup" render="output"/>
                         <h:inputText id="nameInput" value="#{richBean.name}"/>
-                    </li>
-                    <li>
                         <h:panelGroup id="output">
-                            <h:outputText value="Hello #{richBean.name}!"
+                            <h:outputText value="#{richBean.name}!"
                                           rendered="#{not empty richBean.name}"/>
                         </h:panelGroup>
+
                     </li>
                     <li>
                         <rich:calendar/>
