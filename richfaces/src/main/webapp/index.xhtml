@@ -20,7 +20,7 @@
                     <rich:select id="rfc"
                                  value="#{localeBean.localeCode}">
                         <a4j:ajax event="selectitem"
-                                  listener="#{localeBean.countryLocaleCodeChanged}"
+                                  listener="#{localeBean.localeChanged}"
                                   render="label1"/>
                         <f:selectItems value="#{localeBean.languages}"/>
                     </rich:select>
