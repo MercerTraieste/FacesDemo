@@ -11,8 +11,9 @@
     <name>Faces demo</name>
 
     <properties>
-        <org.richfaces.bom.version>4.1.0.CR2</org.richfaces.bom.version>
+        <richfaces.version>4.1.0.CR2</richfaces.version>
         <icefaces.version>3.0.0.RC1</icefaces.version>
+        <primefaces.version>3.0.M4</primefaces.version>
     </properties>
 
     <modules>
@@ -23,6 +24,7 @@
 
     <dependencyManagement>
         <dependencies>
+
             <!--test-->
             <dependency>
                 <groupId>junit</groupId>
@@ -47,23 +49,23 @@
                 <version>2.1.5</version>
             </dependency>
 
-            <!--richfaces-->
+            <!-- richfaces -->
             <dependency>
                 <groupId>org.richfaces</groupId>
                 <artifactId>richfaces-bom</artifactId>
-                <version>${org.richfaces.bom.version}</version>
+                <version>${richfaces.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
 
-            <!--prime faces-->
+            <!-- primefaces -->
             <dependency>
                 <groupId>org.primefaces</groupId>
                 <artifactId>primefaces</artifactId>
-                <version>3.0.M4</version>
+                <version>${primefaces.version}</version>
             </dependency>
 
-            <!-- ice faces -->
+            <!-- icefaces -->
             <dependency>
                 <groupId>org.icefaces</groupId>
                 <artifactId>icefaces</artifactId>
