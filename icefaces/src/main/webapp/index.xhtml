@@ -1,21 +1,36 @@
-<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:icecore="http://www.icefaces.org/icefaces/core"
-                xmlns:ice="http://www.icesoft.com/icefaces/component"
-                xmlns:ace="http://www.icefaces.org/icefaces/components"
-                template="/templates/template.xhtml">
-
-    <ui:define name="title">Icefaces sample</ui:define>
-
-    <ui:define name="body">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:icecore="http://www.icefaces.org/icefaces/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:ace="http://www.icefaces.org/icefaces/components">
+<f:view locale="#{localeBean.currentLocale}">
+    <h:head>
+        <title>Icefaces Internationalization</title>
+    </h:head>
+    <h:body>
         <ice:form>
+            <icecore:singleSubmit/>
             <ice:panelGrid columns="1">
                 <ace:dateTimeEntry value="${dateSelected.date}" renderAsPopup="true" pattern="dd/MM/yyyy"/>
             </ice:panelGrid>
+            <ice:panelGrid columns="2">
+                <ice:selectOneMenu value="#{localeBean.dropdownItem}" valueChangeListener="#{localeBean.localeChanged}">
+                    <f:selectItems value="#{localeBean.availableLocales}"/>
+                </ice:selectOneMenu>
+                <div></div>
+
+                <ice:outputLabel for="firstName" value="#{msgs.firstName}"/>
+                <ice:inputText id="firstName"/>
+
+                <ice:outputLabel for="lastName" value="#{msgs.lastName}"/>
+                <ice:inputText id="lastName"/>
+            </ice:panelGrid>
         </ice:form>
-    </ui:define>
-</ui:composition>
+    </h:body>
+</f:view>
+</html>
