@@ -1,10 +1,13 @@
 package be.cegeka.rszv;
 
-import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class SelectInputDateBean implements Serializable {
+@ManagedBean
+@ViewScoped
+public class SelectInputDateBean {
 
     private Date date;
 
