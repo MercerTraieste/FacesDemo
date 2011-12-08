@@ -1,7 +1,6 @@
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ValueChangeEvent;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Locale;
@@ -15,20 +14,17 @@ public class LocaleBean implements Serializable {
 
     private String localeCode;
 
-    private static Map<String, Object> countries;
-
-    static {
-        countries = new LinkedHashMap<String, Object>();
-        countries.put("English", Locale.ENGLISH); //label, value
-        countries.put("Italian", Locale.ITALIAN);
-    }
+    private Map<String, Object> languages;
 
     public LocaleBean() {
+        languages = new LinkedHashMap<String, Object>();
+        languages.put("English", Locale.ENGLISH); //label, value
+        languages.put("Italian", Locale.ITALIAN);
         localeCode = "en";
     }
 
-    public Map<String, Object> getCountriesInMap() {
-        return countries;
+    public Map<String, Object> getLanguages() {
+        return languages;
     }
 
     public String getLocaleCode() {
@@ -39,19 +35,13 @@ public class LocaleBean implements Serializable {
         this.localeCode = localeCode;
     }
 
-    public void countryLocaleCodeChanged(ValueChangeEvent e) {
-
-        String newLocaleValue = e.getNewValue().toString();
-        changeLanguage(newLocaleValue);
-    }
-
     public void countryLocaleCodeChanged() {
         String newLocaleValue = localeCode;
         changeLanguage(newLocaleValue);
     }
 
     private void changeLanguage(String newLocaleValue) {
-        for (Map.Entry<String, Object> entry : countries.entrySet()) {
+        for (Map.Entry<String, Object> entry : languages.entrySet()) {
             if (entry.getValue().toString().equals(newLocaleValue)) {
                 FacesContext.getCurrentInstance().getViewRoot().setLocale((Locale) entry.getValue());
             }

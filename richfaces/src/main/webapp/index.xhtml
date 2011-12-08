@@ -22,7 +22,7 @@
                         <a4j:ajax event="selectitem"
                                   listener="#{localeBean.countryLocaleCodeChanged}"
                                   render="label1"/>
-                        <f:selectItems value="#{localeBean.countriesInMap}"/>
+                        <f:selectItems value="#{localeBean.languages}"/>
                     </rich:select>
                     <br/>
                     <h:outputText id="label1" value="#{messages['message1']}"/>
