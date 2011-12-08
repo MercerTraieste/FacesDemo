@@ -11,8 +11,8 @@
         <title>Icefaces Demo</title>
     </h:head>
     <h:body>
-        <ice:form>
-            <ice:panelGrid columns="1" style="border:1px dotted silver;" width="100px">
+        <ice:form styleClass="ice-skin-rime">
+            <ice:panelGrid columns="1" >
                 <ice:outputText id="text" value="Today is: "/>
                 <ice:outputText id="defaultSelectedDate" value="#{dateSelect.date}">
                     <f:convertDateTime pattern="dd/MM/yyyy" timeZone="#{dateSelect.timeZone}"/>
