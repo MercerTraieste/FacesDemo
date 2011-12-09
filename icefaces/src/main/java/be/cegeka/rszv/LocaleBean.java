@@ -20,7 +20,7 @@ public class LocaleBean implements Serializable {
     private String dropdownItem;
 
     public LocaleBean() {
-        setCurrentLocale(FacesContext.getCurrentInstance().getViewRoot().getLocale());
+        setCurrentLocale(FacesContext.getCurrentInstance().getApplication().getDefaultLocale());
         dropdownItem = currentLocale.getLanguage();
     }
 
