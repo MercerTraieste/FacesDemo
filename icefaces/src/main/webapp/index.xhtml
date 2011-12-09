@@ -19,7 +19,7 @@
                        closable="true"
                        toggleable="true">
                 <ice:panelGrid columns="1">
-                    <ace:dateTimeEntry renderAsPopup="true" pattern="dd/MM/yyyy" locale="#{localeBean.dropdownItem}"/>
+                    <ace:dateTimeEntry renderAsPopup="true" pattern="dd/MM/yyyy" locale="#{localeBean.dropdownItem}" value="#{richBean.calendar}"/>
                 </ice:panelGrid>
             </ace:panel>
 
@@ -28,17 +28,17 @@
                        toggleable="true">
                 <ice:panelGrid columns="2">
                     <ice:selectOneMenu value="#{localeBean.dropdownItem}"
-                                       valueChangeListener="#{localeBean.localeChanged}">
-                        <f:selectItems value="#{localeBean.availableLocales}"/>
-                    </ice:selectOneMenu>
+                                                           valueChangeListener="#{localeBean.localeChanged}">
+                    <f:selectItems value="#{localeBean.availableLocales}"/>
+                </ice:selectOneMenu>
 
                     <div></div>
 
                     <ice:outputLabel for="firstName" value="#{msgs.firstName}"/>
-                    <ice:inputText id="firstName"/>
+                    <ice:inputText id="firstName" value="#{richBean.firstName}"/>
 
                     <ice:outputLabel for="lastName" value="#{msgs.lastName}"/>
-                    <ice:inputText id="lastName"/>
+                    <ice:inputText id="lastName" value="#{richBean.lastName}"/>
                 </ice:panelGrid>
             </ace:panel>
         </ice:form>
