@@ -5,9 +5,13 @@
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
               version="2.0">
     <application>
+        <locale-config>
+            <default-locale>el_GR</default-locale>
+            <supported-locale>en_US</supported-locale>
+        </locale-config>
         <resource-bundle>
-            <base-name>messages</base-name>
-            <var>messages</var>
+            <base-name>be.cegeka.rsvz.faces.i18n.UTF8ResourceBundle</base-name>
+            <var>text</var>
         </resource-bundle>
     </application>
 </faces-config>

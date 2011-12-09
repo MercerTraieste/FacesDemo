@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
@@ -14,7 +14,7 @@
         <rich:panel header="RichFaces Sample">
             <h:form prependId="false">
                 <h:panelGrid columns="2">
-                    <h:outputText value="#{messages['language']}"/>
+                    <h:outputText value="#{text['language']}"/>
                     <rich:select id="rfc"
                                  value="#{localeBean.localeCode}">
                         <a4j:ajax event="selectitem"
@@ -28,7 +28,7 @@
                                 style="float:right" alt="rf"/>
                 <ul>
                     <li>
-                        <h:outputText value="#{messages['name']}"/>
+                        <h:outputText value="#{text['name']}"/>
                         <a4j:ajax event="keyup" render="output"/>
                         <h:inputText id="nameInput" value="#{richBean.name}"/>
                         <h:panelGroup id="output">
@@ -38,10 +38,26 @@
 
                     </li>
                     <li>
-                        <rich:calendar/>
+                        <rich:calendar value="#{richBean.calendar}"/>
                     </li>
                 </ul>
             </h:form>
         </rich:panel>
+        <pre>
+На берегу пустынных волн
+Стоял он, дум великих полн,
+И вдаль глядел. Пред ним широко
+Река неслася; бедный чёлн
+По ней стремился одиноко.
+По мшистым, топким берегам
+Чернели избы здесь и там,
+Приют убогого чухонца;
+И лес, неведомый лучам
+В тумане спрятанного солнца,
+Кругом шумел.
+
+Locale: <h:outputText value="#{facesContext.externalContext.response.locale}"/>
+Encoding: <h:outputText value="#{facesContext.externalContext.response.characterEncoding}"/>
+        </pre>
     </ui:define>
 </ui:composition>
