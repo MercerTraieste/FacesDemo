@@ -9,18 +9,21 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
 <f:view locale="#{localeBean.currentLocale}">
-    <h:panelGroup id="headPanel" layout="block">
-        <h:head>
-            <title>
-                <h:outputText value="#{msgs.titlePage}"/>
-            </title>
-        </h:head>
-        <h:body>
+
+    <h:head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <title>
+            <h:outputText value="#{msgs.titlePage}"/>
+        </title>
+    </h:head>
+    <h:body>
+        <h:panelGroup id="headPanel" layout="block">
             <h:form>
                 <p:panel header="#{msgs.panelHeader1}">
                     <p:editor/>
                     <h:panelGrid columns="1" cellpadding="5">
-                        <p:calendar showOn="button" locale="#{localeBean.currentLocale}" pattern="dd/MM/yyyy" navigator="true"
+                        <p:calendar showOn="button" locale="#{localeBean.currentLocale}" pattern="dd/MM/yyyy"
+                                    navigator="true"
                                     showButtonPanel="true"/>
                     </h:panelGrid>
 
@@ -43,7 +46,7 @@
                     </h:panelGrid>
                 </p:panel>
             </h:form>
-        </h:body>
-    </h:panelGroup>
+        </h:panelGroup>
+    </h:body>
 </f:view>
 </html>
