@@ -52,10 +52,6 @@ public class LocaleBean implements Serializable {
     private void changeLocale() {
         if ("en_US".equals(localeCode)) {
             FacesContext.getCurrentInstance().getViewRoot().setLocale(Locale.ENGLISH);
-        } else if ("it_IT".equals(localeCode)) {
-            FacesContext.getCurrentInstance().getViewRoot().setLocale(Locale.ITALIAN);
-            FacesContext.getCurrentInstance().getViewRoot().setLocale(Locale.ITALIAN);
-
         } else if ("el_GR".equals(localeCode)) {
             FacesContext.getCurrentInstance().getViewRoot().setLocale(EN_GR);
         } else {

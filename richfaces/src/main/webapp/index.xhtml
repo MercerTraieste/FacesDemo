@@ -14,7 +14,7 @@
         <rich:panel header="RichFaces Sample">
             <h:form prependId="false">
                 <h:panelGrid columns="2">
-                    <h:outputText value="#{messages['language']}"/>
+                    <h:outputText value="#{text['language']}"/>
                     <rich:select id="rfc"
                                  value="#{localeBean.localeCode}">
                         <a4j:ajax event="selectitem"
@@ -28,7 +28,7 @@
                                 style="float:right" alt="rf"/>
                 <ul>
                     <li>
-                        <h:outputText value="#{messages['name']}"/>
+                        <h:outputText value="#{text['name']}"/>
                         <a4j:ajax event="keyup" render="output"/>
                         <h:inputText id="nameInput" value="#{richBean.name}"/>
                         <h:panelGroup id="output">
