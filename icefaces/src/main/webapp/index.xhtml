@@ -10,26 +10,37 @@
       xmlns:ace="http://www.icefaces.org/icefaces/components">
 <f:view locale="#{localeBean.currentLocale}">
     <h:head>
-        <title>Icefaces Internationalization</title>
+        <title>Icefaces </title>
     </h:head>
     <h:body>
         <ice:form>
             <icecore:singleSubmit/>
-            <ice:panelGrid columns="1">
-                <ace:dateTimeEntry renderAsPopup="true" pattern="dd/MM/yyyy"/>
-            </ice:panelGrid>
-            <ice:panelGrid columns="2">
-                <ice:selectOneMenu value="#{localeBean.dropdownItem}" valueChangeListener="#{localeBean.localeChanged}">
-                    <f:selectItems value="#{localeBean.availableLocales}"/>
-                </ice:selectOneMenu>
-                <div></div>
+            <ace:panel header="#{msgs.panelHeader1}"
+                       closable="true"
+                       toggleable="true">
+                <ice:panelGrid columns="1">
+                    <ace:dateTimeEntry renderAsPopup="true" pattern="dd/MM/yyyy" locale="#{localeBean.dropdownItem}"/>
+                </ice:panelGrid>
+            </ace:panel>
 
-                <ice:outputLabel for="firstName" value="#{msgs.firstName}"/>
-                <ice:inputText id="firstName"/>
+            <ace:panel header="#{msgs.panelHeader2}"
+                       closable="true"
+                       toggleable="true">
+                <ice:panelGrid columns="2">
+                    <ice:selectOneMenu value="#{localeBean.dropdownItem}"
+                                       valueChangeListener="#{localeBean.localeChanged}">
+                        <f:selectItems value="#{localeBean.availableLocales}"/>
+                    </ice:selectOneMenu>
 
-                <ice:outputLabel for="lastName" value="#{msgs.lastName}"/>
-                <ice:inputText id="lastName"/>
-            </ice:panelGrid>
+                    <div></div>
+
+                    <ice:outputLabel for="firstName" value="#{msgs.firstName}"/>
+                    <ice:inputText id="firstName"/>
+
+                    <ice:outputLabel for="lastName" value="#{msgs.lastName}"/>
+                    <ice:inputText id="lastName"/>
+                </ice:panelGrid>
+            </ace:panel>
         </ice:form>
     </h:body>
 </f:view>
