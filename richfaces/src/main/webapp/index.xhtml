@@ -16,8 +16,10 @@
                 <h:panelGrid columns="2">
                     <h:outputText value="#{text['language']}"/>
                     <rich:select value="#{localeBean.language}">
-                        <f:selectItem itemValue="el" itemLabel="Greek"/>
-                        <f:selectItem itemValue="en" itemLabel="English"/>
+                        <f:selectItem itemValue="nl_BE" itemLabel="Dutch"/>
+                        <f:selectItem itemValue="fr_BE" itemLabel="French"/>
+                        <f:selectItem itemValue="el_GR" itemLabel="Greek"/>
+                        <f:selectItem itemValue="en_US" itemLabel="English"/>
                         <a4j:ajax event="selectitem" render="@all"/>
                     </rich:select>
                 </h:panelGrid>
