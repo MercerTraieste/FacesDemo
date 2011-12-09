@@ -9,6 +9,7 @@
             <supported-locale>fr_FR</supported-locale>
             <supported-locale>en_US</supported-locale>
             <supported-locale>el_GR</supported-locale>
+            <supported-locale>ro_RO</supported-locale>
         </locale-config>
         <resource-bundle>
             <base-name>be.cegeka.rsvz.faces.i18n.UTF8ResourceBundle</base-name>
