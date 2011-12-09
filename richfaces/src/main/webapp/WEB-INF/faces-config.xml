@@ -6,10 +6,11 @@
               version="2.0">
     <application>
         <locale-config>
-            <default-locale>en_US</default-locale>
-            <supported-locale>nl_BE</supported-locale>
-            <supported-locale>fr_BE</supported-locale>
-            <supported-locale>el_GR</supported-locale>
+            <default-locale>en</default-locale>
+            <supported-locale>en_GB</supported-locale>
+            <supported-locale>nl</supported-locale>
+            <supported-locale>fr</supported-locale>
+            <supported-locale>el</supported-locale>
         </locale-config>
         <resource-bundle>
             <base-name>be.cegeka.rsvz.faces.i18n.UTF8ResourceBundle</base-name>
