@@ -12,6 +12,7 @@
 
     <h:head>
         <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <h:outputScript library="js" name="calendar_i18n.js"/>
         <title>
             <h:outputText value="#{msgs.titlePage}"/>
         </title>
@@ -22,18 +23,19 @@
                 <p:panel header="#{msgs.panelHeader1}">
                     <p:editor/>
                     <h:panelGrid columns="1" cellpadding="5">
-                        <p:calendar showOn="button" locale="#{localeBean.currentLocale}" pattern="dd/MM/yyyy"
+                        <p:calendar id="cal" showOn="button" locale="#{localeBean.dropdownItem}"
                                     navigator="true"
-                                    showButtonPanel="true"/>
+                                    showButtonPanel="true">
+                        </p:calendar>
                     </h:panelGrid>
-
+                    <h:outputText value="#{localeBean.dropdownItem}"/>
                 </p:panel>
                 <p:panel header="#{msgs.panelHeader2}">
                     <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
                         <p:selectOneMenu id="language" value="#{localeBean.dropdownItem}" ajax="true">
                             <f:selectItems value="#{localeBean.availableLocales}"/>
                             <p:ajax process="@all" event="change" listener="#{localeBean.localeChanged}"
-                                    update=":headPanel"/>
+                                    update=":headPanel,cal"/>
                         </p:selectOneMenu>
 
                         <div></div>
