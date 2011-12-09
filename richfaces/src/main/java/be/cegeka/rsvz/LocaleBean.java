@@ -1,3 +1,8 @@
+package be.cegeka.rsvz;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -12,7 +17,7 @@ import java.util.Locale;
 public class LocaleBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    private static final Logger LOG = LoggerFactory.getLogger(LocaleBean.class);
     private String localeCode;
 
     private List<SelectItem> languages;
@@ -21,7 +26,8 @@ public class LocaleBean implements Serializable {
         languages = new ArrayList<SelectItem>();
         languages.add(new SelectItem("en_US", "English"));
         languages.add(new SelectItem("it_IT", "Italian"));
-        localeCode = "it_IT";
+        localeCode = FacesContext.getCurrentInstance().getApplication().getDefaultLocale().toString();
+        LOG.info("Locale set to {}", localeCode);
     }
 
     public List<SelectItem> getLanguages() {
