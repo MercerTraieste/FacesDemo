@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.Locale;
 
@@ -15,7 +16,12 @@ public class LocaleBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private static final Logger LOG = LoggerFactory.getLogger(LocaleBean.class);
-    private Locale locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
+    private Locale locale = ((HttpServletRequest) (FacesContext.getCurrentInstance()
+            .getExternalContext().getRequest())).getLocale();
+
+    public LocaleBean() {
+        LOG.info("Default Locale is {}", locale);
+    }
 
     public Locale getLocale() {
         return locale;
