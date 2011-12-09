@@ -67,9 +67,10 @@ public class LocaleBean implements Serializable {
     }
 
     private Locale extractLocale(String localeCode) {
+        LOG.debug("Parsing {}", localeCode);
         String language = localeCode.substring(0, 2);
         String country;
-        if (localeCode.length() >= 2) {
+        if (localeCode.length() > 2) {
             country = localeCode.substring(3, 5);
         } else {
             country = "";
@@ -86,7 +87,6 @@ public class LocaleBean implements Serializable {
             locales.add(i.next());
         }
         return locales;
-
     }
 
     private SelectItem localeToSelectItem(Locale locale) {
