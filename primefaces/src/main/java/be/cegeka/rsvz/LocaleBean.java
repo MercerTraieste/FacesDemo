@@ -1,7 +1,6 @@
-package be.cegeka.rszv;
+package be.cegeka.rsvz;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
@@ -83,7 +82,7 @@ public class LocaleBean implements Serializable {
             applyLocale(new Locale(event.getNewValue().toString()));
         }
     }
-    
+
     public void localeChanged() {
         applyLocale(new Locale(dropdownItem));
     }

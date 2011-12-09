@@ -28,14 +28,14 @@
                                     showButtonPanel="true">
                         </p:calendar>
                     </h:panelGrid>
-                    <h:outputText value="#{localeBean.dropdownItem}"/>
+
                 </p:panel>
                 <p:panel header="#{msgs.panelHeader2}">
                     <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
                         <p:selectOneMenu id="language" value="#{localeBean.dropdownItem}" ajax="true">
                             <f:selectItems value="#{localeBean.availableLocales}"/>
                             <p:ajax process="@all" event="change" listener="#{localeBean.localeChanged}"
-                                    update=":headPanel,cal"/>
+                                    update=":headPanel,cal" onstart=""/>
                         </p:selectOneMenu>
 
                         <div></div>

@@ -16,7 +16,7 @@
         <ice:form>
             <icecore:singleSubmit/>
             <ice:panelGrid columns="1">
-                <ace:dateTimeEntry value="${dateSelected.date}" renderAsPopup="true" pattern="dd/MM/yyyy"/>
+                <ace:dateTimeEntry renderAsPopup="true" pattern="dd/MM/yyyy"/>
             </ice:panelGrid>
             <ice:panelGrid columns="2">
                 <ice:selectOneMenu value="#{localeBean.dropdownItem}" valueChangeListener="#{localeBean.localeChanged}">
