@@ -1,3 +1,7 @@
+/*
+ *  http://wiki.primefaces.org/display/Components/PrimeFaces+Locales
+ */
+
 PrimeFaces.locales ['en'] = {
     closeText: 'Close',
     prevText: 'Previous',
