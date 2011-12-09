@@ -6,16 +6,44 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<f:view locale="#{localeBean.currentLocale}">
+    <h:panelGroup id="headPanel" layout="block">
+        <h:head>
+            <title>
+                <h:outputText value="#{msgs.titlePage}"/>
+            </title>
+        </h:head>
+        <h:body>
+            <h:form>
+                <p:panel header="#{msgs.panelHeader1}">
+                    <p:editor/>
+                    <h:panelGrid columns="1" cellpadding="5">
+                        <p:calendar showOn="button" locale="#{localeBean.currentLocale}" pattern="dd/MM/yyyy" navigator="true"
+                                    showButtonPanel="true"/>
+                    </h:panelGrid>
 
-<h:head>
-    <title>Simple JSF Facelets page</title>
-</h:head>
+                </p:panel>
+                <p:panel header="#{msgs.panelHeader2}">
+                    <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+                        <p:selectOneMenu id="language" value="#{localeBean.dropdownItem}" ajax="true">
+                            <f:selectItems value="#{localeBean.availableLocales}"/>
+                            <p:ajax process="@all" event="change" listener="#{localeBean.localeChanged}"
+                                    update=":headPanel"/>
+                        </p:selectOneMenu>
 
-<h:body>
-    Place your content here
-    <p:editor />
-    <p:dataTable />
-</h:body>
+                        <div></div>
 
+                        <h:outputLabel id="firstNameLabel" for="firstName" value="#{msgs.firstName}"/>
+                        <p:inputText id="firstName"/>
+
+                        <h:outputLabel id="lastNameLabel" for="lastName" value="#{msgs.lastName}"/>
+                        <p:inputText id="lastName"/>
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>
+        </h:body>
+    </h:panelGroup>
+</f:view>
 </html>
