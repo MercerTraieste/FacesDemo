@@ -67,7 +67,6 @@ public class LocaleBean implements Serializable {
     }
 
     private Locale extractLocale(String localeCode) {
-        LOG.debug("Parsing {}", localeCode);
         String language = localeCode.substring(0, 2);
         String country;
         if (localeCode.length() > 2) {

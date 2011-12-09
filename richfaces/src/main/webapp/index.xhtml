@@ -17,7 +17,7 @@
                     <h:outputText value="#{text['language']}"/>
                     <rich:select value="#{localeBean.language}">
                         <f:selectItems value="#{localeBean.languages}"/>
-                        <a4j:ajax event="selectitem" render="@all"/>
+                        <a4j:ajax event="selectitem" execute="@all" render="@all"/>
                     </rich:select>
                 </h:panelGrid>
 
@@ -35,7 +35,9 @@
 
                     </li>
                     <li>
-                        <rich:calendar value="#{richBean.calendar}"/>
+                        <rich:calendar value="#{richBean.calendar}"
+                                       locale="#{localeBean.language}">
+                                       </rich:calendar>
                     </li>
                 </ul>
             </h:form>
