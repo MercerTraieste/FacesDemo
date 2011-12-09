@@ -6,12 +6,10 @@
               version="2.0">
     <application>
         <locale-config>
-            <default-locale>it_IT</default-locale>
+            <default-locale>el_GR</default-locale>
             <supported-locale>en_US</supported-locale>
-        </locale-config>
-    </application>
 
-    <application>
+        </locale-config>
         <resource-bundle>
             <base-name>messages</base-name>
             <var>messages</var>
