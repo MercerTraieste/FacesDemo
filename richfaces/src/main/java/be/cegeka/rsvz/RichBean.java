@@ -15,9 +15,11 @@ public class RichBean implements Serializable {
 
     private String name;
     private Date calendar;
+    private String editorValue;
 
     public RichBean() {
         name = "John";
+        editorValue = "";
         calendar = new Date();
     }
 
@@ -35,5 +37,13 @@ public class RichBean implements Serializable {
 
     public void setCalendar(Date calendar) {
         this.calendar = calendar;
+    }
+
+    public String getEditorValue() {
+        return editorValue;
+    }
+
+    public void setEditorValue(String editorValue) {
+        this.editorValue = editorValue;
     }
 }
