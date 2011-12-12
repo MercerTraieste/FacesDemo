@@ -15,10 +15,10 @@ public class RichBean {
     private String text;
 
     public RichBean() {
-        firstName = "Ion";
-        lastName = "Vasile";
+        firstName = "Cosmin";
+        lastName = "Ene";
         setCalendar(new Date());
-        text = "";
+        setText("Cosmin's text.");
     }
 
     public String getFirstName() {
