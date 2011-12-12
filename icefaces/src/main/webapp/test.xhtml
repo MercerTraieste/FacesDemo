@@ -9,27 +9,27 @@
                 xmlns:ace="http://www.icefaces.org/icefaces/components"
                 template="/templates/template.xhtml">
 
-<ui:define name="title">Icefaces sample</ui:define>
+    <ui:define name="title">Icefaces sample</ui:define>
 
-<ui:define name="body">
-    <ice:form>
-        <icecore:singleSubmit/>
-        <ice:panelGrid columns="1">
-            <ace:dateTimeEntry value="${dateSelected.date}" renderAsPopup="true" pattern="dd/MM/yyyy"/>
-        </ice:panelGrid>
-        <ice:panelGrid columns="2">
-            <ice:selectOneMenu value="#{localeBean.dropdownItem}"
-                               valueChangeListener="#{localeBean.localeChanged}">
-                <f:selectItems value="#{localeBean.availableLocales}"/>
-            </ice:selectOneMenu>
-            <ice:commandButton value="Change Locale"/>
+    <ui:define name="body">
+        <ice:form>
+            <icecore:singleSubmit/>
+            <ice:panelGrid columns="1">
+                <ace:dateTimeEntry value="${dateSelected.date}" renderAsPopup="true" pattern="dd/MM/yyyy"/>
+            </ice:panelGrid>
+            <ice:panelGrid columns="2">
+                <ice:selectOneMenu value="#{localeBean.dropdownItem}"
+                                   valueChangeListener="#{localeBean.localeChanged}">
+                    <f:selectItems value="#{localeBean.availableLocales}"/>
+                </ice:selectOneMenu>
+                <ice:commandButton value="Change Locale"/>
 
-            <ice:outputLabel for="firstName" value="#{msgs.firstName}"/>
-            <ice:inputText id="firstName"/>
+                <ice:outputLabel for="firstName" value="#{msgs.firstName}"/>
+                <ice:inputText id="firstName"/>
 
-            <ice:outputLabel for="lastName" value="#{msgs.lastName}"/>
-            <ice:inputText id="lastName"/>
-        </ice:panelGrid>
-    </ice:form>
-</ui:define>
+                <ice:outputLabel for="lastName" value="#{msgs.lastName}"/>
+                <ice:inputText id="lastName"/>
+            </ice:panelGrid>
+        </ice:form>
+    </ui:define>
 </ui:composition>
