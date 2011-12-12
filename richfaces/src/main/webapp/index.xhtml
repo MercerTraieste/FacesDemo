@@ -25,7 +25,7 @@
                                 style="float:right" alt="rf"/>
                 <ul>
                     <li>
-                        <h:outputText value="#{text['name']}"/>
+                        <h:outputText value="#{text['name']}" id="nameLabel"/>
                         <a4j:ajax event="keyup" render="output"/>
                         <h:inputText id="nameInput" value="#{richBean.name}"/>
                         <h:panelGroup id="output">

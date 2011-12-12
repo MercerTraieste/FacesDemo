@@ -1,3 +1,5 @@
+package be.cegeka.rsvz.examples;
+
 import org.junit.Assert;
 import org.junit.Test;
 
