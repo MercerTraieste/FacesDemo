@@ -15,7 +15,7 @@
     </h:head>
     <h:body>
         <ice:form>
-
+            <icecore:singleSubmit/>
 
             <ace:panel header="#{msgs.panelHeader2}"
                        closable="true"
@@ -27,10 +27,9 @@
                     </ice:selectOneMenu>
                 </ice:panelGrid>
             </ace:panel>
-        </ice:form>
-        <ice:form>
+
             <ice:panelTabSet>
-                <ice:panelTab label="Calendar">
+                <ice:panelTab label="#{msgs.tabsCalendarLabel}">
                     <ace:panel header="#{msgs.panelHeader1}"
                                closable="true"
                                toggleable="true">
@@ -40,7 +39,7 @@
                     </ace:panel>
                 </ice:panelTab>
 
-                <ice:panelTab label="Form">
+                <ice:panelTab label="#{msgs.tabsFormLabel}">
                     <ice:outputLabel for="firstName" value="#{msgs.firstName}"/>
                     <ice:inputText id="firstName" value="#{richBean.firstName}"/>
                     <br/>
@@ -48,14 +47,11 @@
                     <ice:inputText id="lastName" value="#{richBean.lastName}"/>
                 </ice:panelTab>
 
-                <ice:panelTab label="Text Editor">
+                <ice:panelTab label="#{msgs.tabsTextEditorLabel}">
                     <ice:inputRichText value="#{richBean.text}" saveOnSubmit="true"/>
 
                     <h:commandButton value="Add Comment"/>
                     <h:panelGrid columns="2" border="0">
-                        <f:facet name="header">
-                            Comments
-                        </f:facet>
                         <h:outputLabel for="comment" value="Comment:"/>
                         <h:outputText id="comment" value="#{richBean.text}"/>
                     </h:panelGrid>
