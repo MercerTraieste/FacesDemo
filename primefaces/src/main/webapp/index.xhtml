@@ -20,16 +20,6 @@
     <h:body>
         <h:panelGroup id="headPanel" layout="block">
             <h:form>
-                <p:panel header="#{msgs.panelHeader1}">
-                    <p:editor/>
-                    <h:panelGrid columns="1" cellpadding="5">
-                        <p:calendar id="cal" showOn="button" locale="#{localeBean.dropdownItem}"
-                                    navigator="true"
-                                    showButtonPanel="true">
-                        </p:calendar>
-                    </h:panelGrid>
-
-                </p:panel>
                 <p:panel header="#{msgs.panelHeader2}">
                     <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
                         <p:selectOneMenu id="language" value="#{localeBean.dropdownItem}" ajax="true">
@@ -37,16 +27,43 @@
                             <p:ajax process="@all" event="change" listener="#{localeBean.localeChanged}"
                                     update=":headPanel,cal" onstart=""/>
                         </p:selectOneMenu>
-
-                        <div></div>
-
-                        <h:outputLabel id="firstNameLabel" for="firstName" value="#{msgs.firstName}"/>
-                        <p:inputText id="firstName"/>
-
-                        <h:outputLabel id="lastNameLabel" for="lastName" value="#{msgs.lastName}"/>
-                        <p:inputText id="lastName"/>
                     </h:panelGrid>
                 </p:panel>
+
+                <p:tabView effect="fade" effectDuration="fast">
+                    <p:tab title="#{msgs.tabsCalendarLabel}">
+                        <p:panel>
+                            <p:calendar id="cal" showOn="button" locale="#{localeBean.dropdownItem}"
+                                        navigator="true" value="#{richBean.calendar}"
+                                        showButtonPanel="true">
+                            </p:calendar>
+                        </p:panel>
+                    </p:tab>
+                    <p:tab title="#{msgs.tabsFormLabel}">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputLabel id="firstNameLabel" for="firstName" value="#{msgs.firstName}"/>
+                            <p:inputText id="firstName" value="#{richBean.firstName}"/>
+
+                            <h:outputLabel id="lastNameLabel" for="lastName" value="#{msgs.lastName}"/>
+                            <p:inputText id="lastName" value="#{richBean.lastName}"/>
+
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="#{msgs.tabsTextEditorLabel}">
+                        <p:panel>
+                            <p:editor value="#{richBean.text}" widgetVar="editor" width="600"/>
+                            <h:panelGrid columns="2" style="margin-top:10px">
+                                <p:commandButton value="#{msgs.save}" update="comment" onclick="editor.submit();"/>
+                                <p:commandButton type="button" value="#{msgs.clear}" onclick="editor.clear();"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+                                <h:outputLabel for="comment" value="#{msgs.comment}"/>
+                                <h:outputText id="comment" value="#{richBean.text}"/>
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
+                </p:tabView>
+
             </h:form>
         </h:panelGroup>
     </h:body>
