@@ -1,2 +1,5 @@
 story-3 wedriver
-*
+* add embeddd server
+* add customizable webdriver/browser
+* start server before tests
+* close serve after tests
