@@ -10,12 +10,13 @@
       xmlns:ace="http://www.icefaces.org/icefaces/components">
 <f:view locale="#{localeBean.currentLocale}">
     <h:head>
-        <link rel="stylesheet" type="text/css" href="./css/rime/rime.css"></link>
+        <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"></link>
         <title>Icefaces </title>
     </h:head>
     <h:body>
         <ice:form>
-            <icecore:singleSubmit/>
+
+
             <ace:panel header="#{msgs.panelHeader2}"
                        closable="true"
                        toggleable="true">
@@ -24,15 +25,12 @@
                                        valueChangeListener="#{localeBean.localeChanged}">
                         <f:selectItems value="#{localeBean.availableLocales}"/>
                     </ice:selectOneMenu>
-
-                    <div></div>
-
-
                 </ice:panelGrid>
             </ace:panel>
-
+        </ice:form>
+        <ice:form>
             <ice:panelTabSet>
-                <ice:panelTab label="tab1">
+                <ice:panelTab label="Calendar">
                     <ace:panel header="#{msgs.panelHeader1}"
                                closable="true"
                                toggleable="true">
@@ -40,17 +38,31 @@
                             <ice:selectInputDate renderAsPopup="true" value="#{richBean.calendar}"/>
                         </ice:panelGrid>
                     </ace:panel>
-
                 </ice:panelTab>
-                <ice:panelTab>
+
+                <ice:panelTab label="Form">
                     <ice:outputLabel for="firstName" value="#{msgs.firstName}"/>
                     <ice:inputText id="firstName" value="#{richBean.firstName}"/>
-
+                    <br/>
                     <ice:outputLabel for="lastName" value="#{msgs.lastName}"/>
                     <ice:inputText id="lastName" value="#{richBean.lastName}"/>
                 </ice:panelTab>
+
+                <ice:panelTab label="Text Editor">
+                    <ice:inputRichText value="#{richBean.text}" saveOnSubmit="true"/>
+
+                    <h:commandButton value="Add Comment"/>
+                    <h:panelGrid columns="2" border="0">
+                        <f:facet name="header">
+                            Comments
+                        </f:facet>
+                        <h:outputLabel for="comment" value="Comment:"/>
+                        <h:outputText id="comment" value="#{richBean.text}"/>
+                    </h:panelGrid>
+                </ice:panelTab>
             </ice:panelTabSet>
         </ice:form>
+
     </h:body>
 </f:view>
 </html>

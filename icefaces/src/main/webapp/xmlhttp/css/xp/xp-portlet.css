@@ -304,7 +304,7 @@ input.iceSelInpDateClosePopup {
 }
 
 .iceDatTblScrlSpr{ 
-    background: url( './css-images/table_col_header.gif' ) repeat-x bottom left; 
+    background: url('css-images/table_col_header.gif') repeat-x bottom left;
     background-color: #EFEFEF;
     border-top: 1px solid #CCCCCC;
     border-right: 1px solid #CCCCCC;
@@ -338,7 +338,7 @@ input.iceSelInpDateClosePopup {
     padding:0px;
     width:1px;
     background-color: #EFEFEF;
-    background-image: url( "./css-images/table_col_header.gif" );
+    background-image: url("css-images/table_col_header.gif");
     background-position: bottom;
     background-repeat: repeat-x;
 }
@@ -386,7 +386,7 @@ input.iceSelInpDateClosePopup {
 }
 
 .iceDatTblScrlSpr{ 
-    background: url( './css-images/table_col_header.gif' ) repeat-x bottom left; 
+    background: url('css-images/table_col_header.gif') repeat-x bottom left;
     border-top: 1px solid #CCCCCC; 
     border-right: 1px solid #CCCCCC;
 }
@@ -2050,7 +2050,7 @@ input.iceSelInpDateClosePopup {
 /* disabled bottom tab off */
 .icePnlTbOffBtm .LftBtm-dis {
     background-color: transparent;
-    background-image: url( "./css-images/off-left-top-dis.gif" );
+    background-image: url("css-images/off-left-top-dis.gif");
     background-repeat: no-repeat;
     background-position: bottom;
     text-align: center;
@@ -2061,7 +2061,7 @@ input.iceSelInpDateClosePopup {
 
 .icePnlTbOffBtm .MidBtm-dis {
     background-color: #DEDEDE;
-    background-image: url( './css-images/off-mid-top-dis.gif' );
+    background-image: url('css-images/off-mid-top-dis.gif');
     background-repeat: repeat-x;
     text-align: center;
     padding-top: 1px;
@@ -2070,7 +2070,7 @@ input.iceSelInpDateClosePopup {
 
 .icePnlTbOffBtm .RtBtm-dis {
     background-color: transparent;
-    background-image: url( "./css-images/off-right-top-dis.gif" );
+    background-image: url("css-images/off-right-top-dis.gif");
     background-repeat: no-repeat;
     background-position: bottom;
     text-align: center;
@@ -2118,21 +2118,21 @@ input.iceSelInpDateClosePopup {
 
 .icePnlTbOffBtm .LftTop-dis {
     background-color: transparent;
-    background-image: url( "./css-images/off-left-bot.gif" );
+    background-image: url("css-images/off-left-bot.gif");
     background-repeat: no-repeat;
     border: none;
 }
 
 .icePnlTbOffBtm .MidTop-dis {
     background-color: transparent;
-    background-image: url( "./css-images/off-mid-bot.gif" );
+    background-image: url("css-images/off-mid-bot.gif");
     background-repeat: repeat-x;
     border: none;
 }
 
 .icePnlTbOffBtm .RtTop-dis {
     background-color: transparent;
-    background-image: url( "./css-images/off-right-bot.gif" );
+    background-image: url("css-images/off-right-bot.gif");
     background-repeat: no-repeat;
     border: none;
 }
@@ -2141,7 +2141,7 @@ input.iceSelInpDateClosePopup {
 
 .icePnlTbOnBtm .LftBtm-dis {
     background-color: transparent;
-    background-image: url( "./css-images/off-left-top-dis.gif" );
+    background-image: url("css-images/off-left-top-dis.gif");
     background-repeat: no-repeat;
     background-position: bottom;
     text-align: center;
@@ -2152,7 +2152,7 @@ input.iceSelInpDateClosePopup {
 
 .icePnlTbOnBtm .MidBtm-dis {
     background-color: #DEDEDE;
-    background-image: url( './css-images/off-mid-top-dis.gif' );
+    background-image: url('css-images/off-mid-top-dis.gif');
     background-repeat: repeat-x;
     text-align: center;
     padding-top: 1px;
@@ -2161,7 +2161,7 @@ input.iceSelInpDateClosePopup {
 
 .icePnlTbOnBtm .RtBtm-dis {
     background-color: transparent;
-    background-image: url( "./css-images/off-right-top-dis.gif" );
+    background-image: url("css-images/off-right-top-dis.gif");
     background-repeat: no-repeat;
     background-position: bottom;
     text-align: center;
@@ -2208,21 +2208,21 @@ input.iceSelInpDateClosePopup {
 
 .icePnlTbOnBtm .LftTop-dis {
     background-color: transparent;
-    background-image: url( "./css-images/off-left-bot.gif" );
+    background-image: url("css-images/off-left-bot.gif");
     background-repeat: no-repeat;
     border: none;
 }
 
 .icePnlTbOnBtm .MidTop-dis {
     background-color: transparent;
-    background-image: url( "./css-images/off-mid-bot.gif" );
+    background-image: url("css-images/off-mid-bot.gif");
     background-repeat: repeat-x;
     border: none;
 }
 
 .icePnlTbOnBtm .RtTop-dis {
     background-color: transparent;
-    background-image: url( "./css-images/off-right-bot.gif" );
+    background-image: url("css-images/off-right-bot.gif");
     background-repeat: no-repeat;
     border: none;
 }
@@ -2479,10 +2479,10 @@ Disabled classes for the calendar controls
     height:10px;
 }
 .iceCmdSrtHdrAsc{
-    background-image: url('./css-images/column_sort_asc.gif');
+    background-image: url('css-images/column_sort_asc.gif');
 }
 .iceCmdSrtHdrDesc{
-    background-image: url('./css-images/column_sort_desc.gif');
+    background-image: url('css-images/column_sort_desc.gif');
 }
 
 .iceCmdSrtHdr td {
@@ -2719,7 +2719,7 @@ Disabled classes for the calendar controls
 /* common accordion headers */
 .icePnlClpsblHdr, .icePnlClpsblColpsdHdr {
     background-color: #EFEFEF;
-    background-image: url( "./css-images/table_col_header.gif" );
+    background-image: url("css-images/table_col_header.gif");
     background-position: bottom;
     background-repeat: repeat-x;
     font-weight: bold;
@@ -2749,7 +2749,7 @@ Disabled classes for the calendar controls
 }
 
 .icePnlClpsblHdr-dis, .icePnlClpsblColpsdHdr-dis {
-    background: #EFEFEF url( './css-images/table_col_header_dis.gif' ) repeat-x bottom;
+    background: #EFEFEF url('css-images/table_col_header_dis.gif') repeat-x bottom;
     font-weight: bold;
     text-align: left;
     color: #999;
@@ -2859,7 +2859,7 @@ Disabled classes for the calendar controls
 
 .icePnlCnfHdr {
     background-color: #DEDEDE;
-    background-image: url( "./css-images/window_top.gif" );
+    background-image: url("css-images/window_top.gif");
     background-position: top;
     background-repeat: repeat-x;
     height: auto;
