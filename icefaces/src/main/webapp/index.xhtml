@@ -10,6 +10,7 @@
       xmlns:ace="http://www.icefaces.org/icefaces/components">
 <f:view locale="#{localeBean.currentLocale}">
     <h:head>
+        <link rel="stylesheet" type="text/css" href="./css/rime/rime.css"></link>
         <title>Icefaces </title>
     </h:head>
     <h:body>
@@ -19,7 +20,7 @@
                        closable="true"
                        toggleable="true">
                 <ice:panelGrid columns="1">
-                    <ace:dateTimeEntry renderAsPopup="true" pattern="dd/MM/yyyy" locale="#{localeBean.dropdownItem}" value="#{richBean.calendar}"/>
+                    <ice:selectInputDate renderAsPopup="true" value="#{richBean.calendar}"/>
                 </ice:panelGrid>
             </ace:panel>
 
