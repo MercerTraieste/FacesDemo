@@ -2,7 +2,6 @@ package be.cegeka.rsvz;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.event.ActionEvent;
 import java.util.Date;
 
 @ManagedBean(name = "richBean")
@@ -15,10 +14,10 @@ public class RichBean {
     private String text;
 
     public RichBean() {
-        firstName = "Ion";
-        lastName = "Vasile";
+        firstName = "Cosmin";
+        lastName = "Ene";
         setCalendar(new Date());
-        text = "";
+        setText("Cosmin's text.");
     }
 
     public String getFirstName() {

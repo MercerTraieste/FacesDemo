@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-@ManagedBean(name="localeBean")
+@ManagedBean(name = "localeBean")
 @SessionScoped
 public class LocaleBean implements Serializable {
     private List<SelectItem> availableLocales;
@@ -82,7 +82,7 @@ public class LocaleBean implements Serializable {
             applyLocale(new Locale(event.getNewValue().toString()));
         }
     }
-    
+
     public void localeChanged() {
         applyLocale(new Locale(dropdownItem));
     }
