@@ -43,6 +43,11 @@
                 <artifactId>selenium-java</artifactId>
                 <version>2.14.0</version>
             </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-server</artifactId>
+                <version>2.14.0</version>
+            </dependency>
 
             <!--jsf 2.0-->
             <dependency>
@@ -134,6 +139,11 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
