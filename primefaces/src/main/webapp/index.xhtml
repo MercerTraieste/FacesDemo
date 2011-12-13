@@ -65,19 +65,27 @@
                     <p:tab title="#{msgs.tabsFormLabel}">
                         <h:panelGrid columns="1" cellpadding="5">
 
-                            <p:dataTable var="child" value="#{dataBean.children}" rows="#{dataBean.size}"
-                                         scrollable="true" liveScroll="true" lazy="true" scrollHeight="300">
+                            <p:commandButton value="Load next" ajax="true" actionListener="#{scrollBean.loadNextBatch}"  update="gogu,dataTable">
+                            </p:commandButton>
+                            <h:outputText rendered="true" value="#{scrollBean.listSize}" id="gogu" />
+                            <p:dataTable id="dataTable" var="child" value="#{scrollBean.children}" scrollRows="#{scrollBean.size}"
+                                         scrollable="true" scrollHeight="300" rendered="true">
+
+
+                                <p:column headerText="Id" sortBy="#{child.id}" style="width:75px">
+                                    <h:outputText value="#{child.id}"/>
+                                </p:column>
                                 <p:column headerText="First name" sortBy="#{child.firstName}" style="width:175px">
-                                    <h:outputText value="#{child.firstName}" />
+                                    <h:outputText value="#{child.firstName}"/>
                                 </p:column>
                                 <p:column headerText="Last name" sortBy="#{child.lastName}" style="width:175px">
-                                    <h:outputText value="#{child.lastName}" />
+                                    <h:outputText value="#{child.lastName}"/>
                                 </p:column>
                                 <p:column headerText="Age" sortBy="#{child.age}" style="width:75px">
-                                    <h:outputText value="#{child.age}" />
+                                    <h:outputText value="#{child.age}"/>
                                 </p:column>
                                 <p:column headerText="Sex" sortBy="#{child.sex}" style="width:75px">
-                                    <h:outputText value="#{child.sex}" />
+                                    <h:outputText value="#{child.sex}"/>
                                 </p:column>
                             </p:dataTable>
 
