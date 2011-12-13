@@ -45,11 +45,6 @@
                 <artifactId>selenium-java</artifactId>
                 <version>2.14.0</version>
             </dependency>
-            <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-server</artifactId>
-                <version>2.14.0</version>
-            </dependency>
 
             <!--embedded glassfish-->
             <dependency>
