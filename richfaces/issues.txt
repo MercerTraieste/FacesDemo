@@ -1,0 +1,1 @@
+1.<rich:tabPanel doesn't save state between tabs. This thing should be done programmaticaly.
