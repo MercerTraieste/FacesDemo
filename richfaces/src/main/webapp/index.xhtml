@@ -21,23 +21,33 @@
                     </rich:select>
                 </h:panelGrid>
 
-                <h:graphicImage value="http://richfaces-showcase.appspot.com/images/icons/common/rf.png"
-                                style="float:right" alt="rf"/>
-                <ul>
-                    <li>
-                        <h:outputText value="#{text['name']}" id="nameLabel"/>
-                        <a4j:ajax event="keyup" render="output"/>
-                        <h:inputText id="nameInput" value="#{richBean.name}"/>
+                <rich:tabPanel switchType="client">
+                    <rich:tab name="#{text['tabsCalendarLabel1']}">
+                        <rich:calendar value="#{richBean.calendar}"/>
+                    </rich:tab>
+
+                    <rich:tab name="#{text['tabsFormLabel1']}">
+                        <h:outputText value="#{text['name']}"/>
+                        <h:inputText id="nameInput" value="#{richBean.name}">
+                            <a4j:ajax event="keyup" render="output"/>
+                        </h:inputText>
                         <h:panelGroup id="output">
                             <h:outputText value="#{richBean.name}!"
                                           rendered="#{not empty richBean.name}"/>
                         </h:panelGroup>
+                    </rich:tab>
 
-                    </li>
-                    <li>
-                        <rich:calendar value="#{richBean.calendar}"/>
-                    </li>
-                </ul>
+                    <rich:tab name="#{text['tabsTextEditorLabel1']}">
+                        <rich:editor toolbar="full" plugins="save,paste" value="#{richBean.editorValue}">
+                        </rich:editor>
+                        <a4j:commandButton value="Save" render="comment"/>
+                        <h:outputText id="comment" value="#{richBean.editorValue}" rendered="true"/>
+                    </rich:tab>
+                </rich:tabPanel>
+
+
+                <!--<h:graphicImage value="http://richfaces-showcase.appspot.com/images/icons/common/rf.png"
+                                style="float:right" alt="rf"/>-->
             </h:form>
         </rich:panel>
         <pre>
