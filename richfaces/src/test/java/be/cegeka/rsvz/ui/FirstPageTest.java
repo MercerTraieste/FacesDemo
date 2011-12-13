@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.IOException;
 
 public class FirstPageTest {
     private static final Logger LOG = LoggerFactory.getLogger(FirstPageTest.class);
@@ -27,9 +28,9 @@ public class FirstPageTest {
         gfProps.setPort("http-listener", 9999);
         glassfish = GlassFishRuntime.bootstrap().newGlassFish(gfProps);
         glassfish.start();
-
-        File webRoot = new File("d:/w/FacesDemo/richfaces/src/main/webapp");
-        File classes = new File("d:/w/FacesDemo/richfaces/target/classes");
+        System.out.println(getLocalPath());
+        File webRoot = new File(getLocalPath() + "/src/main/webapp");
+        File classes = new File(getLocalPath() + "/target/classes");
         ScatteredArchive archive = new ScatteredArchive("web", ScatteredArchive.Type.WAR, webRoot);
         archive.addClassPath(classes);
         glassfish.getDeployer().deploy(archive.toURI());
@@ -43,7 +44,6 @@ public class FirstPageTest {
         LOG.debug("current url: {}", driver.getCurrentUrl());
         System.out.println("current url: " + driver.getCurrentUrl());
         LOG.debug("current title: {}", driver.getTitle());
-        System.out.println("current title: " + driver.getTitle());
         WebElement element = driver.findElement(By.id("languageLabel"));
         Assert.assertEquals("Language", element.getText());
     }
@@ -53,4 +53,14 @@ public class FirstPageTest {
         glassfish.stop();
         glassfish.dispose();
     }
+
+    private String getLocalPath() throws IOException {
+        String canonicalPath = new File(".").getCanonicalPath();
+        if (canonicalPath.indexOf("richfaces") > 0) {
+            return canonicalPath;
+        } else {
+            return canonicalPath + "/richfaces";
+        }
+    }
+
 }
