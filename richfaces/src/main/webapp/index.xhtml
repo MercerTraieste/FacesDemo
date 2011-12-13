@@ -21,12 +21,12 @@
                     </rich:select>
                 </h:panelGrid>
 
-                <rich:tabPanel>
-                    <rich:tab title="#{text['tabsCalendarLabel1']}">
+                <rich:tabPanel switchType="client">
+                    <rich:tab name="#{text['tabsCalendarLabel1']}">
                         <rich:calendar value="#{richBean.calendar}"/>
                     </rich:tab>
 
-                    <rich:tab title="#{text['tabsFormLabel1']}">
+                    <rich:tab name="#{text['tabsFormLabel1']}">
                         <h:outputText value="#{text['name']}"/>
                         <h:inputText id="nameInput" value="#{richBean.name}">
                             <a4j:ajax event="keyup" render="output"/>
@@ -37,8 +37,11 @@
                         </h:panelGroup>
                     </rich:tab>
 
-                    <rich:tab  title="#{text['tabsTextEditorLabel1']}">
-                        <rich:editor value="#{richBean.editorValue}"/>
+                    <rich:tab name="#{text['tabsTextEditorLabel1']}">
+                        <rich:editor toolbar="full" plugins="save,paste" value="#{richBean.editorValue}">
+                        </rich:editor>
+                        <a4j:commandButton value="Save" render="comment"/>
+                        <h:outputText id="comment" value="#{richBean.editorValue}" rendered="true"/>
                     </rich:tab>
                 </rich:tabPanel>
 

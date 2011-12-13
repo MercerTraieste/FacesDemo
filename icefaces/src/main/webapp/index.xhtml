@@ -54,6 +54,64 @@
                                 <h:outputText id="comment" value="#{richBean.text}"/>
                             </h:panelGrid>
                         </ice:panelTab>
+
+                        <ice:panelTab label="#{msgs.tabsCalendarLabel}">
+                            <ace:dataTable height="2" selectionMode="true" liveScroll="true" value="#{dataBean.children}" var="child">
+                                <ace:column headerText="Id">
+                                    <ace:cellEditor>
+                                        <f:facet name="output">
+                                            <ice:outputText value="#{child.id}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <ice:inputText value="#{child.id}"/>
+                                        </f:facet>
+                                    </ace:cellEditor>
+                                </ace:column>
+                                <ace:column headerText="First Name">
+                                    <ace:cellEditor>
+                                        <f:facet name="output">
+                                            <ice:outputText value="#{child.firstName}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <ice:inputText value="#{child.firstName}"/>
+                                        </f:facet>
+                                    </ace:cellEditor>
+                                </ace:column>
+                                <ace:column headerText="Last Name">
+                                    <ace:cellEditor>
+                                        <f:facet name="output">
+                                            <ice:outputText value="#{child.lastName}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <ice:inputText value="#{child.lastName}"/>
+                                        </f:facet>
+                                    </ace:cellEditor>
+                                </ace:column>
+                                <ace:column headerText="Age">
+                                    <ace:cellEditor>
+                                        <f:facet name="output">
+                                            <ice:outputText value="#{child.age}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <ice:inputText value="#{child.age}"/>
+                                        </f:facet>
+                                    </ace:cellEditor>
+                                </ace:column>
+                                <ace:column headerText="Sex">
+                                    <ace:cellEditor>
+                                        <f:facet name="output">
+                                            <ice:outputText value="#{child.sex}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <ice:inputText value="#{child.sex}"/>
+                                        </f:facet>
+                                    </ace:cellEditor>
+                                </ace:column>
+                                <ace:column>
+                                    <ace:rowEditor/>
+                                </ace:column>
+                            </ace:dataTable>
+                        </ice:panelTab>
                     </ice:panelTabSet>
                 </ice:panelGrid>
             </ace:panel>
