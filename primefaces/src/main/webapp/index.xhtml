@@ -30,7 +30,7 @@
                     </h:panelGrid>
                 </p:panel>
 
-                <p:tabView effect="fade" effectDuration="fast">
+                <p:tabView effect="fade" effectDuration="fast" onTabShow="editor.init()">
                     <p:tab title="#{msgs.tabsCalendarLabel}">
                         <p:panel>
                             <p:calendar id="cal" showOn="button" locale="#{localeBean.dropdownItem}"
@@ -53,7 +53,7 @@
                         <p:panel>
                             <p:editor value="#{richBean.text}" widgetVar="editor" width="600"/>
                             <h:panelGrid columns="2" style="margin-top:10px">
-                                <p:commandButton value="#{msgs.save}" update="comment" onclick="editor.submit();"/>
+                                <p:commandButton id="richButton" value="#{msgs.save}" update="comment" ajax="true"/>
                                 <p:commandButton type="button" value="#{msgs.clear}" onclick="editor.clear();"/>
                             </h:panelGrid>
                             <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
