@@ -62,6 +62,27 @@
                             </h:panelGrid>
                         </p:panel>
                     </p:tab>
+                    <p:tab title="#{msgs.tabsFormLabel}">
+                        <h:panelGrid columns="1" cellpadding="5">
+
+                            <p:dataTable var="child" value="#{dataBean.children}" scrollRows="#{dataBean.size}"
+                                         scrollable="true" liveScroll="true" scrollHeight="300">
+                                <p:column headerText="First name" sortBy="#{child.firstName}" style="width:175px">
+                                    <h:outputText value="#{child.firstName}" />
+                                </p:column>
+                                <p:column headerText="Last name" sortBy="#{child.lastName}" style="width:175px">
+                                    <h:outputText value="#{child.lastName}" />
+                                </p:column>
+                                <p:column headerText="Age" sortBy="#{child.age}" style="width:75px">
+                                    <h:outputText value="#{child.age}" />
+                                </p:column>
+                                <p:column headerText="Sex" sortBy="#{child.sex}" style="width:75px">
+                                    <h:outputText value="#{child.sex}" />
+                                </p:column>
+                            </p:dataTable>
+
+                        </h:panelGrid>
+                    </p:tab>
                 </p:tabView>
 
             </h:form>
