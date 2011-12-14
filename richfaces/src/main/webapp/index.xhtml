@@ -24,6 +24,17 @@
                 <rich:tabPanel switchType="client">
                     <rich:tab name="#{text['tabsCalendarLabel1']}">
                         <rich:calendar value="#{richBean.calendar}"/>
+
+                        <rich:extendedDataTable value="#{richBean.stringuri}" var="string"
+                                                style="height:300px; width:300px">
+                            <f:facet name=" Table Header">
+                                <h:outputText value="Header"/>
+                            </f:facet>
+                            <h:column>
+                                <h:outputText value="#{string}"/>
+                            </h:column>
+                        </rich:extendedDataTable>
+
                     </rich:tab>
 
                     <rich:tab name="#{text['tabsFormLabel1']}">
@@ -47,10 +58,10 @@
 
 
                 <!--<h:graphicImage value="http://richfaces-showcase.appspot.com/images/icons/common/rf.png"
-                                style="float:right" alt="rf"/>-->
+               style="float:right" alt="rf"/>-->
             </h:form>
         </rich:panel>
-        <pre>
+<pre>
 На берегу пустынных волн
 Стоял он, дум великих полн,
 И вдаль глядел. Пред ним широко
