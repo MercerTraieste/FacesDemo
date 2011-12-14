@@ -1,0 +1,1 @@
+http://jira.icefaces.org/browse/ICE-7476

@@ -20,9 +20,8 @@ public class DataBean {
     public void loadData() {
         int count = 1000;
         for (int i = 1; i <= count; i++) {
-            children.add(new Child(String.valueOf(i), "child "+i+" fname", "child "+i+" lname", String.valueOf(i), "M"));
+            children.add(new Child(i, "child "+i+" fname", "child "+i+" lname", i, "M"));
         }
-        // test
     }
     
     public int getSize() {
