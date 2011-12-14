@@ -10,7 +10,7 @@ import java.util.List;
 @SessionScoped
 public class DataBean implements Serializable{
 
-    private final int SIZE = 10;
+    private final int SIZE = 40;
     
     private List<Child> children = new ArrayList<Child>();
     
