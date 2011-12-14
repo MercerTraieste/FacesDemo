@@ -57,32 +57,29 @@
                                 <p:commandButton type="button" value="#{msgs.clear}" onclick="editor.clear();"/>
                             </h:panelGrid>
                             <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
-                                <h:outputLabel for="comment" value="#{msgs.comment}"/>
+                                <h:outputLabel for="comment" value="#{msgs.comment}: "/>
                                 <h:outputText id="comment" value="#{richBean.text}"/>
                             </h:panelGrid>
                         </p:panel>
                     </p:tab>
-                    <p:tab title="#{msgs.tabsFormLabel}">
+                    <p:tab title="#{msgs.tabsTableLabel}">
                         <h:panelGrid columns="1" cellpadding="5">
 
-                            <p:commandButton value="Load next" ajax="true" actionListener="#{scrollBean.loadNextBatch}"  update="gogu,dataTable" onclick="alert(#{scrollBean.listSize} == dt.scrollOffset)">
-                            </p:commandButton>
-                            <h:outputText rendered="true" value="#{scrollBean.listSize}" id="gogu" />
-                            <p:dataTable id="dataTable" widgetVar="dt" var="child" value="#{scrollBean.children}" scrollRows="#{scrollBean.size}"
-                                         scrollable="true" liveScroll="true" scrollHeight="300" rendered="true">
-                                <p:column headerText="Id" sortBy="#{child.id}" style="width:75px">
+                           <p:dataTable id="dataTable" var="child" value="#{scrollBean.children}" scrollRows="#{scrollBean.size}"
+                                         scrollable="true" liveScroll="true" scrollHeight="300">
+                                <p:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
                                     <h:outputText value="#{child.id}"/>
                                 </p:column>
-                                <p:column headerText="First name" sortBy="#{child.firstName}" style="width:175px">
+                                <p:column headerText="#{msgs.firstName}" sortBy="#{child.firstName}" style="width:175px">
                                     <h:outputText value="#{child.firstName}"/>
                                 </p:column>
-                                <p:column headerText="Last name" sortBy="#{child.lastName}" style="width:175px">
+                                <p:column headerText="#{msgs.lastName}" sortBy="#{child.lastName}" style="width:175px">
                                     <h:outputText value="#{child.lastName}"/>
                                 </p:column>
-                                <p:column headerText="Age" sortBy="#{child.age}" style="width:75px">
+                                <p:column headerText="#{msgs.age}" sortBy="#{child.age}" style="width:75px">
                                     <h:outputText value="#{child.age}"/>
                                 </p:column>
-                                <p:column headerText="Sex" sortBy="#{child.sex}" style="width:75px">
+                                <p:column headerText="#{msgs.sex}" sortBy="#{child.sex}" style="width:75px">
                                     <h:outputText value="#{child.sex}"/>
                                 </p:column>
                             </p:dataTable>
