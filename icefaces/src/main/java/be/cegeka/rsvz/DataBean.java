@@ -22,6 +22,7 @@ public class DataBean {
         for (int i = 1; i <= count; i++) {
             children.add(new Child(String.valueOf(i), "child "+i+" fname", "child "+i+" lname", String.valueOf(i), "M"));
         }
+        // test
     }
     
     public int getSize() {
