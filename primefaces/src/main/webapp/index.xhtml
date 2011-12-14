@@ -14,13 +14,13 @@
         <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
         <h:outputScript library="js" name="calendar_i18n.js"/>
         <title>
-            <h:outputText value="Primefaces Internationalization"/>
+            <h:outputText value="Primefaces"/>
         </title>
     </h:head>
     <h:body>
         <h:panelGroup id="headPanel" layout="block">
             <h:form>
-                <p:panel header="#{msgs.panelHeader2}">
+                <p:panel header="#{msgs.panelHeader1}">
                     <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
                         <p:selectOneMenu id="language" value="#{localeBean.dropdownItem}" ajax="true">
                             <f:selectItems value="#{localeBean.availableLocales}"/>
@@ -30,67 +30,69 @@
                     </h:panelGrid>
                 </p:panel>
 
-                <p:tabView effect="fade" effectDuration="fast" onTabShow="editor.init()">
-                    <p:tab title="#{msgs.tabsCalendarLabel}">
-                        <p:panel>
-                            <p:calendar id="cal" showOn="button" locale="#{localeBean.dropdownItem}"
-                                        navigator="true" value="#{richBean.calendar}"
-                                        showButtonPanel="true">
-                            </p:calendar>
-                        </p:panel>
-                    </p:tab>
-                    <p:tab title="#{msgs.tabsFormLabel}">
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputLabel id="firstNameLabel" for="firstName" value="#{msgs.firstName}"/>
-                            <p:inputText id="firstName" value="#{richBean.firstName}"/>
+                <p:panel header="#{msgs.panelHeader2}">
+                    <p:tabView effect="fade" effectDuration="fast" onTabShow="editor.init()">
+                        <p:tab title="#{msgs.tabsFormLabel}">
+                            <h:panelGrid columns="2" cellpadding="5">
 
-                            <h:outputLabel id="lastNameLabel" for="lastName" value="#{msgs.lastName}"/>
-                            <p:inputText id="lastName" value="#{richBean.lastName}"/>
+                                <h:outputLabel id="calendarLabel" for="cal" value="#{msgs.calendar}"/>
+                                <p:calendar id="cal" showOn="button" locale="#{localeBean.dropdownItem}"
+                                            navigator="true" value="#{richBean.calendar}"
+                                            showButtonPanel="true">
+                                </p:calendar>
 
-                        </h:panelGrid>
-                    </p:tab>
-                    <p:tab title="#{msgs.tabsTextEditorLabel}">
-                        <p:panel>
-                            <p:editor value="#{richBean.text}" widgetVar="editor" width="600"/>
-                            <h:panelGrid columns="2" style="margin-top:10px">
-                                <p:commandButton id="richButton" value="#{msgs.save}" update="comment" ajax="true"/>
-                                <p:commandButton type="button" value="#{msgs.clear}" onclick="editor.clear();"/>
+                                <h:outputLabel id="firstNameLabel" for="firstName" value="#{msgs.firstName}"/>
+                                <p:inputText id="firstName" value="#{richBean.firstName}"/>
+
+                                <h:outputLabel id="lastNameLabel" for="lastName" value="#{msgs.lastName}"/>
+                                <p:inputText id="lastName" value="#{richBean.lastName}"/>
+
                             </h:panelGrid>
-                            <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
-                                <h:outputLabel for="comment" value="#{msgs.comment}"/>
-                                <h:outputText id="comment" value="#{richBean.text}"/>
+                        </p:tab>
+
+                        <p:tab title="#{msgs.tabsTableLabel}">
+                            <h:panelGrid columns="1" cellpadding="5">
+
+                                <p:dataTable id="dataTable" var="child" value="#{scrollBean.children}"
+                                             scrollRows="#{scrollBean.size}"
+                                             scrollable="true" liveScroll="true" scrollHeight="300">
+                                    <p:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
+                                        <h:outputText value="#{child.id}"/>
+                                    </p:column>
+                                    <p:column headerText="#{msgs.firstName}" sortBy="#{child.firstName}"
+                                              style="width:175px">
+                                        <h:outputText value="#{child.firstName}"/>
+                                    </p:column>
+                                    <p:column headerText="#{msgs.lastName}" sortBy="#{child.lastName}"
+                                              style="width:175px">
+                                        <h:outputText value="#{child.lastName}"/>
+                                    </p:column>
+                                    <p:column headerText="#{msgs.age}" sortBy="#{child.age}" style="width:75px">
+                                        <h:outputText value="#{child.age}"/>
+                                    </p:column>
+                                    <p:column headerText="#{msgs.sex}" sortBy="#{child.sex}" style="width:75px">
+                                        <h:outputText value="#{child.sex}"/>
+                                    </p:column>
+                                </p:dataTable>
+
                             </h:panelGrid>
-                        </p:panel>
-                    </p:tab>
-                    <p:tab title="#{msgs.tabsFormLabel}">
-                        <h:panelGrid columns="1" cellpadding="5">
+                        </p:tab>
 
-                            <p:commandButton value="Load next" ajax="true" actionListener="#{scrollBean.loadNextBatch}"  update="gogu,dataTable" onclick="alert(#{scrollBean.listSize} == dt.scrollOffset)">
-                            </p:commandButton>
-                            <h:outputText rendered="true" value="#{scrollBean.listSize}" id="gogu" />
-                            <p:dataTable id="dataTable" widgetVar="dt" var="child" value="#{scrollBean.children}" scrollRows="#{scrollBean.size}"
-                                         scrollable="true" liveScroll="true" scrollHeight="300" rendered="true">
-                                <p:column headerText="Id" sortBy="#{child.id}" style="width:75px">
-                                    <h:outputText value="#{child.id}"/>
-                                </p:column>
-                                <p:column headerText="First name" sortBy="#{child.firstName}" style="width:175px">
-                                    <h:outputText value="#{child.firstName}"/>
-                                </p:column>
-                                <p:column headerText="Last name" sortBy="#{child.lastName}" style="width:175px">
-                                    <h:outputText value="#{child.lastName}"/>
-                                </p:column>
-                                <p:column headerText="Age" sortBy="#{child.age}" style="width:75px">
-                                    <h:outputText value="#{child.age}"/>
-                                </p:column>
-                                <p:column headerText="Sex" sortBy="#{child.sex}" style="width:75px">
-                                    <h:outputText value="#{child.sex}"/>
-                                </p:column>
-                            </p:dataTable>
-
-                        </h:panelGrid>
-                    </p:tab>
-                </p:tabView>
-
+                        <p:tab title="#{msgs.tabsTextEditorLabel}">
+                            <p:panel>
+                                <p:editor value="#{richBean.text}" widgetVar="editor" width="600"/>
+                                <h:panelGrid columns="2" style="margin-top:10px">
+                                    <p:commandButton id="richButton" value="#{msgs.save}" update="comment" ajax="true"/>
+                                    <p:commandButton type="button" value="#{msgs.clear}" onclick="editor.clear();"/>
+                                </h:panelGrid>
+                                <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+                                    <h:outputLabel for="comment" value="#{msgs.comment}: "/>
+                                    <h:outputText id="comment" value="#{richBean.text}"/>
+                                </h:panelGrid>
+                            </p:panel>
+                        </p:tab>
+                    </p:tabView>
+                </p:panel>
             </h:form>
         </h:panelGroup>
     </h:body>

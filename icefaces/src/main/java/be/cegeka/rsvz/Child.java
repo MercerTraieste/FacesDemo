@@ -1,13 +1,13 @@
 package be.cegeka.rsvz;
 
 public class Child {
-    private String id;
+    private Integer id;
     private String firstName;
     private String lastName;
-    private String age;
+    private Integer age;
     private String sex;
 
-    public Child(String id, String firstName, String lastName, String age, String sex) {
+    public Child(Integer id, String firstName, String lastName, Integer age, String sex) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -15,11 +15,11 @@ public class Child {
         this.sex = sex;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -39,11 +39,11 @@ public class Child {
         this.lastName = lastName;
     }
 
-    public String getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

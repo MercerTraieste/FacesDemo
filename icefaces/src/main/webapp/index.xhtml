@@ -10,14 +10,14 @@
       xmlns:ace="http://www.icefaces.org/icefaces/components">
 <f:view locale="#{localeBean.currentLocale}">
     <h:head>
-        <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"></link>
-        <title>Icefaces </title>
-    </h:head>
+    <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"></link>
+    <title>Icefaces </title>
+</h:head>
     <h:body>
         <ice:form>
             <icecore:singleSubmit/>
 
-            <ace:panel header="#{msgs.panelHeader2}"
+            <ace:panel header="#{msgs.panelHeader1}"
                        closable="true"
                        toggleable="true">
                 <ice:panelGrid columns="2">
@@ -28,21 +28,47 @@
                 </ice:panelGrid>
             </ace:panel>
             <br/>
-            <ace:panel header="#{msgs.panelHeader1}"
+            <ace:panel header="#{msgs.panelHeader2}"
                        closable="true"
                        toggleable="true">
                 <ice:panelGrid columns="1">
                     <ice:panelTabSet>
-                        <ice:panelTab label="#{msgs.tabsCalendarLabel}">
-                            <ice:selectInputDate renderAsPopup="true" value="#{richBean.calendar}"/>
-                        </ice:panelTab>
 
                         <ice:panelTab label="#{msgs.tabsFormLabel}">
-                            <ice:outputLabel for="firstName" value="#{msgs.firstName}: "/>
-                            <ice:inputText id="firstName" value="#{richBean.firstName}"/>
-                            <br/>
-                            <ice:outputLabel for="lastName" value="#{msgs.lastName}: "/>
-                            <ice:inputText id="lastName" value="#{richBean.lastName}"/>
+                            <ice:panelGrid columns="2">
+                                <ice:outputLabel for="date" value="#{msgs.calendar}: "/>
+                                <ice:selectInputDate id="date" renderAsPopup="true" value="#{richBean.calendar}"/>
+
+                                <ice:outputLabel for="firstName" value="#{msgs.firstName}: "/>
+                                <ice:inputText id="firstName" value="#{richBean.firstName}"/>
+
+                                <ice:outputLabel for="lastName" value="#{msgs.lastName}: "/>
+                                <ice:inputText id="lastName" value="#{richBean.lastName}"/>
+                            </ice:panelGrid>
+                        </ice:panelTab>
+
+                        <ice:panelTab label="#{msgs.tabsTableLabel}">
+                            <ace:dataTable height="200" liveScroll="true"
+                                           value="#{dataBean.children}" var="child" rows="#{dataBean.size}"
+                                           scrollable="true" scrollHeight="300">
+                                <ace:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
+                                    <ice:outputText value="#{child.id}"/>
+                                </ace:column>
+                                <ace:column headerText="#{msgs.firstName}" sortBy="#{child.firstName}"
+                                            style="width:175px">
+                                    <ice:outputText value="#{child.firstName}"/>
+                                </ace:column>
+                                <ace:column headerText="#{msgs.lastName}" sortBy="#{child.lastName}"
+                                            style="width:175px">
+                                    <ice:outputText value="#{child.lastName}"/>
+                                </ace:column>
+                                <ace:column headerText="#{msgs.age}" sortBy="#{child.age}" style="width:75px">
+                                    <ice:outputText value="#{child.age}"/>
+                                </ace:column>
+                                <ace:column headerText="#{msgs.sex}" sortBy="#{child.sex}" style="width:75px">
+                                    <ice:outputText value="#{child.sex}"/>
+                                </ace:column>
+                            </ace:dataTable>
                         </ice:panelTab>
 
                         <ice:panelTab label="#{msgs.tabsTextEditorLabel}">
@@ -55,82 +81,6 @@
                             </h:panelGrid>
                         </ice:panelTab>
 
-                        <ice:panelTab label="#{msgs.tabsFormLabel}">
-                            <ace:dataTable height="2" liveScroll="true"
-                                           value="#{dataBean.children}" var="child" rows="#{dataBean.size}">
-                                <ace:column headerText="First Name">
-                                    <ice:outputText value="#{child.firstName}"/>
-                                </ace:column>
-                                <ace:column headerText="Last Name">
-                                    <ice:outputText value="#{child.lastName}"/>
-                                </ace:column>
-                                <ace:column headerText="Age">
-                                    <ice:outputText value="#{child.age}"/>
-                                </ace:column>
-                                <ace:column headerText="Sex">
-                                    <ice:outputText value="#{child.sex}"/>
-                                </ace:column>
-                            </ace:dataTable>
-                        </ice:panelTab>
-
-                        <ice:panelTab label="#{msgs.tabsCalendarLabel}">
-                            <ace:dataTable height="2" selectionMode="true" liveScroll="true"
-                                           value="#{dataBean.children}" var="child">
-                                <ace:column headerText="Id">
-                                    <ace:cellEditor>
-                                        <f:facet name="output">
-                                            <ice:outputText value="#{child.id}"/>
-                                        </f:facet>
-                                        <f:facet name="input">
-                                            <ice:inputText value="#{child.id}"/>
-                                        </f:facet>
-                                    </ace:cellEditor>
-                                </ace:column>
-                                <ace:column headerText="First Name">
-                                    <ace:cellEditor>
-                                        <f:facet name="output">
-                                            <ice:outputText value="#{child.firstName}"/>
-                                        </f:facet>
-                                        <f:facet name="input">
-                                            <ice:inputText value="#{child.firstName}"/>
-                                        </f:facet>
-                                    </ace:cellEditor>
-                                </ace:column>
-                                <ace:column headerText="Last Name">
-                                    <ace:cellEditor>
-                                        <f:facet name="output">
-                                            <ice:outputText value="#{child.lastName}"/>
-                                        </f:facet>
-                                        <f:facet name="input">
-                                            <ice:inputText value="#{child.lastName}"/>
-                                        </f:facet>
-                                    </ace:cellEditor>
-                                </ace:column>
-                                <ace:column headerText="Age">
-                                    <ace:cellEditor>
-                                        <f:facet name="output">
-                                            <ice:outputText value="#{child.age}"/>
-                                        </f:facet>
-                                        <f:facet name="input">
-                                            <ice:inputText value="#{child.age}"/>
-                                        </f:facet>
-                                    </ace:cellEditor>
-                                </ace:column>
-                                <ace:column headerText="Sex">
-                                    <ace:cellEditor>
-                                        <f:facet name="output">
-                                            <ice:outputText value="#{child.sex}"/>
-                                        </f:facet>
-                                        <f:facet name="input">
-                                            <ice:inputText value="#{child.sex}"/>
-                                        </f:facet>
-                                    </ace:cellEditor>
-                                </ace:column>
-                                <ace:column>
-                                    <ace:rowEditor/>
-                                </ace:column>
-                            </ace:dataTable>
-                        </ice:panelTab>
                     </ice:panelTabSet>
                 </ice:panelGrid>
             </ace:panel>
