@@ -8,13 +8,24 @@ import java.util.List;
 @ManagedBean(name = "dataBean")
 @SessionScoped
 public class DataBean {
+
+    private final int SIZE = 10;
     
     private List<Child> children = new ArrayList<Child>();
     
     public DataBean() {
-        children.add(new Child("1", "child 1 fname", "child 1 lname", "10", "M"));
-        children.add(new Child("2", "child 2 fname", "child 2 lname", "20", "F"));
-        children.add(new Child("3", "child 3 fname", "child 3 lname", "30", "F"));
+       loadData();
+    }
+
+    public void loadData() {
+        int count = 1000;
+        for (int i = 1; i <= count; i++) {
+            children.add(new Child(String.valueOf(i), "child "+i+" fname", "child "+i+" lname", String.valueOf(i), "M"));
+        }
+    }
+    
+    public int getSize() {
+        return SIZE;
     }
 
     public List<Child> getChildren() {
