@@ -4,10 +4,7 @@ import org.glassfish.embeddable.GlassFish;
 import org.glassfish.embeddable.GlassFishProperties;
 import org.glassfish.embeddable.GlassFishRuntime;
 import org.glassfish.embeddable.archive.ScatteredArchive;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +13,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import java.io.File;
 import java.io.IOException;
 
+@Ignore
 public class FirstPageTest {
     private static final int PORT = 9999;
     private static final String CONTEXT = "facesdemo";

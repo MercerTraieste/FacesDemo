@@ -40,47 +40,52 @@
                                               rendered="#{not empty richBean.name}"/>
                             </h:panelGroup>
                         </h:panelGrid>
-
                     </rich:tab>
 
                     <rich:tab name="#{text['tabsTableLabel']}">
 
-                        <rich:dataTable value="#{dataBean.children}" var="child"
-                                        style="height:300px; width:300px" rendered="true">
-                            <rich:column sortBy="#{child.id}" style="width:75px">
+                        <div style="height:150px ; width:100%; overflow-x:auto; overflow-y:scroll">
+                            <rich:dataTable value="#{dataBean.children}"
+                                            var="child"
+                                            style="max-height:300px; width:300px; overflow:auto"
+                                    >
                                 <f:facet name="header">
-                                    <h:outputText value="#{text['id']}"/>
+                                    <h:outputText value="Cars marketplace"/>
                                 </f:facet>
-                                <h:outputText value="#{child.id}"/>
-                            </rich:column>
-                            <rich:column sortBy="#{child.firstName}"
-                                         style="width:175px">
-                                <f:facet name="header">
-                                    <h:outputText value="#{text['firstName']}"/>
-                                </f:facet>
-                                <h:outputText value="#{child.firstName}"/>
-                            </rich:column>
-                            <rich:column sortBy="#{child.lastName}"
-                                         style="width:175px">
-                                <f:facet name="header">
-                                    <h:outputText value="#{text['lastName']}"/>
-                                </f:facet>
-                                <h:outputText value="#{child.lastName}"/>
-                            </rich:column>
-                            <rich:column sortBy="#{child.age}" style="width:75px">
-                                <f:facet name="header">
-                                    <h:outputText value="#{text['age']}"/>
-                                </f:facet>
-                                <h:outputText value="#{child.age}"/>
-                            </rich:column>
-                            <rich:column sortBy="#{child.sex}" style="width:75px">
-                                <f:facet name="header">
-                                    <h:outputText value="#{text['sex']}"/>
-                                </f:facet>
-                                <h:outputText value="#{child.sex}"/>
-                            </rich:column>
-                        </rich:dataTable>
-
+                                <rich:column sortBy="#{child.id}" style="width:75px">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{text['id']}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{child.id}"/>
+                                </rich:column>
+                                <rich:column sortBy="#{child.firstName}"
+                                             style="width:175px">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{text['firstName']}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{child.firstName}"/>
+                                </rich:column>
+                                <rich:column sortBy="#{child.lastName}"
+                                             style="width:175px">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{text['lastName']}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{child.lastName}"/>
+                                </rich:column>
+                                <rich:column sortBy="#{child.age}" style="width:75px">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{text['age']}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{child.age}"/>
+                                </rich:column>
+                                <rich:column sortBy="#{child.sex}" style="width:75px">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{text['sex']}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{child.sex}"/>
+                                </rich:column>
+                            </rich:dataTable>
+                        </div>
                     </rich:tab>
 
                     <rich:tab name="#{text['tabsTextEditorLabel']}">
