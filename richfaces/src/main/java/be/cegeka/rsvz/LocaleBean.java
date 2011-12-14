@@ -7,7 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-import javax.servlet.http.HttpServletRequest;
+/*import javax.servlet.http.HttpServletRequest;*/
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -53,13 +53,13 @@ public class LocaleBean implements Serializable {
     }
 
     private Locale extractBrowserLocale() {
-        Locale locale = ((HttpServletRequest) (FacesContext.getCurrentInstance().
+        /*Locale locale = ((HttpServletRequest) (FacesContext.getCurrentInstance().
                 getExternalContext().getRequest())).getLocale();
         if (locales.contains(locale)) {
             return locale;
-        } else {
+        } else {*/
             return getDefaultLocale();
-        }
+        /*}*/
     }
 
     private Locale getDefaultLocale() {
