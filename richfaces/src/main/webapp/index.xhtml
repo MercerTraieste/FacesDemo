@@ -44,11 +44,10 @@
 
                     <rich:tab name="#{text['tabsTableLabel']}">
 
-                        <div style="height:150px ; width:100%; overflow-x:auto; overflow-y:scroll">
+                        <div style="height:150px ; width:500px; overflow-x:auto; overflow-y:scroll">
                             <rich:dataTable value="#{dataBean.children}"
                                             var="child"
-                                            style="max-height:300px; width:300px; overflow:auto"
-                                    >
+                                            style="max-height:300px; width:100%; overflow:auto">
                                 <f:facet name="header">
                                     <h:outputText value="Cars marketplace"/>
                                 </f:facet>
