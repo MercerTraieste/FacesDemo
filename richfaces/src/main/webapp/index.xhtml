@@ -14,7 +14,7 @@
         <rich:panel header="RichFaces Sample">
             <h:form prependId="false">
                 <h:panelGrid columns="2">
-                    <h:outputText value="#{text['language']}"/>
+                    <h:outputText id="languageLabel" value="#{text['language']}"/>
                     <rich:select value="#{localeBean.language}">
                         <f:selectItems value="#{localeBean.languages}"/>
                         <a4j:ajax event="selectitem" execute="@all" render="@all"/>

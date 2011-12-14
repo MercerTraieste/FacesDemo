@@ -14,8 +14,8 @@
         <richfaces.version>4.1.0.CR2</richfaces.version>
         <icefaces.version>3.0.0.RC1</icefaces.version>
         <primefaces.version>3.0.M4</primefaces.version>
-        <jetty.version>7.1.6.v20100715</jetty.version>
-        <tomcat.version>6.0.35</tomcat.version>
+        <glassfish.version>3.1.1</glassfish.version>
+        <slf4j.version>1.6.4</slf4j.version>
     </properties>
 
     <modules>
@@ -45,39 +45,15 @@
                 <artifactId>selenium-java</artifactId>
                 <version>2.14.0</version>
             </dependency>
+
+            <!--embedded glassfish-->
             <dependency>
-                <groupId>org.seleniumhq.selenium</groupId>
-                <artifactId>selenium-server</artifactId>
-                <version>2.14.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-server</artifactId>
-                <version>${jetty.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-webapp</artifactId>
-                <version>${jetty.version}</version>
+                <groupId>org.glassfish.extras</groupId>
+                <artifactId>glassfish-embedded-web</artifactId>
+                <version>${glassfish.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>catalina</artifactId>
-                <version>${tomcat.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>coyote</artifactId>
-                <version>${tomcat.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>jasper</artifactId>
-                <version>${tomcat.version}</version>
-            </dependency>
-
-            <!--jsf 2.0-->
+            <!--jsf 2.1-->
             <dependency>
                 <groupId>javax.faces</groupId>
                 <artifactId>jsf-api</artifactId>
@@ -124,24 +100,19 @@
 
             <!--tools-->
             <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-validator</artifactId>
-                <version>4.1.0.Final</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>1.0.0.GA</version>
-            </dependency>
-            <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.6.1</version>
+                <version>${slf4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
-                <version>1.6.1</version>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jul-to-slf4j</artifactId>
+                <version>${slf4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -159,6 +130,7 @@
     </build>
 
     <dependencies>
+
         <!--test tools-->
         <dependency>
             <groupId>junit</groupId>
@@ -171,34 +143,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-server</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-webapp</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>catalina</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>coyote</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>jasper</artifactId>
+            <groupId>org.glassfish.extras</groupId>
+            <artifactId>glassfish-embedded-web</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -210,6 +156,10 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
         </dependency>
     </dependencies>
 
