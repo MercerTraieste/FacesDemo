@@ -12,38 +12,35 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
 
 public class FirstPageTest {
-    private static final Logger LOG = LoggerFactory.getLogger(FirstPageTest.class);
+    private static final int PORT = 9999;
+    private static final String CONTEXT = "facesdemo";
+    private static final String BASE_URL = "http://localhost:" + PORT + "/" + CONTEXT;
     private GlassFish glassfish;
+    private WebDriver driver;
 
     @Before
     public void startServer() throws Exception {
+        driver = new HtmlUnitDriver();
+
         GlassFishProperties gfProps = new GlassFishProperties();
-        gfProps.setPort("http-listener", 9999);
+        gfProps.setPort("http-listener", PORT);
         glassfish = GlassFishRuntime.bootstrap().newGlassFish(gfProps);
         glassfish.start();
-        System.out.println(getLocalPath());
         File webRoot = new File(getLocalPath() + "/src/main/webapp");
         File classes = new File(getLocalPath() + "/target/classes");
-        ScatteredArchive archive = new ScatteredArchive("web", ScatteredArchive.Type.WAR, webRoot);
+        ScatteredArchive archive = new ScatteredArchive(CONTEXT, ScatteredArchive.Type.WAR, webRoot);
         archive.addClassPath(classes);
         glassfish.getDeployer().deploy(archive.toURI());
-
     }
 
     @Test
     public void languageLabelShouldBeLanguage() {
-        WebDriver driver = new HtmlUnitDriver();
-        driver.get("http://localhost:9999/web/index.xhtml");
-        LOG.debug("current url: {}", driver.getCurrentUrl());
-        System.out.println("current url: " + driver.getCurrentUrl());
-        LOG.debug("current title: {}", driver.getTitle());
+        driver.get(BASE_URL + "/");
         WebElement element = driver.findElement(By.id("languageLabel"));
         Assert.assertEquals("Language", element.getText());
     }
