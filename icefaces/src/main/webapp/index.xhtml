@@ -55,8 +55,27 @@
                             </h:panelGrid>
                         </ice:panelTab>
 
+                        <ice:panelTab label="#{msgs.tabsFormLabel}">
+                            <ace:dataTable height="2" liveScroll="true"
+                                           value="#{dataBean.children}" var="child" rows="#{dataBean.size}">
+                                <ace:column headerText="First Name">
+                                    <ice:outputText value="#{child.firstName}"/>
+                                </ace:column>
+                                <ace:column headerText="Last Name">
+                                    <ice:outputText value="#{child.lastName}"/>
+                                </ace:column>
+                                <ace:column headerText="Age">
+                                    <ice:outputText value="#{child.age}"/>
+                                </ace:column>
+                                <ace:column headerText="Sex">
+                                    <ice:outputText value="#{child.sex}"/>
+                                </ace:column>
+                            </ace:dataTable>
+                        </ice:panelTab>
+
                         <ice:panelTab label="#{msgs.tabsCalendarLabel}">
-                            <ace:dataTable height="2" selectionMode="true" liveScroll="true" value="#{dataBean.children}" var="child">
+                            <ace:dataTable height="2" selectionMode="true" liveScroll="true"
+                                           value="#{dataBean.children}" var="child">
                                 <ace:column headerText="Id">
                                     <ace:cellEditor>
                                         <f:facet name="output">

@@ -65,13 +65,11 @@
                     <p:tab title="#{msgs.tabsFormLabel}">
                         <h:panelGrid columns="1" cellpadding="5">
 
-                            <p:commandButton value="Load next" ajax="true" actionListener="#{scrollBean.loadNextBatch}"  update="gogu,dataTable">
+                            <p:commandButton value="Load next" ajax="true" actionListener="#{scrollBean.loadNextBatch}"  update="gogu,dataTable" onclick="alert(#{scrollBean.listSize} == dt.scrollOffset)">
                             </p:commandButton>
                             <h:outputText rendered="true" value="#{scrollBean.listSize}" id="gogu" />
-                            <p:dataTable id="dataTable" var="child" value="#{scrollBean.children}" scrollRows="#{scrollBean.size}"
-                                         scrollable="true" scrollHeight="300" rendered="true">
-
-
+                            <p:dataTable id="dataTable" widgetVar="dt" var="child" value="#{scrollBean.children}" scrollRows="#{scrollBean.size}"
+                                         scrollable="true" liveScroll="true" scrollHeight="300" rendered="true">
                                 <p:column headerText="Id" sortBy="#{child.id}" style="width:75px">
                                     <h:outputText value="#{child.id}"/>
                                 </p:column>
