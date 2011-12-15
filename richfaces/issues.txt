@@ -1,1 +1,3 @@
-1.<rich:tabPanel doesn't save state between tabs. This thing should be done programmaticaly.
+1. <rich:tabPanel doesn't save state between tabs. This thing should be done programmaticaly.
+2. Rich text editor doesn't work within tabPanel with switchType="ajax", works with switchType="client" but
+    then extendedDataTable doesn't work. Need to investigate.
