@@ -1,5 +1,8 @@
 package be.cegeka.rsvz;
 
+import com.google.common.base.Function;
+import com.google.common.collect.ImmutableSortedSet;
+import com.google.common.collect.Ordering;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,10 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 @ManagedBean
 @SessionScoped
@@ -22,7 +22,7 @@ public class LocaleBean implements Serializable {
     private static final Logger LOG = LoggerFactory.getLogger(LocaleBean.class);
 
     private Locale locale;
-    private List<Locale> locales;
+    private Set<Locale> locales;
 
     public LocaleBean() {
         this.locales = extractLocales();
@@ -41,9 +41,11 @@ public class LocaleBean implements Serializable {
 
     public List<SelectItem> getLanguages() {
         List<SelectItem> languages = new ArrayList<SelectItem>();
+
         for (Locale locale : locales) {
             languages.add(localeToSelectItem(locale));
         }
+
         return languages;
     }
 
@@ -78,14 +80,24 @@ public class LocaleBean implements Serializable {
         return new Locale(language, country);
     }
 
-    private List<Locale> extractLocales() {
-        List<Locale> locales = new ArrayList<Locale>();
+    private Set<Locale> extractLocales() {
+        Set<Locale> locales = new HashSet<Locale>();
         locales.add(getDefaultLocale());
         Iterator<Locale> i = FacesContext.getCurrentInstance().getApplication().getSupportedLocales();
         while (i.hasNext()) {
             locales.add(i.next());
         }
-        return locales;
+
+        Function<Locale, String> localeToString = new Function<Locale, String>() {
+            public String apply(Locale from) {
+                return from.toString();
+            }
+        };
+
+        Ordering<Locale> localeOrdering = Ordering.natural().onResultOf(localeToString);
+
+        return ImmutableSortedSet.orderedBy(
+                localeOrdering).addAll(locales).build();
     }
 
     private SelectItem localeToSelectItem(Locale locale) {
