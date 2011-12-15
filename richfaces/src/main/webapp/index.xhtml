@@ -23,7 +23,7 @@
             </rich:panel>
 
             <rich:panel header="#{text['panelHeader2']}">
-                <rich:tabPanel switchType="client">
+                <rich:tabPanel switchType="ajax">
 
                     <rich:tab name="#{text['tabsFormLabel']}">
                         <h:panelGrid columns="2">
@@ -43,11 +43,12 @@
                     </rich:tab>
 
                     <rich:tab name="#{text['tabsTableLabel']}">
-
-                        <div style="height:150px ; width:500px; overflow-x:auto; overflow-y:scroll">
-                            <rich:dataTable value="#{dataBean.children}"
-                                            var="child"
-                                            style="max-height:300px; width:100%; overflow:auto">
+                        <h:panelGrid columns="2">
+                            <rich:extendedDataTable value="#{dataBean.children}"
+                                                    var="child"
+                                                    style="height:300px; width:500px">
+                                <a4j:ajax event="selectionchange" listener="#{dataBean.showSelectionDetails}"
+                                          render="childDetails"/>
                                 <f:facet name="header">
                                     <h:outputText value="Cars marketplace"/>
                                 </f:facet>
@@ -83,8 +84,17 @@
                                     </f:facet>
                                     <h:outputText value="#{child.sex}"/>
                                 </rich:column>
-                            </rich:dataTable>
-                        </div>
+                            </rich:extendedDataTable>
+
+                            <rich:dataGrid value="#{dataBean.selectedChildren}"
+                                           id="childDetails"
+                                           var="child">
+                                <rich:panel style="width:220px; height:60px; margin:5px;"
+                                            header="Child Details">
+                                    <h:outputText value="#{child.firstName}"/>
+                                </rich:panel>
+                            </rich:dataGrid>
+                        </h:panelGrid>
                     </rich:tab>
 
                     <rich:tab name="#{text['tabsTextEditorLabel']}">
@@ -98,6 +108,93 @@
                             <h:outputText id="comment" value="#{richBean.editorValue}" rendered="true"/>
                         </h:panelGrid>
                     </rich:tab>
+
+                    <rich:tab name="#{text['tabsEditableList']}"  >
+                        <rich:dataTable value="#{dataBean.children}"
+                                                var="child" iterationStatusVar="it"
+                                                style="height:300px; width:500px; overflow:auto;">
+
+                            <f:facet name="header">
+                                <h:outputText value="Cars marketplace"/>
+                            </f:facet>
+                            <rich:column sortBy="#{child.id}" style="width:75px">
+                                <f:facet name="header">
+                                    <h:outputText value="#{text['id']}"/>
+                                </f:facet>
+                                <h:outputText value="#{child.id}"/>
+                            </rich:column>
+                            <rich:column sortBy="#{child.firstName}"
+                                         style="width:175px">
+                                <f:facet name="header">
+                                    <h:outputText value="#{text['firstName']}"/>
+                                </f:facet>
+                                <h:outputText value="#{child.firstName}"/>
+                            </rich:column>
+                            <rich:column sortBy="#{child.age}" style="width:75px">
+                                <f:facet name="header">
+                                    <h:outputText value="#{text['age']}"/>
+                                </f:facet>
+                                <h:outputText value="#{child.age}"/>
+                            </rich:column>
+                            <rich:column>
+                                <a4j:commandLink styleClass="no-decor" execute="@this"
+                                                 render="@none" oncomplete="#{rich:component('confirmPane')}.show()">
+                                    <h:outputText value="Edit"/>
+                                    <a4j:param value="#{it.index}"
+                                               assignTo="#{carsBean.currentCarIndex}" />
+                                </a4j:commandLink>
+                                <a4j:commandLink styleClass="no-decor" render="editGrid"
+                                                 execute="@this" oncomplete="#{rich:component('editPane')}.show()">
+                                    <h:outputText value="Edit"/>
+                                    <a4j:param value="#{it.index}"
+                                               assignTo="#{dataBean.currentChildIndex}" />
+                                    <f:setPropertyActionListener target="#{dataBean.editedChild}"
+                                                                 value="#{child}" />
+                                </a4j:commandLink>
+                            </rich:column>
+                        </rich:dataTable>
+
+                        <a4j:jsFunction name="remove" action="#{carsBean.remove}"
+                                        render="table" execute="@this"
+                                        oncomplete="#{rich:component('confirmPane')}.hide();" />
+
+                        <rich:popupPanel id="statPane" autosized="true">
+                            <h:graphicImage value="/images/ai.gif" alt="ai" />
+                            Please wait...
+                        </rich:popupPanel>
+
+                        <rich:popupPanel id="confirmPane" autosized="true">
+                            Are you sure you want to delete the row?
+                            <a4j:commandButton value="Cancel"
+                                               onclick="#{rich:component('confirmPane')}.hide(); return false;" />
+                            <a4j:commandButton value="Delete" onclick="remove(); return false;" />
+                        </rich:popupPanel>
+
+                        <rich:popupPanel header="Edit Child Details" id="editPane" domElementAttachment="parent" width="400" height="170">
+                            <h:panelGrid columns="3" id="editGrid">
+                                <h:outputText value="Age" />
+                                <h:outputText value="#{dataBean.editedChild.age}" />
+                                <h:panelGroup />
+
+                                <h:outputText value="Last Name" />
+                                <h:outputText value="#{dataBean.editedChild.lastName}" />
+                                <h:panelGroup />
+
+                                <h:outputText value="First Name" />
+                                <h:inputText value="#{dataBean.editedChild.firstName}"
+                                             label="Mileage field" >
+                                </h:inputText>
+
+                            </h:panelGrid>
+                            <a4j:commandButton value="Store" action="#{dataBean.storeChild}"
+                                               render="table" execute="editPane"
+                                               oncomplete="if (#{facesContext.maximumSeverity==null}) {#{rich:component('editPane')}.hide();}" />
+                            <a4j:commandButton value="Cancel"
+                                               onclick="#{rich:component('editPane')}.hide(); return false;" />
+                        </rich:popupPanel>
+
+                    </rich:tab>
+
                 </rich:tabPanel>
             </rich:panel>
         </h:form>
