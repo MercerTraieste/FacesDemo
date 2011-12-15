@@ -8,11 +8,11 @@
                 xmlns:rich="http://richfaces.org/rich"
                 template="/templates/template.xhtml">
 
-    <ui:define name="title">RichFaces Sample</ui:define>
+    <ui:define name="title">RichFrichs</ui:define>
 
     <ui:define name="body">
-        <rich:panel header="RichFaces Sample">
-            <h:form prependId="false">
+        <h:form prependId="false">
+            <rich:panel header="#{text['panelHeader1']}">
                 <h:panelGrid columns="2">
                     <h:outputText id="languageLabel" value="#{text['language']}"/>
                     <rich:select value="#{localeBean.language}">
@@ -20,63 +20,86 @@
                         <a4j:ajax event="selectitem" execute="@all" render="@all"/>
                     </rich:select>
                 </h:panelGrid>
+            </rich:panel>
 
+            <rich:panel header="#{text['panelHeader2']}">
                 <rich:tabPanel switchType="client">
-                    <rich:tab name="#{text['tabsCalendarLabel1']}">
-                        <rich:calendar value="#{richBean.calendar}"/>
 
-                        <rich:extendedDataTable value="#{richBean.stringuri}" var="string"
-                                                style="height:300px; width:300px">
-                            <f:facet name=" Table Header">
-                                <h:outputText value="Header"/>
-                            </f:facet>
-                            <h:column>
-                                <h:outputText value="#{string}"/>
-                            </h:column>
-                        </rich:extendedDataTable>
+                    <rich:tab name="#{text['tabsFormLabel']}">
+                        <h:panelGrid columns="2">
+                            <h:outputText value="#{text['calendar']}"/>
+                            <rich:calendar value="#{richBean.calendar}"/>
 
+                            <h:outputText value="#{text['firstName']}"/>
+                            <h:inputText id="nameInput" value="#{richBean.name}">
+                                <a4j:ajax event="keyup" render="output"/>
+                            </h:inputText>
+                            <br/>
+                            <h:panelGroup id="output">
+                                <h:outputText value="#{richBean.name}!"
+                                              rendered="#{not empty richBean.name}"/>
+                            </h:panelGroup>
+                        </h:panelGrid>
                     </rich:tab>
 
-                    <rich:tab name="#{text['tabsFormLabel1']}">
-                        <h:outputText value="#{text['name']}"/>
-                        <h:inputText id="nameInput" value="#{richBean.name}">
-                            <a4j:ajax event="keyup" render="output"/>
-                        </h:inputText>
-                        <h:panelGroup id="output">
-                            <h:outputText value="#{richBean.name}!"
-                                          rendered="#{not empty richBean.name}"/>
-                        </h:panelGroup>
+                    <rich:tab name="#{text['tabsTableLabel']}">
+
+                        <div style="height:150px ; width:500px; overflow-x:auto; overflow-y:scroll">
+                            <rich:dataTable value="#{dataBean.children}"
+                                            var="child"
+                                            style="max-height:300px; width:100%; overflow:auto">
+                                <f:facet name="header">
+                                    <h:outputText value="Cars marketplace"/>
+                                </f:facet>
+                                <rich:column sortBy="#{child.id}" style="width:75px">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{text['id']}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{child.id}"/>
+                                </rich:column>
+                                <rich:column sortBy="#{child.firstName}"
+                                             style="width:175px">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{text['firstName']}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{child.firstName}"/>
+                                </rich:column>
+                                <rich:column sortBy="#{child.lastName}"
+                                             style="width:175px">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{text['lastName']}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{child.lastName}"/>
+                                </rich:column>
+                                <rich:column sortBy="#{child.age}" style="width:75px">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{text['age']}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{child.age}"/>
+                                </rich:column>
+                                <rich:column sortBy="#{child.sex}" style="width:75px">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{text['sex']}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{child.sex}"/>
+                                </rich:column>
+                            </rich:dataTable>
+                        </div>
                     </rich:tab>
 
-                    <rich:tab name="#{text['tabsTextEditorLabel1']}">
+                    <rich:tab name="#{text['tabsTextEditorLabel']}">
+
                         <rich:editor toolbar="full" plugins="save,paste" value="#{richBean.editorValue}">
                         </rich:editor>
+
                         <a4j:commandButton value="Save" render="comment"/>
-                        <h:outputText id="comment" value="#{richBean.editorValue}" rendered="true"/>
+                        <h:panelGrid columns="2">
+                            <h:outputText value="#{text['comment']} :"/>
+                            <h:outputText id="comment" value="#{richBean.editorValue}" rendered="true"/>
+                        </h:panelGrid>
                     </rich:tab>
                 </rich:tabPanel>
-
-
-                <!--<h:graphicImage value="http://richfaces-showcase.appspot.com/images/icons/common/rf.png"
-               style="float:right" alt="rf"/>-->
-            </h:form>
-        </rich:panel>
-<pre>
-На берегу пустынных волн
-Стоял он, дум великих полн,
-И вдаль глядел. Пред ним широко
-Река неслася; бедный чёлн
-По ней стремился одиноко.
-По мшистым, топким берегам
-Чернели избы здесь и там,
-Приют убогого чухонца;
-И лес, неведомый лучам
-В тумане спрятанного солнца,
-Кругом шумел.
-
-Request Locale: <h:outputText value="#{facesContext.externalContext.request.locale}"/>
-Response Locale: <h:outputText value="#{facesContext.externalContext.response.locale}"/>
-Encoding: <h:outputText value="#{facesContext.externalContext.response.characterEncoding}"/>
-        </pre>
+            </rich:panel>
+        </h:form>
     </ui:define>
 </ui:composition>
