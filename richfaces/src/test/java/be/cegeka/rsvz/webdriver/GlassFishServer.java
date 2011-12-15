@@ -14,8 +14,8 @@ public class GlassFishServer {
 
     private static final Logger LOG = LoggerFactory.getLogger(GlassFishServer.class);
 
-    private static final int PORT = 9999;
-    private static final String CONTEXT = "facesdemo";
+    public static final int PORT = 9999;
+    public static final String CONTEXT = "facesdemo";
 
     private static GlassFish glassFish;
     private static GlassFishServer instance;
