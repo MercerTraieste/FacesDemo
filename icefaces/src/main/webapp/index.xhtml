@@ -47,7 +47,7 @@
                             </ice:panelGrid>
 
                             <ace:dataTable height="200"
-                                           value="#{dataBean.children}" var="child" rows="#{dataBean.size}"
+                                           value="#{editorDataBean.children}" var="child" rows="#{dataBean.size}"
                                            scrollable="true" scrollHeight="300"
                                            selectionMode="single"
                                     >
@@ -109,7 +109,7 @@
                                 </ace:column>
 
                                 <ace:column headerText="Edit">
-                                    <ace:rowEditor/>
+                                    <ace:rowEditor rowEditCancelListener="#{editorDataBean.rowSelectionDelete}" />
                                 </ace:column>
                             </ace:dataTable>
 
