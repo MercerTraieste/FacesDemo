@@ -31,22 +31,32 @@ public class DataBean implements Serializable {
     }
 
     public void loadData() {
-        int count = 1000;
+        int count = 100;
         for (int i = 1; i <= count; i++) {
             children.add(new Child(i, "child " + i + " fname", "child " + i + " lname", i, "M"));
         }
     }
 
-    public void showSelectionDetails(AjaxBehaviorEvent event){
-        UIExtendedDataTable table = (UIExtendedDataTable)event.getComponent();
+    public void storeChild() {
+        children.set(currentChildIndex, editedChild);
+        System.out.println("Stored child: [" + currentChildIndex + "]" + editedChild.toString());
+    }
+
+    public void removeChild() {
+        children.remove(children.get(currentChildIndex));
+        System.out.println("Deleted child: [" + currentChildIndex + "]" + children.get(currentChildIndex).toString());
+    }
+
+    public void showSelectionDetails(AjaxBehaviorEvent event) {
+        UIExtendedDataTable table = (UIExtendedDataTable) event.getComponent();
         selectedChildren = new ArrayList<Child>();
         selection = table.getSelection();
         Object storedRowKey = table.getRowKey();
         System.out.println("Selected children:");
-        for(Object rowKey : selection){
+        for (Object rowKey : selection) {
             table.setRowKey(rowKey);
-            selectedChildren.add((Child)table.getRowData());
-            System.out.println("Child: "+ table.getRowData());
+            selectedChildren.add((Child) table.getRowData());
+            System.out.println("Child: " + table.getRowData());
         }
         table.setRowKey(storedRowKey);
     }

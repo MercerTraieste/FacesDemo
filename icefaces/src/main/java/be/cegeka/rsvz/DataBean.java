@@ -1,5 +1,6 @@
 package be.cegeka.rsvz;
 
+import org.icefaces.ace.event.RowEditCancelEvent;
 import org.icefaces.ace.event.SelectEvent;
 
 import javax.faces.bean.ManagedBean;
@@ -51,5 +52,11 @@ public class DataBean {
         Child child = (Child) event.getObject();
         System.out.println("child = " + child);
         setSelectedChild((Child) event.getObject());
+    }
+
+    public void rowSelectionDelete(RowEditCancelEvent event) {
+        Child child = (Child) event.getObject();
+        System.out.println("child = " + child);
+        children.remove(child);
     }
 }
