@@ -7,7 +7,7 @@ import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 
 public abstract class AbstractParentPage {
     protected WebDriver driver;
-    public int DRIVER_WAIT_SECONDS = 30;
+    public int DRIVER_WAIT_SECONDS = 15;
 
     public AbstractParentPage(WebDriver driver) {
         ElementLocatorFactory finder = new AjaxElementLocatorFactory(driver, DRIVER_WAIT_SECONDS);

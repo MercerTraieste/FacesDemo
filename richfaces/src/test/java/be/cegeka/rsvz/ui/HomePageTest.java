@@ -15,7 +15,7 @@ public class HomePageTest extends BaseTest {
     private static final String[] LOCALES = {"en", "el", "fr", "nl", "en-GB"};
 
     @Test
-    public void localesShouldBeAvaileble() {
+    public void localesShouldBeAvailable() {
         for (String locale : LOCALES) {
             ExtendedHtmlUnitDriver localeDriver = new ExtendedHtmlUnitDriver();
             localeDriver.setHeader("Accept-Language", locale);
