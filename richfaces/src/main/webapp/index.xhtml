@@ -15,7 +15,7 @@
             <rich:panel header="#{text['panelHeader1']}">
                 <h:panelGrid columns="2">
                     <h:outputText id="languageLabel" value="#{text['language']}"/>
-                    <rich:select value="#{localeBean.language}">
+                    <rich:select id="selectLanguage" value="#{localeBean.language}">
                         <f:selectItems value="#{localeBean.languages}"/>
                         <a4j:ajax event="selectitem" execute="@all" render="@all"/>
                     </rich:select>

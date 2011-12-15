@@ -68,7 +68,7 @@ public class GlassFishServer {
         glassFish = GlassFishRuntime.bootstrap().newGlassFish(gfProps);
     }
 
-    private String getLocalPath() throws IOException {
+    public static String getLocalPath() throws IOException {
         String canonicalPath = new File(".").getCanonicalPath();
         if (canonicalPath.indexOf("richfaces") > 0) {
             return canonicalPath;
