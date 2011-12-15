@@ -54,4 +54,15 @@ public class Child {
     public void setSex(String sex) {
         this.sex = sex;
     }
+
+    @Override
+    public String toString() {
+        return "Child{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                '}';
+    }
 }
