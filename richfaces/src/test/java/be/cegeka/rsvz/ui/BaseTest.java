@@ -4,8 +4,8 @@ import be.cegeka.rsvz.webdriver.GlassFishServer;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +17,7 @@ public class BaseTest {
     @Before
     public void init() throws Exception {
         GlassFishServer.run();
-        driver = new FirefoxDriver(createProfile());
+        driver = new InternetExplorerDriver();
     }
 
     @After
@@ -34,7 +34,7 @@ public class BaseTest {
         }
     }
 
-    private FirefoxProfile createProfile() throws Exception {
+    private FirefoxProfile createFirefoxProfile() throws Exception {
         FirefoxProfile profile = new FirefoxProfile();
         profile.addExtension(new File(getLocalPath() + "/src/test/resources/firebug-1.8.4.xpi"));
         profile.setPreference("network.http.phishy-userpass-length", 255);

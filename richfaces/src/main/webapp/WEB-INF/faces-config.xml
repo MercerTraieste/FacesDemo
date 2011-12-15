@@ -7,7 +7,6 @@
     <application>
         <locale-config>
             <default-locale>en</default-locale>
-            <supported-locale>en_GB</supported-locale>
             <supported-locale>nl</supported-locale>
             <supported-locale>fr</supported-locale>
             <supported-locale>el</supported-locale>

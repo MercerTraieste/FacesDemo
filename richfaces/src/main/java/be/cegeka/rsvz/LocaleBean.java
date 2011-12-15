@@ -55,11 +55,12 @@ public class LocaleBean implements Serializable {
     }
 
     private Locale extractBrowserLocale() {
-        Locale locale = ((HttpServletRequest) (FacesContext.getCurrentInstance().
+        Locale browserLocale = ((HttpServletRequest) (FacesContext.getCurrentInstance().
                 getExternalContext().getRequest())).getLocale();
-        LOG.info("Browser locale is [{}]", locale);
-        if (locales.contains(locale)) {
-            return locale;
+        LOG.info("Browser locale is [{}]", browserLocale);
+        Locale strippedLocale = new Locale(browserLocale.getLanguage());
+        if (locales.contains(strippedLocale)) {
+            return strippedLocale;
         } else {
             return getDefaultLocale();
         }
@@ -90,7 +91,7 @@ public class LocaleBean implements Serializable {
 
         Function<Locale, String> localeToString = new Function<Locale, String>() {
             public String apply(Locale from) {
-                return from.toString();
+                return from.getDisplayName();
             }
         };
 

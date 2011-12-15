@@ -12,11 +12,11 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class HomePageTest extends BaseTest {
-    private static final String[] LOCALES = {"en", "el", "fr", "en-GB", "nl"};
+    private static final String[] BROWSER_LOCALES = {"en", "el", "fr", "en-GB", "nl", "nl-BE"};
 
     @Test
     public void localesShouldBeAvailable() {
-        for (String locale : LOCALES) {
+        for (String locale : BROWSER_LOCALES) {
             ExtendedHtmlUnitDriver localeDriver = new ExtendedHtmlUnitDriver();
             localeDriver.setHeader("Accept-Language", locale);
             localeDriver.get(BaseTest.BASE_URL);
@@ -26,6 +26,18 @@ public class HomePageTest extends BaseTest {
             Assert.assertEquals(res.getString("language"), element.getText());
             localeDriver.quit();
         }
+    }
+
+    @Test
+    public void unknownLocaleShouldFallBackToEn() {
+        ExtendedHtmlUnitDriver localeDriver = new ExtendedHtmlUnitDriver();
+        localeDriver.setHeader("Accept-Language", "ro");
+        localeDriver.get(BaseTest.BASE_URL);
+        WebElement element = localeDriver.findElement(By.id("languageLabel"));
+        Locale referenceLocale = LocaleBean.extractLocale("en");
+        ResourceBundle res = UTF8ResourceBundle.getBundle("be.cegeka.rsvz.faces.i18n.messages", referenceLocale);
+        Assert.assertEquals(res.getString("language"), element.getText());
+        localeDriver.quit();
     }
 
     @Test

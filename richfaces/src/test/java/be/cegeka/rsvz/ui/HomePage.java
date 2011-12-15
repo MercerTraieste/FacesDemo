@@ -12,7 +12,7 @@ public class HomePage extends AbstractParentPage {
     @FindBy(id = "selectLanguage")
     private WebElement selectLanguage;
 
-    @FindBy(id = "selectLanguageItem4")
+    @FindBy(id = "selectLanguageItem2")
     private WebElement dutchLanguage;
 
     @FindBy(id = "languageLabel")
@@ -29,7 +29,7 @@ public class HomePage extends AbstractParentPage {
         WebDriverWait wait = new WebDriverWait(driver, DRIVER_WAIT_SECONDS);
         Predicate<WebDriver> isTrue = new Predicate<WebDriver>() {
             public boolean apply(WebDriver webdriver) {
-                return languageLabel.getText().equals("Taal");
+                return languageLabel.getText().equals("Langue");
             }
         };
         wait.until(isTrue);
