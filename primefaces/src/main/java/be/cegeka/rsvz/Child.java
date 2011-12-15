@@ -1,6 +1,8 @@
 package be.cegeka.rsvz;
 
-public class Child {
+import java.io.Serializable;
+
+public class Child implements Serializable {
     private Integer id;
     private String firstName;
     private String lastName;
@@ -53,5 +55,16 @@ public class Child {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    @Override
+    public String toString() {
+        return "Child{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                '}';
     }
 }
