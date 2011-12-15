@@ -10,9 +10,9 @@
       xmlns:ace="http://www.icefaces.org/icefaces/components">
 <f:view locale="#{localeBean.currentLocale}">
     <h:head>
-    <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"></link>
-    <title>Icefaces </title>
-</h:head>
+        <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"></link>
+        <title>Icefaces </title>
+    </h:head>
     <h:body>
         <ice:form id="form">
             <icecore:singleSubmit/>
@@ -45,6 +45,74 @@
                                 <ice:outputLabel for="lastName" value="#{msgs.lastName}: "/>
                                 <ice:inputText id="lastName" value="#{richBean.lastName}"/>
                             </ice:panelGrid>
+
+                            <ace:dataTable height="200"
+                                           value="#{editorDataBean.children}" var="child" rows="#{dataBean.size}"
+                                           scrollable="true" scrollHeight="300"
+                                           selectionMode="single"
+                                    >
+                                <ace:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
+                                    <ace:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{child.id}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{child.id}" style="width:100%"/>
+                                        </f:facet>
+                                    </ace:cellEditor>
+                                </ace:column>
+
+                                <ace:column headerText="#{msgs.firstName}" sortBy="#{child.firstName}"
+                                            style="width:175px">
+                                    <ace:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{child.firstName}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{child.firstName}" style="width:100%"/>
+                                        </f:facet>
+                                    </ace:cellEditor>
+                                </ace:column>
+
+                                <ace:column headerText="#{msgs.lastName}" sortBy="#{child.lastName}"
+                                            style="width:175px">
+                                    <ace:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{child.lastName}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{child.lastName}" style="width:100%"/>
+                                        </f:facet>
+                                    </ace:cellEditor>
+                                </ace:column>
+
+                                <ace:column headerText="#{msgs.age}" sortBy="#{child.age}" style="width:75px">
+                                    <ace:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{child.age}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{child.age}" style="width:100%"/>
+                                        </f:facet>
+                                    </ace:cellEditor>
+                                </ace:column>
+
+                                <ace:column headerText="#{msgs.sex}" sortBy="#{child.sex}" style="width:75px">
+                                    <ace:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{child.sex}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{child.sex}" style="width:100%"/>
+                                        </f:facet>
+                                    </ace:cellEditor>
+                                </ace:column>
+
+                                <ace:column headerText="Edit">
+                                    <ace:rowEditor rowEditCancelListener="#{editorDataBean.rowSelectionDelete}" />
+                                </ace:column>
+                            </ace:dataTable>
+
                         </ice:panelTab>
 
                         <ice:panelTab label="#{msgs.tabsTableLabel}">
@@ -53,8 +121,8 @@
                                            scrollable="true" scrollHeight="300"
                                            selectionMode="single"
                                            rowSelectListener="#{dataBean.rowSelectionListener}"
-                                           >
-                                <ace:ajax event="select" execute="@this" render=":form:panelTab:display" />
+                                    >
+                                <ace:ajax event="select" execute="@this" render=":form:panelTab:display"/>
                                 <ace:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
                                     <ice:outputText value="#{child.id}"/>
                                 </ace:column>
@@ -74,7 +142,8 @@
                                 </ace:column>
                             </ace:dataTable>
                             <ace:panel id="display">
-                                <ace:panel header="#{msgs.details}" toggleable="true" rendered="#{dataBean.selectedChild.id != null}">
+                                <ace:panel header="#{msgs.details}" toggleable="true"
+                                           rendered="#{dataBean.selectedChild.id != null}">
                                     <ice:panelGrid columns="2" cellpadding="4">
                                         <ice:outputText value="#{msgs.id}:"/>
                                         <ice:outputText value="#{dataBean.selectedChild.id}"/>
