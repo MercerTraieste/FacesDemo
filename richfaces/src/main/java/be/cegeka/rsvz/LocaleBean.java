@@ -26,9 +26,9 @@ public class LocaleBean implements Serializable {
 
     public LocaleBean() {
         this.locales = extractLocales();
+        LOG.info("Server has these locales: {}", locales);
         this.locale = extractBrowserLocale();
-        LOG.info("Locale set to {}", locale);
-        LOG.info("Available locales: {}", locales);
+        LOG.info("Locale set to [{}]", locale);
     }
 
     public Locale getLocale() {
@@ -55,6 +55,7 @@ public class LocaleBean implements Serializable {
     private Locale extractBrowserLocale() {
         Locale locale = ((HttpServletRequest) (FacesContext.getCurrentInstance().
                 getExternalContext().getRequest())).getLocale();
+        LOG.info("Browser locale is [{}]", locale);
         if (locales.contains(locale)) {
             return locale;
         } else {
@@ -66,7 +67,7 @@ public class LocaleBean implements Serializable {
         return FacesContext.getCurrentInstance().getApplication().getDefaultLocale();
     }
 
-    private Locale extractLocale(String localeCode) {
+    public static Locale extractLocale(String localeCode) {
         String language = localeCode.substring(0, 2);
         String country;
         if (localeCode.length() > 2) {
@@ -74,7 +75,6 @@ public class LocaleBean implements Serializable {
         } else {
             country = "";
         }
-        LOG.info("Setting locale to language={} country={}", language, country);
         return new Locale(language, country);
     }
 
