@@ -20,16 +20,16 @@ public class GuavaTests {
     @Test
     public void sortedLocaleList() {
         List<Locale> locales = Arrays.asList(new Locale("nl"), new Locale("en", "GB"), new Locale("fr"));
-        Function<Locale, String> getNameFunction = new Function<Locale, String>() {
+        Function<Locale, String> localeToString = new Function<Locale, String>() {
             public String apply(Locale from) {
                 return from.toString();
             }
         };
 
-        Ordering<Locale> nameOrdering = Ordering.natural().onResultOf(getNameFunction);
+        Ordering<Locale> localeOrdering = Ordering.natural().onResultOf(localeToString);
 
         ImmutableSortedSet<Locale> sortedLocales = ImmutableSortedSet.orderedBy(
-                nameOrdering).addAll(locales).build();
+                localeOrdering).addAll(locales).build();
         System.out.println(sortedLocales);
 
 

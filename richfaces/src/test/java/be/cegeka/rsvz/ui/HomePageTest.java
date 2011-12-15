@@ -12,7 +12,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class HomePageTest extends BaseTest {
-    private static final String[] LOCALES = {"en", "el", "fr", "nl", "en-GB"};
+    private static final String[] LOCALES = {"en", "el", "fr", "en-GB", "nl"};
 
     @Test
     public void localesShouldBeAvailable() {
