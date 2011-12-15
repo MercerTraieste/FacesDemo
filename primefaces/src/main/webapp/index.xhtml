@@ -19,19 +19,19 @@
     </h:head>
     <h:body>
         <h:panelGroup id="headPanel" layout="block">
-            <h:form>
+            <h:form id="form">
                 <p:panel header="#{msgs.panelHeader1}">
                     <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
                         <p:selectOneMenu id="language" value="#{localeBean.dropdownItem}" ajax="true">
                             <f:selectItems value="#{localeBean.availableLocales}"/>
                             <p:ajax process="@all" event="change" listener="#{localeBean.localeChanged}"
-                                    update=":headPanel,cal" onstart=""/>
+                                    update=":headPanel,:form:tabView:cal" onstart=""/>
                         </p:selectOneMenu>
                     </h:panelGrid>
                 </p:panel>
 
                 <p:panel header="#{msgs.panelHeader2}">
-                    <p:tabView effect="fade" effectDuration="fast" onTabShow="editor.init()">
+                    <p:tabView effect="fade" effectDuration="fast" onTabShow="editor.init()" id="tabView">
                         <p:tab title="#{msgs.tabsFormLabel}">
                             <h:panelGrid columns="2" cellpadding="5">
 
@@ -54,8 +54,12 @@
                             <h:panelGrid columns="1" cellpadding="5">
 
                                 <p:dataTable id="dataTable" var="child" value="#{scrollBean.children}"
+                                             rowKey="#{child.id}"
                                              scrollRows="#{scrollBean.size}"
-                                             scrollable="true" liveScroll="true" scrollHeight="300">
+                                             scrollable="true" liveScroll="true" scrollHeight="300"
+                                             selection="#{scrollBean.selectedChild}" selectionMode="single">
+                                    <p:ajax event="rowSelect" listener="#{scrollBean.onRowSelect}"
+                                            update=":form:tabView:display"/>
                                     <p:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
                                         <h:outputText value="#{child.id}"/>
                                     </p:column>
@@ -76,6 +80,29 @@
                                 </p:dataTable>
 
                             </h:panelGrid>
+                            <br/>
+
+                            <p:panel id="display">
+                                <p:panel header="#{msgs.details}" toggleable="true"
+                                         rendered="#{!empty scrollBean.selectedChild.id}">
+                                    <h:panelGrid columns="2" cellpadding="4">
+                                        <h:outputText value="#{msgs.id}:"/>
+                                        <h:outputText value="#{scrollBean.selectedChild.id}"/>
+
+                                        <h:outputText value="#{msgs.firstName}:"/>
+                                        <h:outputText value="#{scrollBean.selectedChild.firstName}"/>
+
+                                        <h:outputText value="#{msgs.lastName}:"/>
+                                        <h:outputText value="#{scrollBean.selectedChild.lastName}"/>
+
+                                        <h:outputText value="#{msgs.age}:"/>
+                                        <h:outputText value="#{scrollBean.selectedChild.age}"/>
+
+                                        <h:outputText value="#{msgs.sex}:"/>
+                                        <h:outputText value="#{scrollBean.selectedChild.sex}"/>
+                                    </h:panelGrid>
+                                </p:panel>
+                            </p:panel>
                         </p:tab>
 
                         <p:tab title="#{msgs.tabsTextEditorLabel}">

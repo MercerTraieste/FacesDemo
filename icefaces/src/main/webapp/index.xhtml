@@ -14,7 +14,7 @@
     <title>Icefaces </title>
 </h:head>
     <h:body>
-        <ice:form>
+        <ice:form id="form">
             <icecore:singleSubmit/>
 
             <ace:panel header="#{msgs.panelHeader1}"
@@ -32,7 +32,7 @@
                        closable="true"
                        toggleable="true">
                 <ice:panelGrid columns="1">
-                    <ice:panelTabSet>
+                    <ice:panelTabSet id="panelTab">
 
                         <ice:panelTab label="#{msgs.tabsFormLabel}">
                             <ice:panelGrid columns="2">
@@ -50,7 +50,11 @@
                         <ice:panelTab label="#{msgs.tabsTableLabel}">
                             <ace:dataTable height="200" liveScroll="true"
                                            value="#{dataBean.children}" var="child" rows="#{dataBean.size}"
-                                           scrollable="true" scrollHeight="300">
+                                           scrollable="true" scrollHeight="300"
+                                           selectionMode="single"
+                                           rowSelectListener="#{dataBean.rowSelectionListener}"
+                                           >
+                                <ace:ajax event="select" execute="@this" render=":form:panelTab:display" />
                                 <ace:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
                                     <ice:outputText value="#{child.id}"/>
                                 </ace:column>
@@ -69,6 +73,26 @@
                                     <ice:outputText value="#{child.sex}"/>
                                 </ace:column>
                             </ace:dataTable>
+                            <ace:panel id="display">
+                                <ace:panel header="#{msgs.details}" toggleable="true" rendered="#{dataBean.selectedChild.id != null}">
+                                    <ice:panelGrid columns="2" cellpadding="4">
+                                        <ice:outputText value="#{msgs.id}:"/>
+                                        <ice:outputText value="#{dataBean.selectedChild.id}"/>
+
+                                        <ice:outputText value="#{msgs.firstName}:"/>
+                                        <ice:outputText value="#{dataBean.selectedChild.firstName}"/>
+
+                                        <ice:outputText value="#{msgs.lastName}:"/>
+                                        <ice:outputText value="#{dataBean.selectedChild.lastName}"/>
+
+                                        <ice:outputText value="#{msgs.age}:"/>
+                                        <ice:outputText value="#{dataBean.selectedChild.age}"/>
+
+                                        <ice:outputText value="#{msgs.sex}:"/>
+                                        <ice:outputText value="#{dataBean.selectedChild.sex}"/>
+                                    </ice:panelGrid>
+                                </ace:panel>
+                            </ace:panel>
                         </ice:panelTab>
 
                         <ice:panelTab label="#{msgs.tabsTextEditorLabel}">
