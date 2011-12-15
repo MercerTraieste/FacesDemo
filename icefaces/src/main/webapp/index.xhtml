@@ -74,7 +74,7 @@
                                 </ace:column>
                             </ace:dataTable>
                             <ace:panel id="display">
-                                <ace:panel header="Details" toggleable="true" rendered="#{dataBean.selectedChild.id != null}">
+                                <ace:panel header="#{msgs.details}" toggleable="true" rendered="#{dataBean.selectedChild.id != null}">
                                     <ice:panelGrid columns="2" cellpadding="4">
                                         <ice:outputText value="#{msgs.id}:"/>
                                         <ice:outputText value="#{dataBean.selectedChild.id}"/>

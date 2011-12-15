@@ -11,7 +11,7 @@
     <name>Faces demo</name>
 
     <properties>
-        <richfaces.version>4.1.0.CR2</richfaces.version>
+        <richfaces.version>4.1.0.Final</richfaces.version>
         <icefaces.version>3.0.0.RC1</icefaces.version>
         <primefaces.version>3.0.M4</primefaces.version>
         <glassfish.version>3.1.1</glassfish.version>
