@@ -46,11 +46,11 @@
                                 <ice:inputText id="lastName" value="#{richBean.lastName}"/>
                             </ice:panelGrid>
 
-                            <ace:dataTable height="200"
-                                           value="#{dataTableBean.children}" var="child" rows="#{dataTableBean.size}"
+                            <ace:dataTable height="200" id="editableDataTable"
+                                           value="#{dataTableBean.children}" var="child"
                                            scrollable="true" scrollHeight="300"
                                            selectionMode="single"
-                                       >
+                                    >
                                 <ace:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
                                     <ace:cellEditor>
                                         <f:facet name="output">
@@ -109,9 +109,15 @@
                                 </ace:column>
 
                                 <ace:column headerText="Edit">
-                                    <ace:rowEditor />
+                                    <ace:rowEditor/>
                                 </ace:column>
                             </ace:dataTable>
+
+                            <ice:commandButton value="Add"
+                                               action="#{dataTableBean.createNewRow}"
+                                    >
+                                <ace:ajax event="click" execute="@this" render=":form:panelTab:editableDataTable"/>
+                            </ice:commandButton>
 
                         </ice:panelTab>
 

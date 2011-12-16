@@ -25,6 +25,7 @@ public class DataTableBean implements Serializable {
     public void createNewRow() {
         Child child = new Child();
         getChildren().add(child);
+        System.out.println("size = " + getChildren().size());
     }
 
 
