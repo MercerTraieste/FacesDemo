@@ -47,10 +47,10 @@
                             </ice:panelGrid>
 
                             <ace:dataTable height="200"
-                                           value="#{editorDataBean.children}" var="child" rows="#{dataBean.size}"
+                                           value="#{dataBean.children}" var="child" rows="#{dataBean.size}"
                                            scrollable="true" scrollHeight="300"
                                            selectionMode="single"
-                                    >
+                                       >
                                 <ace:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
                                     <ace:cellEditor>
                                         <f:facet name="output">
@@ -109,7 +109,7 @@
                                 </ace:column>
 
                                 <ace:column headerText="Edit">
-                                    <ace:rowEditor rowEditCancelListener="#{editorDataBean.rowSelectionDelete}" />
+                                    <ace:rowEditor />
                                 </ace:column>
                             </ace:dataTable>
 
