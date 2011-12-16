@@ -46,11 +46,11 @@
             <h:panelGrid columns="1">
                 <rich:extendedDataTable value="#{dataBean.children}"
                                         var="child"
-                                        style="height:300px; width:500px">
+                                        style="height:300px; width:510px">
                     <a4j:ajax event="selectionchange" listener="#{dataBean.showSelectionDetails}"
                               render="childDetails"/>
                     <f:facet name="header">
-                        <h:outputText value="Cars marketplace"/>
+                        <h:outputText value="#{text['tabsTableLabel']}"/>
                     </f:facet>
                     <rich:column sortBy="#{child.id}" style="width:75px">
                         <f:facet name="header">
@@ -58,15 +58,13 @@
                         </f:facet>
                         <h:outputText value="#{child.id}"/>
                     </rich:column>
-                    <rich:column sortBy="#{child.firstName}"
-                                 style="width:175px">
+                    <rich:column sortBy="#{child.firstName}" style="width:175px">
                         <f:facet name="header">
                             <h:outputText value="#{text['firstName']}"/>
                         </f:facet>
                         <h:outputText value="#{child.firstName}"/>
                     </rich:column>
-                    <rich:column sortBy="#{child.lastName}"
-                                 style="width:175px">
+                    <rich:column sortBy="#{child.lastName}" style="width:175px">
                         <f:facet name="header">
                             <h:outputText value="#{text['lastName']}"/>
                         </f:facet>
@@ -126,12 +124,12 @@
 
         <rich:tab name="#{text['tabsEditableList']}" style="height:300px; width:500px;">
             <a4j:outputPanel style="height:300px; width:500px; overflow:auto;">
-                <rich:dataTable value="#{dataBean.children}" id="childrenTable"
+                <rich:dataTable value="#{dataBean.childrenEditableList}" id="childrenTable"
                                 var="child" iterationStatusVar="it"
                         >
 
                     <f:facet name="header">
-                        <h:outputText value="Cars marketplace"/>
+                        <h:outputText value="#{text['tabsEditableList']}"/>
                     </f:facet>
                     <rich:column sortBy="#{child.id}" style="width:75px">
                         <f:facet name="header">
