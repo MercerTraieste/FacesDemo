@@ -49,17 +49,6 @@
 
                             </h:panelGrid>
 
-
-                            <p:commandButton value="Add"
-                                             action="#{dataBean.createNewRow}"
-                                             update=":form:tabView:editableDataTable"/>
-                            <p:ajaxStatus style="width:16px;height:16px;">
-
-                                <f:facet name="complete">
-                                    <h:outputText value=""/>
-                                </f:facet>
-                            </p:ajaxStatus>
-
                             <h:panelGrid columns="1" cellpadding="5">
                                 <p:dataTable id="editableDataTable" var="child" value="#{dataBean.children}"
                                              scrollRows="#{dataBean.size}"
@@ -122,6 +111,10 @@
                                     </p:column>
                                 </p:dataTable>
                             </h:panelGrid>
+
+                            <p:commandButton value="Add"
+                                             action="#{dataBean.createNewRow}"
+                                             update=":form:tabView:editableDataTable"/>
                         </p:tab>
 
                         <p:tab title="#{msgs.tabsTableLabel}">
