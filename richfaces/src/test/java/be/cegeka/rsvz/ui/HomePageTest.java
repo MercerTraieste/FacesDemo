@@ -3,7 +3,6 @@ package be.cegeka.rsvz.ui;
 import be.cegeka.rsvz.LocaleBean;
 import be.cegeka.rsvz.faces.i18n.UTF8ResourceBundle;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -12,7 +11,6 @@ import org.openqa.selenium.htmlunit.ExtendedHtmlUnitDriver;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-@Ignore
 public class HomePageTest extends BaseTest {
     private static final String[] LOCALES = {"en", "el", "fr", "nl", "en-GB"};
 
