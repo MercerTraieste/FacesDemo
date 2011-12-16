@@ -13,7 +13,7 @@ public class HomePage extends AbstractParentPage {
     private WebElement selectLanguage;
 
     @FindBy(id = "selectLanguageItem2")
-    private WebElement dutchLanguage;
+    private WebElement frenchLanguage;
 
     @FindBy(id = "languageLabel")
     private WebElement languageLabel;
@@ -25,7 +25,7 @@ public class HomePage extends AbstractParentPage {
     public Boolean changeLanguage() {
         Actions builder = new Actions(driver);
         builder.moveToElement(selectLanguage).click().perform();
-        builder.moveToElement(dutchLanguage).click().perform();
+        builder.moveToElement(frenchLanguage).click().perform();
         WebDriverWait wait = new WebDriverWait(driver, DRIVER_WAIT_SECONDS);
         Predicate<WebDriver> isTrue = new Predicate<WebDriver>() {
             public boolean apply(WebDriver webdriver) {
