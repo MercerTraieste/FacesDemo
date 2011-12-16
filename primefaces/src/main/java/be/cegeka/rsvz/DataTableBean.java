@@ -2,12 +2,13 @@ package be.cegeka.rsvz;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "dataBean")
 @SessionScoped
-public class DataTableBean {
+public class DataTableBean implements Serializable {
 
     private static final int CAPACITY = 10;
     private List<Child> children = new ArrayList<Child>(CAPACITY);
