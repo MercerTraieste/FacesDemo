@@ -48,6 +48,69 @@
                                 <p:inputText id="lastName" value="#{richBean.lastName}"/>
 
                             </h:panelGrid>
+
+                            <p:dataTable id="editableDataTable" var="child" value="#{scrollBean.children}" rows="#{scrollBean.size}">
+                                <f:facet name="header">
+                                    In-Cell Editing
+                                </f:facet>
+
+                                <p:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{child.id}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{child.id}"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="#{msgs.firstName}" sortBy="#{child.firstName}"
+                                          style="width:175px">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{child.firstName}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{child.firstName}"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="#{msgs.lastName}" sortBy="#{child.lastName}"
+                                          style="width:175px">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{child.lastName}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{child.lastName}"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="#{msgs.age}" sortBy="#{child.age}" style="width:75px">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{child.age}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{child.age}"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="#{msgs.sex}" sortBy="#{child.sex}" style="width:75px">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{child.sex}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{child.sex}"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Edit">
+                                    <p:rowEditor/>
+                                </p:column>
+                            </p:dataTable>
                         </p:tab>
 
                         <p:tab title="#{msgs.tabsTableLabel}">
