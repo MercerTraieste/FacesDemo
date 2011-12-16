@@ -17,34 +17,43 @@ public class DataBean implements Serializable {
     private final int SIZE = 40;
 
     private List<Child> children = new ArrayList<Child>();
-    private Collection<Object> selection = null;
-    private List<Child> selectedChildren = null;
+    private Collection<Object> selection;
+    private List<Child> selectedChildren;
 
     /*
     *  FOR EDITABLE TABLE
     */
+    private List<Child> childrenEditableList = new ArrayList<Child>();
     private int currentChildIndex;
-    private Child editedChild;
+    private Child editedChild = new Child();
 
     public DataBean() {
-        loadData();
+        loadChildrenForDataTable();
+        loadChildrenForEditableList();
     }
 
-    public void loadData() {
-        int count = 100;
+    public void loadChildrenForDataTable() {
+        populateList(children, 100);
+    }
+
+    public void loadChildrenForEditableList() {
+        populateList(childrenEditableList, 10);
+    }
+
+    private void populateList(List<Child> children, int count) {
         for (int i = 1; i <= count; i++) {
             children.add(new Child(i, "child " + i + " fname", "child " + i + " lname", i, "M"));
         }
     }
 
     public void storeChild() {
-        children.set(currentChildIndex, editedChild);
+        childrenEditableList.set(currentChildIndex, editedChild);
         System.out.println("Stored child: [" + currentChildIndex + "]" + editedChild.toString());
     }
 
     public void removeChild() {
-        children.remove(children.get(currentChildIndex));
-        System.out.println("Deleted child: [" + currentChildIndex + "]" + children.get(currentChildIndex).toString());
+        childrenEditableList.remove(childrenEditableList.get(currentChildIndex));
+        System.out.println("Deleted child: [" + currentChildIndex + "]" + childrenEditableList.get(currentChildIndex).toString());
     }
 
     public void showSelectionDetails(AjaxBehaviorEvent event) {
@@ -103,5 +112,13 @@ public class DataBean implements Serializable {
 
     public void setEditedChild(Child editedChild) {
         this.editedChild = editedChild;
+    }
+
+    public List<Child> getChildrenEditableList() {
+        return childrenEditableList;
+    }
+
+    public void setChildrenEditableList(List<Child> childrenEditableList) {
+        this.childrenEditableList = childrenEditableList;
     }
 }

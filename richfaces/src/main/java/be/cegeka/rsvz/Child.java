@@ -7,6 +7,9 @@ public class Child {
     private Integer age;
     private String sex;
 
+    public Child() {
+    }
+
     public Child(Integer id, String firstName, String lastName, Integer age, String sex) {
         this.id = id;
         this.firstName = firstName;
