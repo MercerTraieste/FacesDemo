@@ -111,6 +111,9 @@
                                 <ace:column headerText="Edit">
                                     <ace:rowEditor/>
                                 </ace:column>
+                                 <ace:column headerText="Remove" style="width:150px">
+                                    <ice:commandButton value="Delete" actionListener="#{dataTableBean.actionDeleteRow}"/>
+                                </ace:column>
                             </ace:dataTable>
 
                             <ice:commandButton value="Add"
