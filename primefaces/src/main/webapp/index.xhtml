@@ -109,6 +109,9 @@
                                     <p:column headerText="Edit" style="width:50px">
                                         <p:rowEditor/>
                                     </p:column>
+                                    <p:column headerText="Remove" style="width:150px">
+                                         <p:commandButton value="Delete" ajax="false" actionListener="#{dataBean.actionDeleteRow}"/>
+                                    </p:column>
                                 </p:dataTable>
                             </h:panelGrid>
 
