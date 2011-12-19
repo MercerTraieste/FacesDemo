@@ -25,7 +25,7 @@ public class DataBean implements Serializable {
     */
     private List<Child> childrenEditableList = new ArrayList<Child>();
     private int currentChildIndex;
-    private Child editedChild = new Child();
+    private Child currentChild = new Child();
 
     public DataBean() {
         loadChildrenForDataTable();
@@ -47,14 +47,21 @@ public class DataBean implements Serializable {
     }
 
     public void storeChild() {
-        childrenEditableList.set(currentChildIndex, editedChild);
-        System.out.println("Stored child: [" + currentChildIndex + "]" + editedChild.toString());
+        childrenEditableList.set(currentChildIndex, currentChild);
+        System.out.println("Stored child: [" + currentChildIndex + "]" + currentChild.toString());
     }
 
     public void removeChild() {
-        childrenEditableList.remove(childrenEditableList.get(currentChildIndex));
         System.out.println("Deleted child: [" + currentChildIndex + "]" + childrenEditableList.get(currentChildIndex).toString());
+        childrenEditableList.remove(childrenEditableList.get(currentChildIndex));
     }
+
+    public void createNewChild(){
+        currentChild = new Child();
+        childrenEditableList.add(currentChild);
+        currentChildIndex = childrenEditableList.size() - 1;
+    }
+
 
     public void showSelectionDetails(AjaxBehaviorEvent event) {
         UIExtendedDataTable table = (UIExtendedDataTable) event.getComponent();
@@ -106,12 +113,12 @@ public class DataBean implements Serializable {
         this.currentChildIndex = currentChildIndex;
     }
 
-    public Child getEditedChild() {
-        return editedChild;
+    public Child getCurrentChild() {
+        return currentChild;
     }
 
-    public void setEditedChild(Child editedChild) {
-        this.editedChild = editedChild;
+    public void setCurrentChild(Child currentChild) {
+        this.currentChild = currentChild;
     }
 
     public List<Child> getChildrenEditableList() {
