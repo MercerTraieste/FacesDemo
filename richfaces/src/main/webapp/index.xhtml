@@ -163,6 +163,8 @@
                             <h:outputText value="Edit"/>
                             <a4j:param value="#{it.index}"
                                        assignTo="#{dataBean.currentChildIndex}"/>
+                            <a4j:param value="false"
+                                       assignTo="#{dataBean.childInAddMode}"/>
                             <f:setPropertyActionListener target="#{dataBean.currentChild}"
                                                          value="#{child}"/>
                         </a4j:commandLink>
@@ -172,6 +174,8 @@
                 <a4j:commandLink styleClass="no-decor" render="editGrid" actionListener="#{dataBean.createNewChild}"
                                  execute="childrenTable" oncomplete="#{rich:component('editPane')}.show()">
                     <h:outputText value="Add Child"/>
+                    <a4j:param value="true"
+                                       assignTo="#{dataBean.childInAddMode}"/>
                 </a4j:commandLink>
 
                 <a4j:jsFunction name="remove" action="#{dataBean.removeChild}"
@@ -210,8 +214,8 @@
                     <a4j:commandButton value="Store" action="#{dataBean.storeChild}"
                                        render="childrenTable" execute="editPane"
                                        oncomplete="if (#{facesContext.maximumSeverity==null}) {#{rich:component('editPane')}.hide();}"/>
-                    <a4j:commandButton value="Cancel"
-                                       onclick="#{rich:component('editPane')}.hide(); return false;"/>
+                    <a4j:commandButton value="Cancel" actionListener="#{dataBean.cancelChild}"
+                                       oncomplete="#{rich:component('editPane')}.hide(); return false;"/>
                 </rich:popupPanel>
             </a4j:outputPanel>
         </rich:tab>
