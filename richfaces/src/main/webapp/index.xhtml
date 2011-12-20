@@ -26,19 +26,13 @@
     <rich:tabPanel switchType="ajax">
 
         <rich:tab name="#{text['tabsFormLabel']}">
+            <rich:messages/>
             <h:panelGrid columns="2">
                 <h:outputText value="#{text['calendar']}"/>
                 <rich:calendar value="#{richBean.calendar}"/>
 
                 <h:outputText value="#{text['firstName']}"/>
-                <h:inputText id="nameInput" value="#{richBean.name}">
-                    <a4j:ajax event="keyup" render="output"/>
-                </h:inputText>
-                <br/>
-                <h:panelGroup id="output">
-                    <h:outputText value="#{richBean.name}!"
-                                  rendered="#{not empty richBean.name}"/>
-                </h:panelGroup>
+                <h:inputText id="nameInput" value="#{richBean.name}"/>
             </h:panelGrid>
 
             <a4j:outputPanel title="#{text['uploadFileTitle']}">
