@@ -6,7 +6,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 import java.io.Serializable;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -54,12 +53,13 @@ public class DataBean implements Serializable {
     }
 
     public void removeChild() {
-        System.out.println("Deleted child: [" + currentChildIndex + "]" + childrenEditableList.get(currentChildIndex).toString());
+        System.out.println("Deleted child: [" + currentChildIndex + "]"
+                + childrenEditableList.get(currentChildIndex).toString());
         childrenEditableList.remove(childrenEditableList.get(currentChildIndex));
     }
 
     public void cancelChild() {
-        System.out.println("Add mode: "+isChildInAddMode());
+        System.out.println("Add mode: " + isChildInAddMode());
         if (isChildInAddMode()) {
             removeTempPositionInChildrenList();
         }

@@ -40,6 +40,15 @@
                                   rendered="#{not empty richBean.name}"/>
                 </h:panelGroup>
             </h:panelGrid>
+
+            <a4j:outputPanel title="#{text['uploadFileTitle']}">
+                <rich:fileUpload fileUploadListener="#{fileUpload.uploadFileListener}"
+                                 addLabel="#{text['chooseFile']}"
+                                 clearAllLabel="#{text['clearAllFiles']}"
+                                 uploadLabel="#{text['uploadFiles']}"
+                                 deleteLabel="#{text['deleteFile']}"/>
+            </a4j:outputPanel>
+
         </rich:tab>
 
         <rich:tab name="#{text['tabsTableLabel']}">

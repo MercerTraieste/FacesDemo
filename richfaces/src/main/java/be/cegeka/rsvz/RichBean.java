@@ -21,7 +21,6 @@ public class RichBean implements Serializable {
         setName("John");
         setEditorValue("Please add some text here ...");
         setCalendar(new Date());
-        calendar = new Date();
     }
 
     private List<String> getListOfRandomStrings(int numberOfStrings) {
