@@ -3,6 +3,7 @@ package be.cegeka.rsvz;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
@@ -12,7 +13,7 @@ import org.primefaces.model.UploadedFile;
 import java.io.Serializable;
 
 @ManagedBean(name = "fileBean")
-@SessionScoped
+@RequestScoped
 public class FileUploadBean implements Serializable {
 
     private UploadedFile file;

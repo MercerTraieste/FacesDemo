@@ -50,8 +50,8 @@
 
                             </h:panelGrid>
 
-                            <p:fileUpload label="Select files" value="#{fileBean.file}" mode="simple"/>
-                            <p:commandButton value="Submit" ajax="false" actionListener="#{fileBean.upload}"/>
+                            <p:fileUpload label="#{msgs.chooseFile}" value="#{fileBean.file}" mode="simple"/>
+                            <p:commandButton value="#{msgs.upload}" ajax="false" actionListener="#{fileBean.upload}"/>
 
                             <p:fileUpload fileUploadListener="#{fileBean.handleUpload}"
                                           mode="advanced"
@@ -59,6 +59,9 @@
                                           update="messages"
                                           sizeLimit="100000"
                                           allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                                          label="#{msgs.chooseFiles}"
+                                          uploadLabel="#{msgs.upload}"
+                                          cancelLabel="#{msgs.cancel}"
                                           />
                             <p:growl id="messages" showDetail="true"/>
 
