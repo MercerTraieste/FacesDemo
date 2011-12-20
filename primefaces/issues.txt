@@ -1,1 +1,2 @@
 http://code.google.com/p/primefaces/issues/detail?id=3022
+http://code.google.com/p/primefaces/issues/detail?id=1314

@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 import java.io.Serializable;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -25,7 +26,8 @@ public class DataBean implements Serializable {
     */
     private List<Child> childrenEditableList = new ArrayList<Child>();
     private int currentChildIndex;
-    private Child editedChild = new Child();
+    private Child currentChild = new Child();
+    private boolean childInAddMode = false;
 
     public DataBean() {
         loadChildrenForDataTable();
@@ -47,14 +49,33 @@ public class DataBean implements Serializable {
     }
 
     public void storeChild() {
-        childrenEditableList.set(currentChildIndex, editedChild);
-        System.out.println("Stored child: [" + currentChildIndex + "]" + editedChild.toString());
+        childrenEditableList.set(currentChildIndex, currentChild);
+        System.out.println("Stored child: [" + currentChildIndex + "]" + currentChild.toString());
     }
 
     public void removeChild() {
-        childrenEditableList.remove(childrenEditableList.get(currentChildIndex));
         System.out.println("Deleted child: [" + currentChildIndex + "]" + childrenEditableList.get(currentChildIndex).toString());
+        childrenEditableList.remove(childrenEditableList.get(currentChildIndex));
     }
+
+    public void cancelChild() {
+        System.out.println("Add mode: "+isChildInAddMode());
+        if (isChildInAddMode()) {
+            removeTempPositionInChildrenList();
+        }
+    }
+
+    private void removeTempPositionInChildrenList() {
+        childrenEditableList.remove(childrenEditableList.size() - 1);
+    }
+
+
+    public void createNewChild() {
+        currentChild = new Child();
+        childrenEditableList.add(currentChild);
+        currentChildIndex = childrenEditableList.size() - 1;
+    }
+
 
     public void showSelectionDetails(AjaxBehaviorEvent event) {
         UIExtendedDataTable table = (UIExtendedDataTable) event.getComponent();
@@ -106,12 +127,12 @@ public class DataBean implements Serializable {
         this.currentChildIndex = currentChildIndex;
     }
 
-    public Child getEditedChild() {
-        return editedChild;
+    public Child getCurrentChild() {
+        return currentChild;
     }
 
-    public void setEditedChild(Child editedChild) {
-        this.editedChild = editedChild;
+    public void setCurrentChild(Child currentChild) {
+        this.currentChild = currentChild;
     }
 
     public List<Child> getChildrenEditableList() {
@@ -121,4 +142,13 @@ public class DataBean implements Serializable {
     public void setChildrenEditableList(List<Child> childrenEditableList) {
         this.childrenEditableList = childrenEditableList;
     }
+
+    public void setChildInAddMode(boolean childInAddMode) {
+        this.childInAddMode = childInAddMode;
+    }
+
+    private boolean isChildInAddMode() {
+        return childInAddMode;
+    }
+
 }
