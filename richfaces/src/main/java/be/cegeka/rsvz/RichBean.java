@@ -19,7 +19,7 @@ public class RichBean implements Serializable {
     @NotEmpty(message = "{must-not-be-empty}")
     private String name;
 
-    @NotNull(message = "{must-not-be-empty}")
+    @NotNull(message = "{must-not-be-null}")
     private Date calendar;
     private String editorValue;
 
