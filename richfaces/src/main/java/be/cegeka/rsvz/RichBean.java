@@ -15,7 +15,7 @@ public class RichBean implements Serializable {
 
     private static final long serialVersionUID = -2403138958014741653L;
 
-    @NotEmpty
+    @NotEmpty(message = "{must-not-be-empty}")
     private String name;
 
     private Date calendar;

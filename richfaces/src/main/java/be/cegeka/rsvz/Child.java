@@ -1,6 +1,8 @@
 package be.cegeka.rsvz;
 
-public class Child {
+import java.io.Serializable;
+
+public class Child implements Serializable {
     private Integer id;
     private String firstName;
     private String lastName;
