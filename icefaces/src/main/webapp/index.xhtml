@@ -46,6 +46,10 @@
                                 <ice:inputText id="lastName" value="#{richBean.lastName}"/>
                             </ice:panelGrid>
 
+                            <ace:fileEntry absolutePath="/tmp/icefaces"
+                                           fileEntryListener="#{fileUpload.uploadFile}"/>
+                            <h:commandButton value="#{msgs.upload}"/>
+
                             <ace:dataTable height="200" id="editableDataTable"
                                            value="#{dataTableBean.children}" var="child"
                                            scrollable="true" scrollHeight="300"
@@ -111,12 +115,13 @@
                                 <ace:column headerText="Edit">
                                     <ace:rowEditor/>
                                 </ace:column>
-                                 <ace:column headerText="Remove" style="width:150px">
-                                    <ice:commandButton value="Delete" actionListener="#{dataTableBean.actionDeleteRow}"/>
+                                <ace:column headerText="Remove" style="width:150px">
+                                    <ice:commandButton value="#{msgs.delete}"
+                                                       actionListener="#{dataTableBean.actionDeleteRow}"/>
                                 </ace:column>
                             </ace:dataTable>
 
-                            <ice:commandButton value="Add"
+                            <ice:commandButton value="#{msgs.add}"
                                                action="#{dataTableBean.createNewRow}"
                                     >
                                 <ace:ajax event="click" execute="@this" render=":form:panelTab:editableDataTable"/>
