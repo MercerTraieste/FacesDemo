@@ -34,6 +34,8 @@
                 <ice:panelGrid columns="1">
                     <ice:panelTabSet id="panelTab">
 
+                        <ice:messages />
+
                         <ice:panelTab label="#{msgs.tabsFormLabel}">
                             <ice:panelGrid columns="2">
                                 <ice:outputLabel for="date" value="#{msgs.calendar}: "/>
@@ -46,7 +48,8 @@
                                 <ice:inputText id="lastName" value="#{richBean.lastName}"/>
                             </ice:panelGrid>
 
-                            <ace:fileEntry absolutePath="/tmp/icefaces"
+                            <ace:fileEntry id="myfileupload"
+                                           absolutePath="/tmp/icefaces"
                                            fileEntryListener="#{fileUpload.uploadFile}"/>
                             <h:commandButton value="#{msgs.upload}"/>
 

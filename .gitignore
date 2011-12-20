@@ -2,3 +2,5 @@ target
 *.iml
 .idea
 glassfish-web.xml
+*.ipr
+*.iws
