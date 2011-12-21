@@ -6,10 +6,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,12 +19,9 @@ public class RichBean implements Serializable {
     private static final long serialVersionUID = -2403138958014741653L;
 
     @NotEmpty
-    @Pattern(regexp="(?!^[\\s]*$)", message = "{must-not-be-empty}")
-//    @NotNull
-//    @Size(min=1, message = "{must-not-be-empty}")
     private String firstName;
 
-    @NotBlank
+    @NotBlank(message = "{must-not-be-blank}")
     private String lastName;
 
     @Past
