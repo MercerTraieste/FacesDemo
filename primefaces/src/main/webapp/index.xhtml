@@ -25,7 +25,7 @@
                         <p:selectOneMenu id="language" value="#{localeBean.dropdownItem}" ajax="true">
                             <f:selectItems value="#{localeBean.availableLocales}"/>
                             <p:ajax process="@all" event="change" listener="#{localeBean.localeChanged}"
-                                    update=":headPanel,:form:tabView:cal" onstart=""/>
+                                    update=":headPanel,:form:tabView:cal" onstart="" immediate="true"/>
                         </p:selectOneMenu>
                     </h:panelGrid>
                 </p:panel>
@@ -33,21 +33,23 @@
                 <p:panel header="#{msgs.panelHeader2}">
                     <p:tabView effect="fade" effectDuration="fast" onTabShow="editor.init()" id="tabView">
                         <p:tab title="#{msgs.tabsFormLabel}">
-                            <p:messages showDetail="true"/>
-                            <h:panelGrid columns="2" cellpadding="5">
-
+                            <h:panelGrid columns="3" cellpadding="5">
                                 <h:outputLabel id="calendarLabel" for="cal" value="#{msgs.calendar}"/>
                                 <p:calendar id="cal" showOn="button" locale="#{localeBean.dropdownItem}"
                                             navigator="true" value="#{richBean.calendar}"
                                             showButtonPanel="true">
                                 </p:calendar>
+                                <p:message id="msgCalendar" for="cal" />
 
                                 <h:outputLabel id="firstNameLabel" for="firstName" value="#{msgs.firstName}"/>
-                                <p:inputText id="firstName" value="#{richBean.firstName}"/>
+                                <p:inputText id="firstName" value="#{richBean.firstName}" >
+                                    <p:ajax event="blur" process="@this" update="msgFirstName"/>
+                                </p:inputText>
+                                <p:message id="msgFirstName" for="firstName" />
 
                                 <h:outputLabel id="lastNameLabel" for="lastName" value="#{msgs.lastName}"/>
                                 <p:inputText id="lastName" value="#{richBean.lastName}"/>
-
+                                <p:message id="msgLastName" for="lastName" />
                             </h:panelGrid>
 
                             <p:fileUpload label="#{msgs.chooseFile}" value="#{fileBean.file}" mode="simple"/>

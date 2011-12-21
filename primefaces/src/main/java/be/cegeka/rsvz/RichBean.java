@@ -2,6 +2,8 @@ package be.cegeka.rsvz;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,6 +11,8 @@ import java.util.Date;
 @SessionScoped
 public class RichBean implements Serializable {
 
+    @NotNull
+    @Size(min=4, max=10, message = "Size error cool.")
     private String firstName;
     private String lastName;
     private Date calendar;
