@@ -15,5 +15,9 @@
             <base-name>be.cegeka.rsvz.faces.i18n.UTF8ResourceBundle</base-name>
             <var>text</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>ValidationMessages</base-name>
+            <var>ValidationMessages</var>
+        </resource-bundle>
     </application>
 </faces-config>

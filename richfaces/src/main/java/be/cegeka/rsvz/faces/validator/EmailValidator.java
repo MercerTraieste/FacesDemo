@@ -15,7 +15,7 @@ public class EmailValidator implements Validator{
     private static final String EMAIL ="gigel.sparge@lemne.com";
 
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object o) throws ValidatorException {
-        if(o.toString().equals(EMAIL)) {
+        if(o!= null && EMAIL.equals(o.toString())) {
             FacesMessage msg = new FacesMessage("Email validation failed. This address already exists.");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(msg);
