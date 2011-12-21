@@ -2,15 +2,11 @@ package be.cegeka.rsvz.faces.validator;
 
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Scope;
 import java.util.ResourceBundle;
 
 
@@ -18,15 +14,20 @@ import java.util.ResourceBundle;
 public class EmailValidator implements Validator {
 
     private static final String EMAIL = "gigel.sparge@lemne.com";
+    private static final String RESOURCE_BUNDLE_VAR_NAME = "text";
 
 
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object o) throws ValidatorException {
-        ResourceBundle bundle = ResourceBundle.getBundle("be.cegeka.rsvz.faces.i18n.messages", facesContext.getViewRoot().getLocale());
         if (o != null && EMAIL.equals(o.toString())) {
-            FacesMessage msg = new FacesMessage(bundle.getString("email-already-exists"));
+            FacesMessage msg = new FacesMessage(getResourceBundleString("email-already-exists"));
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(msg);
         }
     }
 
+    public String getResourceBundleString(String resourceKey) {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ResourceBundle bundle = facesContext.getApplication().getResourceBundle(facesContext, RESOURCE_BUNDLE_VAR_NAME);
+        return bundle.getString(resourceKey);
+    }
 }
