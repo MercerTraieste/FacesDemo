@@ -53,6 +53,25 @@
                     <port>9000</port>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.glassfish</groupId>
+                <artifactId>maven-embedded-glassfish-plugin</artifactId>
+                <configuration>
+                    <goalPrefix>glassfish</goalPrefix>
+                    <app>${project.basedir}/target/${artifactId}-${version}.war</app>
+                    <contextRoot>${project.artifactId}</contextRoot>
+                    <port>9000</port>
+                    <class-loader delegate="false" />
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
