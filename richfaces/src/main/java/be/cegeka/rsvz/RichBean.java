@@ -1,7 +1,10 @@
 package be.cegeka.rsvz;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,14 +16,14 @@ public class RichBean implements Serializable {
 
     private static final long serialVersionUID = -2403138958014741653L;
 
+    @NotEmpty(message = "{must-not-be-empty}")
     private String name;
+
+    @NotNull(message = "{must-not-be-null}")
     private Date calendar;
     private String editorValue;
 
     public RichBean() {
-        setName("John");
-        setEditorValue("Please add some text here ...");
-        setCalendar(new Date());
     }
 
     private List<String> getListOfRandomStrings(int numberOfStrings) {
