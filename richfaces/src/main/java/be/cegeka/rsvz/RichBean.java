@@ -6,7 +6,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,10 +26,12 @@ public class RichBean implements Serializable {
     @NotBlank(message = "{must-not-be-blank}")
     private String lastName;
 
+    @NotNull
     @Past
     private Date calendar;
     private String editorValue;
 
+    @NotNull
     @Email
     private String email;
 
