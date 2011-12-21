@@ -1,10 +1,13 @@
 package be.cegeka.rsvz;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,12 +19,21 @@ public class RichBean implements Serializable {
 
     private static final long serialVersionUID = -2403138958014741653L;
 
-    @NotEmpty(message = "{must-not-be-empty}")
-    private String name;
+    @NotEmpty
+    @Pattern(regexp="(?!^[\\s]*$)", message = "{must-not-be-empty}")
+//    @NotNull
+//    @Size(min=1, message = "{must-not-be-empty}")
+    private String firstName;
+
+    @NotBlank
+    private String lastName;
 
     @NotNull(message = "{must-not-be-null}")
     private Date calendar;
     private String editorValue;
+
+    @Pattern(regexp = "^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[a-zA-Z]{2,4}$" , message="{bad-email}")
+    private String email;
 
     public RichBean() {
     }
@@ -35,12 +47,20 @@ public class RichBean implements Serializable {
         return strings;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Date getCalendar() {
@@ -57,5 +77,13 @@ public class RichBean implements Serializable {
 
     public void setEditorValue(String editorValue) {
         this.editorValue = editorValue;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
