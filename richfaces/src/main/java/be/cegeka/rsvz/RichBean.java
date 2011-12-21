@@ -1,11 +1,13 @@
 package be.cegeka.rsvz;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -28,11 +30,11 @@ public class RichBean implements Serializable {
     @NotBlank
     private String lastName;
 
-    @NotNull(message = "{must-not-be-null}")
+    @Past
     private Date calendar;
     private String editorValue;
 
-    @Pattern(regexp = "^[\\w\\-]([\\.\\w])+[\\w]+@([\\w\\-]+\\.)+[a-zA-Z]{2,4}$" , message="{bad-email}")
+    @Email
     private String email;
 
     public RichBean() {
