@@ -37,13 +37,15 @@
                                 <h:outputLabel id="calendarLabel" for="cal" value="#{msgs.calendar}"/>
                                 <p:calendar id="cal" showOn="button" locale="#{localeBean.dropdownItem}"
                                             navigator="true" value="#{richBean.calendar}"
-                                            showButtonPanel="true">
+                                            showButtonPanel="true" >
+                                    <p:ajax process="@form" update="msgCalendar" event="blur"/>
+
                                 </p:calendar>
                                 <p:message id="msgCalendar" for="cal" />
 
                                 <h:outputLabel id="firstNameLabel" for="firstName" value="#{msgs.firstName}"/>
                                 <p:inputText id="firstName" value="#{richBean.firstName}" >
-                                    <p:ajax event="blur" process="@this" update="msgFirstName"/>
+                                    <p:ajax event="blur" process="@form" update="msgFirstName" listener="#{richBean.validateFirstName}"/>
                                 </p:inputText>
                                 <p:message id="msgFirstName" for="firstName" />
 

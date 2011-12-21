@@ -1,15 +1,23 @@
 package be.cegeka.rsvz;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @ManagedBean(name = "richBean")
 @SessionScoped
 public class RichBean {
 
+    @NotNull
+    @NotEmpty(message = "{must-not-be-empty}")
     private String firstName;
     private String lastName;
+    @Past
     private Date calendar;
     private String text;
 
