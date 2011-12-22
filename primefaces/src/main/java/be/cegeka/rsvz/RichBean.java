@@ -22,8 +22,10 @@ public class RichBean implements Serializable {
     private String lastName;
     @Past(message = "{date-must-be-in-the-past}")
     private Date calendar;
-    private String text;
     private Boolean married;
+    private String streetName;
+    private String streetNumber;
+    private String text;
 
     @Insz(message = "{insz-not-valid}")
     private String insz;
@@ -77,9 +79,19 @@ public class RichBean implements Serializable {
         this.married = married;
     }
 
-    public String send() {
-//        LOG.debug("Send action triggered in [{}] phase on [{}] component", actionEvent.getPhaseId(), actionEvent.getComponent());
-        LOG.debug("Send action triggered in  phase on  component");
-        return null;
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
     }
 }

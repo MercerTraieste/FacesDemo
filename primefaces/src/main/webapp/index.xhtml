@@ -34,7 +34,7 @@
 <p:log/>
 <h:panelGroup id="headPanel" layout="block">
 <h:form id="form" enctype="multipart/form-data">
-<p:panel header="#{msgs.panelHeader1}">
+<p:panel header="#{msgs['panelHeader1']}">
     <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
         <p:selectOneMenu id="language" value="#{localeBean.dropdownItem}" ajax="true">
             <f:selectItems value="#{localeBean.availableLocales}"/>
@@ -45,18 +45,18 @@
 </p:panel>
 
 <p:tabView effect="fade" effectDuration="fast" onTabShow="editor.init()" id="tabView">
-<p:tab title="#{msgs.tabsFormLabel}">
+<p:tab title="#{msgs['tabsFormLabel']}">
 
     <h:outputText value="#{msgs['simple-form-fields']}"/>
 
-    <p:panel id="inszPanel" header="#{msgs.insz}">
-        <h:panelGrid columns="6" header="#{msgs.insz}">
-            <h:outputLabel for="insz" value="#{msgs.insz}:"/>
+    <p:panel id="inszPanel" header="#{msgs['insz']}">
+        <h:panelGrid columns="6" header="#{msgs['insz']}">
+            <h:outputLabel for="insz" value="#{msgs['insz']}:"/>
             <p:inputText id="insz" value="#{richBean.insz}">
                 <p:ajax process="@form" update="msgInsz" event="blur"/>
             </p:inputText>
             <p:commandButton image="help" onclick="inszHelp.show()"/>
-            <p:commandButton value="#{msgs.send}" update=":form:tabView:inszPanel"/>
+            <p:commandButton value="#{msgs['send']}" update=":form:tabView:inszPanel"/>
             <p:message id="msgInsz" for="insz"/>
             <p:confirmDialog message="#{msgs['insz-is-the-social-security']}"
                              header="Initiating destroy process" severity="info" widgetVar="inszHelp">
@@ -69,11 +69,11 @@
 
     <p:panel header="#{msgs['personal-data-fieldds']}">
         <h:panelGrid columns="3" cellpadding="5">
-            <h:outputLabel id="firstNameLabel" for="firstName" value="#{msgs.firstName}"/>
+            <h:outputLabel id="firstNameLabel" for="firstName" value="#{msgs['firstName']}"/>
             <p:inputText id="firstName" value="#{richBean.firstName}"/>
             <p:message id="msgFirstName" for="firstName"/>
 
-            <h:outputLabel id="lastNameLabel" for="lastName" value="#{msgs.lastName}"/>
+            <h:outputLabel id="lastNameLabel" for="lastName" value="#{msgs['lastName']}"/>
             <p:inputText id="lastName" value="#{richBean.lastName}" styleClass="mandatory">
                 <p:ajax event="blur" process="@this" update="msgLasttName"/>
             </p:inputText>
@@ -92,8 +92,21 @@
 
         </h:panelGrid>
     </p:panel>
-    <p:fileUpload label="#{msgs.chooseFile}" value="#{fileBean.file}" mode="simple"/>
-    <p:commandButton value="#{msgs.upload}" ajax="false" actionListener="#{fileBean.upload}"/>
+
+    <p:panel header="#{msgs['address']}">
+        <h:panelGrid columns="3" cellpadding="5">
+            <h:outputLabel for="streetName" value="#{msgs['street-name']}"/>
+            <p:inputText id="streetName" value="#{richBean.streetName}"/>
+            <p:message for="streetName"/>
+
+            <h:outputLabel for="streetNumber" value="#{msgs['street-number']}"/>
+            <p:inputText id="streetNumber" value="#{richBean.streetNumber}"/>
+            <p:message for="streetNumber"/>
+        </h:panelGrid>
+    </p:panel>
+
+    <p:fileUpload label="#{msgs['chooseFile']}" value="#{fileBean.file}" mode="simple"/>
+    <p:commandButton value="#{msgs['upload']}" ajax="false" actionListener="#{fileBean.upload}"/>
 
     <p:fileUpload fileUploadListener="#{fileBean.handleUpload}"
                   mode="advanced"
@@ -101,9 +114,9 @@
                   update="messages"
                   sizeLimit="100000"
                   allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-                  label="#{msgs.chooseFiles}"
-                  uploadLabel="#{msgs.upload}"
-                  cancelLabel="#{msgs.cancel}"
+                  label="#{msgs['chooseFiles']}"
+                  uploadLabel="#{msgs['upload']}"
+                  cancelLabel="#{msgs['cancel']}"
             />
     <p:growl id="messages" showDetail="true"/>
 
@@ -111,7 +124,7 @@
         <p:dataTable id="editableDataTable" var="child" value="#{dataBean.children}"
                      scrollRows="#{dataBean.size}"
                      scrollable="true" scrollHeight="300">
-            <p:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
+            <p:column headerText="#{msgs['id']}" sortBy="#{child.id}" style="width:75px">
                 <p:cellEditor>
                     <f:facet name="output">
                         <h:outputText value="#{child.id}"/>
@@ -121,7 +134,7 @@
                     </f:facet>
                 </p:cellEditor>
             </p:column>
-            <p:column headerText="#{msgs.firstName}" sortBy="#{child.firstName}"
+            <p:column headerText="#{msgs['firstName']}" sortBy="#{child.firstName}"
                       style="width:175px">
                 <p:cellEditor>
                     <f:facet name="output">
@@ -132,7 +145,7 @@
                     </f:facet>
                 </p:cellEditor>
             </p:column>
-            <p:column headerText="#{msgs.lastName}" sortBy="#{child.lastName}"
+            <p:column headerText="#{msgs['lastName']}" sortBy="#{child.lastName}"
                       style="width:175px">
                 <p:cellEditor>
                     <f:facet name="output">
