@@ -8,6 +8,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @ManagedBean
@@ -43,7 +44,7 @@ public class TableBean implements Serializable {
 
     private void populateList(List<Child> children, int count) {
         for (int i = 1; i <= count; i++) {
-            children.add(new Child(i, "child " + i + " fname", "child " + i + " lname", i, "M"));
+            children.add(new Child(i, "first name " + i, "last name " + i, Long.valueOf(Math.round(Math.random() * 100)).intValue(), new Date(), Double.valueOf(Math.round(Math.random() * 10000))));
         }
     }
 

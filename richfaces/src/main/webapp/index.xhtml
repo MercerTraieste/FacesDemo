@@ -12,7 +12,7 @@
 
     <ui:define name="body">
         <h:form prependId="false">
-            <rich:panel header="#{text['panelHeader1']}" style="width:650px;">
+            <rich:panel header="#{text['panelHeader1']}" style="width:800px;">
                 <h:panelGrid columns="2">
                     <h:outputText id="languageLabel" value="#{text['language']}"/>
                     <rich:select id="selectLanguage" value="#{localeBean.language}">
@@ -23,7 +23,7 @@
             </rich:panel>
         </h:form>
 
-        <rich:panel header="#{text['panelHeader2']}" style="width:650px;">
+        <rich:panel header="#{text['panelHeader2']}" style="width:800px;">
             <h:form prependId="false">
                 <rich:tabPanel switchType="ajax" immediate="true">
 

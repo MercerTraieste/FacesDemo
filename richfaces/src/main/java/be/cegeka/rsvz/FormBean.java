@@ -12,6 +12,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class FormBean implements Serializable {
 
     private String streetNumber;
 
-    private List<String> cities = new ArrayList<String>();
+    private List<String> cities;
 
     private String city;
 
@@ -59,6 +60,7 @@ public class FormBean implements Serializable {
     private String email;
 
     public FormBean() {
+        cities = Arrays.asList(new String[] {"Bucharest", "Brussels", "Leuven", "Targoviste", "Constanta", "Miami"});
     }
 
     public String getCity() {
@@ -163,6 +165,10 @@ public class FormBean implements Serializable {
 
     public void setMessage(Message message) {
         this.message = message;
+    }
+
+    public Message[] getMessages() {
+        return Message.values();
     }
 
     public String getKbo() {

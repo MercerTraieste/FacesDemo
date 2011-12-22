@@ -51,7 +51,7 @@
             <h:inputText id="streetNumber" value="#{formBean.streetNumber}"/>
 
             <h:outputText value="#{text['city']}: "/>
-            <rich:select id="selectCity" value="#{formBean.city}">
+            <rich:select id="selectCity" value="#{formBean.city}" defaultLabel="#{text['defaultLabel']}">
                 <f:selectItems value="#{formBean.cities}"/>
             </rich:select>
         </h:panelGrid>
@@ -77,8 +77,8 @@
             <h:inputText id="income" value="#{formBean.income}"/>
 
             <h:outputText value="#{text['chooseMessage']}: "/>
-            <rich:select id="chooseMessage" value="#{formBean.message.valueOf}">
-                <f:selectItems value="#{formBean.message}"/>
+            <rich:select id="chooseMessage" value="#{formBean.message}" defaultLabel="#{text['defaultLabel']}">
+                <f:selectItems value="#{formBean.messages}"/>
             </rich:select>
 
             <h:outputText value="#{text['kbo']}: "/>
