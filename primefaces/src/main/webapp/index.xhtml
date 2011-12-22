@@ -110,75 +110,78 @@
         </h:panelGrid>
     </p:panel>
 
-    <h:panelGrid columns="1" cellpadding="5" id="childrenPanel">
-        <p:dataTable id="editableDataTable" var="child" value="#{dataBean.children}">
-            <p:column headerText="#{msgs['id']}" sortBy="#{child.id}" style="width:75px">
-                <p:cellEditor>
-                    <f:facet name="output">
-                        <h:outputText value="#{child.id}"/>
-                    </f:facet>
-                    <f:facet name="input">
-                        <h:inputText value="#{child.id}"/>
-                    </f:facet>
-                </p:cellEditor>
-            </p:column>
-            <p:column headerText="#{msgs['firstName']}" sortBy="#{child.firstName}"
-                      style="width:175px">
-                <p:cellEditor>
-                    <f:facet name="output">
-                        <h:outputText value="#{child.firstName}"/>
-                    </f:facet>
-                    <f:facet name="input">
-                        <h:inputText value="#{child.firstName}"/>
-                    </f:facet>
-                </p:cellEditor>
-            </p:column>
-            <p:column headerText="#{msgs['lastName']}" sortBy="#{child.lastName}"
-                      style="width:175px">
-                <p:cellEditor>
-                    <f:facet name="output">
-                        <h:outputText value="#{child.lastName}"/>
-                    </f:facet>
-                    <f:facet name="input">
-                        <h:inputText value="#{child.lastName}"/>
-                    </f:facet>
-                </p:cellEditor>
-            </p:column>
-            <p:column headerText="#{msgs.age}" sortBy="#{child.age}" style="width:75px">
-                <p:cellEditor>
-                    <f:facet name="output">
-                        <h:outputText value="#{child.age}"/>
-                    </f:facet>
-                    <f:facet name="input">
-                        <h:inputText value="#{child.age}"/>
-                    </f:facet>
-                </p:cellEditor>
-            </p:column>
-            <p:column headerText="#{msgs.sex}" sortBy="#{child.sex}" style="width:75px">
-                <p:cellEditor>
-                    <f:facet name="output">
-                        <h:outputText value="#{child.sex}"/>
-                    </f:facet>
-                    <f:facet name="input">
-                        <h:inputText value="#{child.sex}"/>
-                    </f:facet>
-                </p:cellEditor>
-            </p:column>
+    <p:panel header="#{msgs.children}">
 
-            <p:column headerText="Edit" style="width:50px">
-                <p:rowEditor/>
-            </p:column>
-            <p:column headerText="Remove" style="width:150px">
-                <p:commandButton value="Delete" actionListener="#{dataBean.actionDeleteRow}"
-                                 update="@form"/>
-            </p:column>
-        </p:dataTable>
-    </h:panelGrid>
+        <h:panelGrid columns="1" cellpadding="5" id="childrenPanel">
+            <p:dataTable id="editableDataTable" var="child" value="#{dataBean.children}">
+                <p:column headerText="#{msgs['id']}" sortBy="#{child.id}" style="width:75px">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{child.id}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{child.id}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="#{msgs['firstName']}" sortBy="#{child.firstName}"
+                          style="width:175px">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{child.firstName}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{child.firstName}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="#{msgs['lastName']}" sortBy="#{child.lastName}"
+                          style="width:175px">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{child.lastName}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{child.lastName}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="#{msgs.age}" sortBy="#{child.age}" style="width:75px">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{child.age}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{child.age}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="#{msgs.sex}" sortBy="#{child.sex}" style="width:75px">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{child.sex}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{child.sex}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
 
-    <p:commandButton value="Add"
-                     action="#{dataBean.createNewRow}"
-                     update="@form"/>
+                <p:column headerText="Edit" style="width:50px">
+                    <p:rowEditor/>
+                </p:column>
+                <p:column headerText="Remove" style="width:150px">
+                    <p:commandButton value="Delete" actionListener="#{dataBean.actionDeleteRow}"
+                                     update="@form"/>
+                </p:column>
+            </p:dataTable>
+        </h:panelGrid>
 
+        <p:commandButton value="Add"
+                         action="#{dataBean.createNewRow}"
+                         update="@form"/>
+
+    </p:panel>
     <p:panel header="#{msgs['docs']}">
         <p:fileUpload fileUploadListener="#{fileBean.handleUpload}"
                       mode="advanced"
