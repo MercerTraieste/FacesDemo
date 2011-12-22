@@ -3,9 +3,11 @@ package be.cegeka.rsvz;
 import org.richfaces.component.UIExtendedDataTable;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 import java.io.Serializable;
+import java.lang.annotation.Retention;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -21,9 +23,6 @@ public class TableBean implements Serializable {
     private Collection<Object> selection;
     private List<Child> selectedChildren;
 
-    /*
-    *  FOR EDITABLE TABLE
-    */
     private List<Child> childrenEditableList = new ArrayList<Child>();
     private int currentChildIndex;
     private Child currentChild = new Child();
@@ -39,7 +38,7 @@ public class TableBean implements Serializable {
     }
 
     public void loadChildrenForEditableList() {
-        populateList(childrenEditableList, 10);
+        populateList(childrenEditableList, 0);
     }
 
     private void populateList(List<Child> children, int count) {

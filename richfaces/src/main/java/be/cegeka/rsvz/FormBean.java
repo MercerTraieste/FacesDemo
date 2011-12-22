@@ -4,20 +4,26 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.richfaces.model.UploadedFile;
 
+import javax.faces.application.Application;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.lang.annotation.Retention;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class FormBean implements Serializable {
 
     private static final long serialVersionUID = -2403138958014741653L;
@@ -60,8 +66,33 @@ public class FormBean implements Serializable {
     private String email;
 
     public FormBean() {
-        cities = Arrays.asList(new String[] {"Bucharest", "Brussels", "Leuven", "Targoviste", "Constanta", "Miami"});
+        init();
     }
+
+    public void init() {
+        insz = null;
+        firstName = null;
+        lastName = null;
+        birthdate = null;
+        married = null;
+        streetName = null;
+        streetNumber = null;
+        cities = Arrays.asList(new String[] {"Bucharest", "Brussels", "Leuven", "Targoviste", "Constanta", "Miami"});
+        city = null;
+        document = null;
+        income = null;
+        kbo = null;
+
+    }
+
+    public void reset() {
+        FacesContext.getCurrentInstance().renderResponse();
+        init();
+        Application application = FacesContext.getCurrentInstance().getApplication();
+        TableBean tableBean = (TableBean)((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false)).getAttribute("tableBean");
+        tableBean.setChildrenEditableList(new ArrayList<Child>());
+    }
+
 
     public String getCity() {
         return city;
