@@ -110,18 +110,6 @@
         </h:panelGrid>
     </p:panel>
 
-    <p:panel header="#{msgs['docs']}">
-        <p:fileUpload fileUploadListener="#{fileBean.handleUpload}"
-                      mode="advanced"
-                      multiple="true"
-                      update="messages"
-                      sizeLimit="100000"
-                      allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-                      label="#{msgs['chooseFiles']}"
-                      uploadLabel="#{msgs['upload']}"
-                      cancelLabel="#{msgs['cancel']}"
-                />
-    </p:panel>
     <h:panelGrid columns="1" cellpadding="5" id="childrenPanel">
         <p:dataTable id="editableDataTable" var="child" value="#{dataBean.children}">
             <p:column headerText="#{msgs['id']}" sortBy="#{child.id}" style="width:75px">
@@ -190,6 +178,19 @@
     <p:commandButton value="Add"
                      action="#{dataBean.createNewRow}"
                      update="@form"/>
+
+    <p:panel header="#{msgs['docs']}">
+        <p:fileUpload fileUploadListener="#{fileBean.handleUpload}"
+                      mode="advanced"
+                      multiple="true"
+                      update="messages"
+                      sizeLimit="100000"
+                      allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                      label="#{msgs['chooseFiles']}"
+                      uploadLabel="#{msgs['upload']}"
+                      cancelLabel="#{msgs['cancel']}"
+                />
+    </p:panel>
 
     <h:panelGrid columns="2">
         <p:commandButton value="#{msgs['send']}" update=":form:tabView"/>
