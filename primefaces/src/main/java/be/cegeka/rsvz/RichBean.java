@@ -28,6 +28,7 @@ public class RichBean implements Serializable {
     @Past(message = "{date-must-be-in-the-past}")
     private Date calendar;
     private String text;
+    private Boolean married;
 
     @Insz(message = "{insz-not-valid}")
     private String insz;
@@ -79,6 +80,14 @@ public class RichBean implements Serializable {
 
     public void setInsz(String insz) {
         this.insz = insz;
+    }
+
+    public Boolean getMarried() {
+        return married;
+    }
+
+    public void setMarried(Boolean married) {
+        this.married = married;
     }
 
     public String send() {
