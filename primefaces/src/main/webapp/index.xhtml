@@ -123,9 +123,7 @@
                 />
     </p:panel>
     <h:panelGrid columns="1" cellpadding="5" id="childrenPanel">
-        <p:dataTable id="editableDataTable" var="child" value="#{dataBean.children}"
-                     scrollRows="#{dataBean.size}"
-                     scrollable="true" scrollHeight="300">
+        <p:dataTable id="editableDataTable" var="child" value="#{dataBean.children}">
             <p:column headerText="#{msgs['id']}" sortBy="#{child.id}" style="width:75px">
                 <p:cellEditor>
                     <f:facet name="output">
