@@ -33,15 +33,16 @@
 <p:tabView effect="fade" effectDuration="fast" onTabShow="editor.init()" id="tabView">
     <p:tab title="#{msgs.tabsFormLabel}">
 
-        <p:panel columns="5" header="#{msgs.insz}">
-            <h:outputLabel for="insz" value="#{msgs.insz}:"/>
-            <p:inputText id="insz" value="#{richBean.insz}">
-                <p:ajax process="@form" update="msgInsz" event="blur"/>
-            </p:inputText>
-            <p:commandButton value="#{msgs.send}" actionListener="#{richBean.send}" render="@form"/>
-            <p:message id="msgInsz" for="insz"/>
+        <p:panel id="inszPanel" header="#{msgs.insz}">
+            <h:panelGrid columns="4" header="#{msgs.insz}">
+                <h:outputLabel for="insz" value="#{msgs.insz}:"/>
+                <p:inputText id="insz" value="#{richBean.insz}">
+                    <p:ajax process="@form" update="msgInsz" event="blur"/>
+                </p:inputText>
+                <p:commandButton value="#{msgs.send}" update=":form:tabView:inszPanel"/>
+                <p:message id="msgInsz" for="insz"/>
+            </h:panelGrid>
         </p:panel>
-
         <h:panelGrid columns="3" cellpadding="5">
             <h:outputLabel id="calendarLabel" for="cal" value="#{msgs.calendar}"/>
             <p:calendar id="cal" showOn="button" locale="#{localeBean.dropdownItem}"

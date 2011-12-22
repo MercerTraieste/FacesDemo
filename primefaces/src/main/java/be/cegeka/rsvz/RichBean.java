@@ -81,7 +81,9 @@ public class RichBean implements Serializable {
         this.insz = insz;
     }
 
-    public void send(ActionEvent actionEvent) {
-        LOG.debug("Send action triggered in [{}] phase on [{}] component", actionEvent.getPhaseId(), actionEvent.getComponent());
+    public String send() {
+//        LOG.debug("Send action triggered in [{}] phase on [{}] component", actionEvent.getPhaseId(), actionEvent.getComponent());
+        LOG.debug("Send action triggered in  phase on  component");
+        return null;
     }
 }
