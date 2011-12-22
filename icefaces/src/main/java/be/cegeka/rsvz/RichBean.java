@@ -1,5 +1,6 @@
 package be.cegeka.rsvz;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.faces.bean.ManagedBean;
@@ -19,6 +20,10 @@ public class RichBean {
     private String lastName;
     @Past
     private Date calendar;
+
+    @NotNull
+    @Email(message = "{email-not-well-formatted}")
+    private String email;
     private String text;
 
     public RichBean() {
@@ -59,5 +64,13 @@ public class RichBean {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
