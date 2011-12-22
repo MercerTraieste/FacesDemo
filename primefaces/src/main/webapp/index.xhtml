@@ -50,20 +50,18 @@
     <h:outputText value="#{msgs['simple-form-fields']}"/>
 
     <p:panel id="inszPanel" header="#{msgs.insz}">
-        <h:panelGrid columns="5" header="#{msgs.insz}">
+        <h:panelGrid columns="6" header="#{msgs.insz}">
             <h:outputLabel for="insz" value="#{msgs.insz}:"/>
             <p:inputText id="insz" value="#{richBean.insz}">
                 <p:ajax process="@form" update="msgInsz" event="blur"/>
             </p:inputText>
             <p:commandButton image="help" onclick="inszHelp.show()"/>
-
-            <p:confirmDialog message="#{msgs['insz-is-the-social-security']}"
+            <p:commandButton value="#{msgs.send}" update=":form:tabView:inszPanel"/>
+            <p:message id="msgInsz" for="insz"/>
+             <p:confirmDialog message="#{msgs['insz-is-the-social-security']}"
                              header="Initiating destroy process" severity="info" widgetVar="inszHelp">
                 <p:commandButton value="Ok" onclick="inszHelp.hide()"/>
             </p:confirmDialog>
-
-            <p:commandButton value="#{msgs.send}" update=":form:tabView:inszPanel"/>
-            <p:message id="msgInsz" for="insz"/>
         </h:panelGrid>
     </p:panel>
 
@@ -179,6 +177,10 @@
     <p:commandButton value="Add"
                      action="#{dataBean.createNewRow}"
                      update=":form:tabView:editableDataTable"/>
+
+    <h:panelGrid columns="2">
+        <p:commandButton value="#{msgs['send']}" update=":form:tabView"/>
+    </h:panelGrid>
 </p:tab>
 
 <p:tab title="#{msgs.tabsTableLabel}">
@@ -250,6 +252,7 @@
     </p:panel>
 </p:tab>
 </p:tabView>
+
 </h:form>
 </h:panelGroup>
 </h:body>
