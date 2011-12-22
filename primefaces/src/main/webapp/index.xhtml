@@ -142,7 +142,7 @@
                 </p:column>
                 <p:column headerText="Remove" style="width:150px">
                     <p:commandButton value="Delete" actionListener="#{dataBean.actionDeleteRow}"
-                                     update="@form"/>
+                                     update=":form:tabView:editableDataTable"/>
                 </p:column>
             </p:dataTable>
         </h:panelGrid>
