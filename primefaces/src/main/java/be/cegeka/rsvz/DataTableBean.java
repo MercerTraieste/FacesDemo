@@ -16,17 +16,12 @@ import java.util.List;
 public class DataTableBean implements Serializable {
 
     private static final int CAPACITY = 10;
-    private List<Child> children = new ArrayList<Child>(CAPACITY);
+    private List<Child> children = new ArrayList<Child>();
 
     public DataTableBean() {
-        loadData();
     }
 
-    public void loadData() {
-        for (int i = 1; i <= CAPACITY; i++) {
-            getChildren().add(new Child(i, "child " + i + " fname", "child " + i + " lname", i, "M"));
-        }
-    }
+
     public void createNewRow() {
         Child child = new Child();
         getChildren().add(child);
