@@ -20,7 +20,6 @@
         .help {
             background-image: url(javax.faces.resources/help.png) !important;
         }
-
         .ui-panel{
             margin-bottom: 15px;
         }
@@ -67,15 +66,6 @@
 
     <p:panel header="#{msgs['personal-data-fieldds']}">
         <h:panelGrid columns="3" cellpadding="5">
-            <h:outputLabel id="calendarLabel" for="cal" value="#{msgs.calendar}"/>
-            <p:calendar id="cal" showOn="button" locale="#{localeBean.dropdownItem}"
-                        navigator="true" value="#{richBean.calendar}"
-                        showButtonPanel="true">
-                <p:ajax process="@form" update="msgCalendar" event="blur"/>
-
-            </p:calendar>
-            <p:message id="msgCalendar" for="cal"/>
-
             <h:outputLabel id="firstNameLabel" for="firstName" value="#{msgs.firstName}"/>
             <p:inputText id="firstName" value="#{richBean.firstName}">
                 <p:ajax event="blur" process="@form" update="msgFirstName"
@@ -86,6 +76,15 @@
             <h:outputLabel id="lastNameLabel" for="lastName" value="#{msgs.lastName}"/>
             <p:inputText id="lastName" value="#{richBean.lastName}"/>
             <p:message id="msgLastName" for="lastName"/>
+
+            <h:outputLabel id="calendarLabel" for="cal" value="#{msgs['birth-date']}"/>
+            <p:calendar id="cal" showOn="button" locale="#{localeBean.dropdownItem}"
+                        navigator="true" value="#{richBean.calendar}"
+                        showButtonPanel="true">
+                <p:ajax process="@form" update="msgCalendar" event="blur"/>
+
+            </p:calendar>
+            <p:message id="msgCalendar" for="cal"/>
         </h:panelGrid>
     </p:panel>
     <p:fileUpload label="#{msgs.chooseFile}" value="#{fileBean.file}" mode="simple"/>
