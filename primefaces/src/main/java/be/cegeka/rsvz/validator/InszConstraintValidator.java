@@ -10,10 +10,10 @@ public class InszConstraintValidator implements ConstraintValidator<Insz, String
     }
 
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return inszCanBeEmpty(value) || (!inszShouldHaveThirteenCharacters(value) && !inszShouldContainOnlyNumbers(value));
+        return inszIsEmpty(value) || (!inszShouldHaveThirteenCharacters(value) && !inszShouldContainOnlyNumbers(value));
     }
 
-    private boolean inszCanBeEmpty(String value) {
+    private boolean inszIsEmpty(String value) {
         return value.isEmpty();
     }
 
