@@ -9,7 +9,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.validation.constraints.Past;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 @ManagedBean(name = "richBean")
 @SessionScoped
@@ -25,10 +28,21 @@ public class RichBean implements Serializable {
     private Boolean married;
     private String streetName;
     private String streetNumber;
+    private String city;
     private String text;
 
     @Insz(message = "{insz-not-valid}")
     private String insz;
+
+    private static final List<String> CITIES = Arrays.asList("Brugges", "Gent", "Brussels", "Leuven");
+
+    public List<String> completeCity(String query) {
+        List<String> results = new ArrayList<String>();
+        for (String city : CITIES) {
+            if (city.toLowerCase().startsWith(query.toLowerCase())) results.add(city);
+        }
+        return results;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -93,5 +107,13 @@ public class RichBean implements Serializable {
 
     public void setStreetNumber(String streetNumber) {
         this.streetNumber = streetNumber;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

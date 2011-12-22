@@ -102,24 +102,30 @@
             <h:outputLabel for="streetNumber" value="#{msgs['street-number']}"/>
             <p:inputText id="streetNumber" value="#{richBean.streetNumber}"/>
             <p:message for="streetNumber"/>
+
+            <h:outputLabel for="city" value="#{msgs['city']}"/>
+            <p:autoComplete id="city" dropdown="true" value="#{richBean.city}"
+                            completeMethod="#{richBean.completeCity}"/>
+            <p:message for="city"/>
         </h:panelGrid>
     </p:panel>
 
     <p:fileUpload label="#{msgs['chooseFile']}" value="#{fileBean.file}" mode="simple"/>
     <p:commandButton value="#{msgs['upload']}" ajax="false" actionListener="#{fileBean.upload}"/>
 
-    <p:fileUpload fileUploadListener="#{fileBean.handleUpload}"
-                  mode="advanced"
-                  multiple="true"
-                  update="messages"
-                  sizeLimit="100000"
-                  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-                  label="#{msgs['chooseFiles']}"
-                  uploadLabel="#{msgs['upload']}"
-                  cancelLabel="#{msgs['cancel']}"
-            />
-    <p:growl id="messages" showDetail="true"/>
-
+    <p:panel header="#{msgs['docs']}">
+        <p:fileUpload fileUploadListener="#{fileBean.handleUpload}"
+                      mode="advanced"
+                      multiple="true"
+                      update="messages"
+                      sizeLimit="100000"
+                      allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                      label="#{msgs['chooseFiles']}"
+                      uploadLabel="#{msgs['upload']}"
+                      cancelLabel="#{msgs['cancel']}"
+                />
+        <p:growl id="messages" showDetail="true"/>
+    </p:panel>
     <h:panelGrid columns="1" cellpadding="5" id="childrenPanel">
         <p:dataTable id="editableDataTable" var="child" value="#{dataBean.children}"
                      scrollRows="#{dataBean.size}"
