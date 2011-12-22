@@ -10,208 +10,218 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <f:view locale="#{localeBean.currentLocale}">
 
-    <h:head>
-        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-        <h:outputScript library="js" name="calendar_i18n.js"/>
-        <title>
-            <h:outputText value="Primefaces"/>
-        </title>
-    </h:head>
-    <h:body>
-        <h:panelGroup id="headPanel" layout="block">
-            <h:form id="form" enctype="multipart/form-data">
-                <p:panel header="#{msgs.panelHeader1}">
-                    <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
-                        <p:selectOneMenu id="language" value="#{localeBean.dropdownItem}" ajax="true">
-                            <f:selectItems value="#{localeBean.availableLocales}"/>
-                            <p:ajax process="@all" event="change" listener="#{localeBean.localeChanged}"
-                                    update=":headPanel,:form:tabView:cal" onstart="" immediate="true"/>
-                        </p:selectOneMenu>
-                    </h:panelGrid>
-                </p:panel>
+<h:head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <h:outputScript library="js" name="calendar_i18n.js"/>
+    <title>
+        <h:outputText value="Primefaces"/>
+    </title>
+</h:head>
+<h:body>
+<h:panelGroup id="headPanel" layout="block">
+<h:form id="form" enctype="multipart/form-data">
+<p:panel header="#{msgs.panelHeader1}">
+    <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+        <p:selectOneMenu id="language" value="#{localeBean.dropdownItem}" ajax="true">
+            <f:selectItems value="#{localeBean.availableLocales}"/>
+            <p:ajax process="@all" event="change" listener="#{localeBean.localeChanged}"
+                    update=":headPanel,:form:tabView:cal" onstart="" immediate="true"/>
+        </p:selectOneMenu>
+    </h:panelGrid>
+</p:panel>
 
-                <p:panel header="#{msgs.panelHeader2}">
-                    <p:tabView effect="fade" effectDuration="fast" onTabShow="editor.init()" id="tabView">
-                        <p:tab title="#{msgs.tabsFormLabel}">
-                            <h:panelGrid columns="3" cellpadding="5">
-                                <h:outputLabel id="calendarLabel" for="cal" value="#{msgs.calendar}"/>
-                                <p:calendar id="cal" showOn="button" locale="#{localeBean.dropdownItem}"
-                                            navigator="true" value="#{richBean.calendar}"
-                                            showButtonPanel="true" >
-                                    <p:ajax process="@form" update="msgCalendar" event="blur"/>
+<p:tabView effect="fade" effectDuration="fast" onTabShow="editor.init()" id="tabView">
+    <p:tab title="#{msgs.tabsFormLabel}">
 
-                                </p:calendar>
-                                <p:message id="msgCalendar" for="cal" />
+        <p:panel columns="5" header="#{msgs.insz}">
+            <h:outputLabel for="insz" value="#{msgs.insz}:"/>
+            <p:inputText id="insz" value="#{richBean.insz}">
+                <p:ajax process="@form" update="msgInsz" event="blur"/>
+            </p:inputText>
+            <p:commandButton value="#{msgs.send}" actionListener="#{richBean.send}" render="@form"/>
+            <p:message id="msgInsz" for="insz"/>
+        </p:panel>
 
-                                <h:outputLabel id="firstNameLabel" for="firstName" value="#{msgs.firstName}"/>
-                                <p:inputText id="firstName" value="#{richBean.firstName}" >
-                                    <p:ajax event="blur" process="@form" update="msgFirstName" listener="#{richBean.validateFirstName}"/>
-                                </p:inputText>
-                                <p:message id="msgFirstName" for="firstName" />
+        <h:panelGrid columns="3" cellpadding="5">
+            <h:outputLabel id="calendarLabel" for="cal" value="#{msgs.calendar}"/>
+            <p:calendar id="cal" showOn="button" locale="#{localeBean.dropdownItem}"
+                        navigator="true" value="#{richBean.calendar}"
+                        showButtonPanel="true">
+                <p:ajax process="@form" update="msgCalendar" event="blur"/>
 
-                                <h:outputLabel id="lastNameLabel" for="lastName" value="#{msgs.lastName}"/>
-                                <p:inputText id="lastName" value="#{richBean.lastName}"/>
-                                <p:message id="msgLastName" for="lastName" />
-                            </h:panelGrid>
+            </p:calendar>
+            <p:message id="msgCalendar" for="cal"/>
 
-                            <p:fileUpload label="#{msgs.chooseFile}" value="#{fileBean.file}" mode="simple"/>
-                            <p:commandButton value="#{msgs.upload}" ajax="false" actionListener="#{fileBean.upload}"/>
+            <h:outputLabel id="firstNameLabel" for="firstName" value="#{msgs.firstName}"/>
+            <p:inputText id="firstName" value="#{richBean.firstName}">
+                <p:ajax event="blur" process="@form" update="msgFirstName"
+                        listener="#{richBean.validateFirstName}"/>
+            </p:inputText>
+            <p:message id="msgFirstName" for="firstName"/>
 
-                            <p:fileUpload fileUploadListener="#{fileBean.handleUpload}"
-                                          mode="advanced"
-                                          multiple="true"
-                                          update="messages"
-                                          sizeLimit="100000"
-                                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-                                          label="#{msgs.chooseFiles}"
-                                          uploadLabel="#{msgs.upload}"
-                                          cancelLabel="#{msgs.cancel}"
-                                          />
-                            <p:growl id="messages" showDetail="true"/>
+            <h:outputLabel id="lastNameLabel" for="lastName" value="#{msgs.lastName}"/>
+            <p:inputText id="lastName" value="#{richBean.lastName}"/>
+            <p:message id="msgLastName" for="lastName"/>
+        </h:panelGrid>
 
-                            <h:panelGrid columns="1" cellpadding="5">
-                                <p:dataTable id="editableDataTable" var="child" value="#{dataBean.children}"
-                                             scrollRows="#{dataBean.size}"
-                                             scrollable="true" scrollHeight="300">
-                                    <p:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
-                                        <p:cellEditor>
-                                            <f:facet name="output">
-                                                <h:outputText value="#{child.id}"/>
-                                            </f:facet>
-                                            <f:facet name="input">
-                                                <h:inputText value="#{child.id}"/>
-                                            </f:facet>
-                                        </p:cellEditor>
-                                    </p:column>
-                                    <p:column headerText="#{msgs.firstName}" sortBy="#{child.firstName}"
-                                              style="width:175px">
-                                        <p:cellEditor>
-                                            <f:facet name="output">
-                                                <h:outputText value="#{child.firstName}"/>
-                                            </f:facet>
-                                            <f:facet name="input">
-                                                <h:inputText value="#{child.firstName}"/>
-                                            </f:facet>
-                                        </p:cellEditor>
-                                    </p:column>
-                                    <p:column headerText="#{msgs.lastName}" sortBy="#{child.lastName}"
-                                              style="width:175px">
-                                        <p:cellEditor>
-                                            <f:facet name="output">
-                                                <h:outputText value="#{child.lastName}"/>
-                                            </f:facet>
-                                            <f:facet name="input">
-                                                <h:inputText value="#{child.lastName}"/>
-                                            </f:facet>
-                                        </p:cellEditor>
-                                    </p:column>
-                                    <p:column headerText="#{msgs.age}" sortBy="#{child.age}" style="width:75px">
-                                        <p:cellEditor>
-                                            <f:facet name="output">
-                                                <h:outputText value="#{child.age}"/>
-                                            </f:facet>
-                                            <f:facet name="input">
-                                                <h:inputText value="#{child.age}"/>
-                                            </f:facet>
-                                        </p:cellEditor>
-                                    </p:column>
-                                    <p:column headerText="#{msgs.sex}" sortBy="#{child.sex}" style="width:75px">
-                                        <p:cellEditor>
-                                            <f:facet name="output">
-                                                <h:outputText value="#{child.sex}"/>
-                                            </f:facet>
-                                            <f:facet name="input">
-                                                <h:inputText value="#{child.sex}"/>
-                                            </f:facet>
-                                        </p:cellEditor>
-                                    </p:column>
+        <p:fileUpload label="#{msgs.chooseFile}" value="#{fileBean.file}" mode="simple"/>
+        <p:commandButton value="#{msgs.upload}" ajax="false" actionListener="#{fileBean.upload}"/>
 
-                                    <p:column headerText="Edit" style="width:50px">
-                                        <p:rowEditor/>
-                                    </p:column>
-                                    <p:column headerText="Remove" style="width:150px">
-                                         <p:commandButton value="Delete" ajax="false" actionListener="#{dataBean.actionDeleteRow}"/>
-                                    </p:column>
-                                </p:dataTable>
-                            </h:panelGrid>
+        <p:fileUpload fileUploadListener="#{fileBean.handleUpload}"
+                      mode="advanced"
+                      multiple="true"
+                      update="messages"
+                      sizeLimit="100000"
+                      allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                      label="#{msgs.chooseFiles}"
+                      uploadLabel="#{msgs.upload}"
+                      cancelLabel="#{msgs.cancel}"
+                />
+        <p:growl id="messages" showDetail="true"/>
 
-                            <p:commandButton value="Add"
-                                             action="#{dataBean.createNewRow}"
-                                             update=":form:tabView:editableDataTable"/>
-                        </p:tab>
+        <h:panelGrid columns="1" cellpadding="5" id="childrenPanel">
+            <p:dataTable id="editableDataTable" var="child" value="#{dataBean.children}"
+                         scrollRows="#{dataBean.size}"
+                         scrollable="true" scrollHeight="300">
+                <p:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{child.id}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{child.id}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="#{msgs.firstName}" sortBy="#{child.firstName}"
+                          style="width:175px">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{child.firstName}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{child.firstName}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="#{msgs.lastName}" sortBy="#{child.lastName}"
+                          style="width:175px">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{child.lastName}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{child.lastName}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="#{msgs.age}" sortBy="#{child.age}" style="width:75px">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{child.age}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{child.age}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="#{msgs.sex}" sortBy="#{child.sex}" style="width:75px">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{child.sex}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{child.sex}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
 
-                        <p:tab title="#{msgs.tabsTableLabel}">
-                            <h:panelGrid columns="1" cellpadding="5">
+                <p:column headerText="Edit" style="width:50px">
+                    <p:rowEditor/>
+                </p:column>
+                <p:column headerText="Remove" style="width:150px">
+                    <p:commandButton value="Delete" actionListener="#{dataBean.actionDeleteRow}"
+                                     update="@form"/>
+                </p:column>
+            </p:dataTable>
+        </h:panelGrid>
 
-                                <p:dataTable id="dataTable" var="child" value="#{scrollBean.children}"
-                                             rowKey="#{child.id}"
-                                             scrollRows="#{scrollBean.size}"
-                                             scrollable="true" liveScroll="true" scrollHeight="300"
-                                             selection="#{scrollBean.selectedChild}" selectionMode="single">
-                                    <p:ajax event="rowSelect" listener="#{scrollBean.onRowSelect}"
-                                            update=":form:tabView:display"/>
-                                    <p:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
-                                        <h:outputText value="#{child.id}"/>
-                                    </p:column>
-                                    <p:column headerText="#{msgs.firstName}" sortBy="#{child.firstName}"
-                                              style="width:175px">
-                                        <h:outputText value="#{child.firstName}"/>
-                                    </p:column>
-                                    <p:column headerText="#{msgs.lastName}" sortBy="#{child.lastName}"
-                                              style="width:175px">
-                                        <h:outputText value="#{child.lastName}"/>
-                                    </p:column>
-                                    <p:column headerText="#{msgs.age}" sortBy="#{child.age}" style="width:75px">
-                                        <h:outputText value="#{child.age}"/>
-                                    </p:column>
-                                    <p:column headerText="#{msgs.sex}" sortBy="#{child.sex}" style="width:75px">
-                                        <h:outputText value="#{child.sex}"/>
-                                    </p:column>
-                                </p:dataTable>
+        <p:commandButton value="Add"
+                         action="#{dataBean.createNewRow}"
+                         update=":form:tabView:editableDataTable"/>
+    </p:tab>
 
-                            </h:panelGrid>
-                            <br/>
+    <p:tab title="#{msgs.tabsTableLabel}">
+        <h:panelGrid columns="1" cellpadding="5">
 
-                            <p:panel id="display">
-                                <p:panel header="#{msgs.details}" toggleable="true"
-                                         rendered="#{!empty scrollBean.selectedChild.id}">
-                                    <h:panelGrid columns="2" cellpadding="4">
-                                        <h:outputText value="#{msgs.id}:"/>
-                                        <h:outputText value="#{scrollBean.selectedChild.id}"/>
+            <p:dataTable id="dataTable" var="child" value="#{scrollBean.children}"
+                         rowKey="#{child.id}"
+                         scrollRows="#{scrollBean.size}"
+                         scrollable="true" liveScroll="true" scrollHeight="300"
+                         selection="#{scrollBean.selectedChild}" selectionMode="single">
+                <p:ajax event="rowSelect" listener="#{scrollBean.onRowSelect}"
+                        update=":form:tabView:display"/>
+                <p:column headerText="#{msgs.id}" sortBy="#{child.id}" style="width:75px">
+                    <h:outputText value="#{child.id}"/>
+                </p:column>
+                <p:column headerText="#{msgs.firstName}" sortBy="#{child.firstName}"
+                          style="width:175px">
+                    <h:outputText value="#{child.firstName}"/>
+                </p:column>
+                <p:column headerText="#{msgs.lastName}" sortBy="#{child.lastName}"
+                          style="width:175px">
+                    <h:outputText value="#{child.lastName}"/>
+                </p:column>
+                <p:column headerText="#{msgs.age}" sortBy="#{child.age}" style="width:75px">
+                    <h:outputText value="#{child.age}"/>
+                </p:column>
+                <p:column headerText="#{msgs.sex}" sortBy="#{child.sex}" style="width:75px">
+                    <h:outputText value="#{child.sex}"/>
+                </p:column>
+            </p:dataTable>
 
-                                        <h:outputText value="#{msgs.firstName}:"/>
-                                        <h:outputText value="#{scrollBean.selectedChild.firstName}"/>
+        </h:panelGrid>
+        <br/>
 
-                                        <h:outputText value="#{msgs.lastName}:"/>
-                                        <h:outputText value="#{scrollBean.selectedChild.lastName}"/>
+        <p:panel id="display">
+            <p:panel header="#{msgs.details}" toggleable="true"
+                     rendered="#{!empty scrollBean.selectedChild.id}">
+                <h:panelGrid columns="2" cellpadding="4">
+                    <h:outputText value="#{msgs.id}:"/>
+                    <h:outputText value="#{scrollBean.selectedChild.id}"/>
 
-                                        <h:outputText value="#{msgs.age}:"/>
-                                        <h:outputText value="#{scrollBean.selectedChild.age}"/>
+                    <h:outputText value="#{msgs.firstName}:"/>
+                    <h:outputText value="#{scrollBean.selectedChild.firstName}"/>
 
-                                        <h:outputText value="#{msgs.sex}:"/>
-                                        <h:outputText value="#{scrollBean.selectedChild.sex}"/>
-                                    </h:panelGrid>
-                                </p:panel>
-                            </p:panel>
-                        </p:tab>
+                    <h:outputText value="#{msgs.lastName}:"/>
+                    <h:outputText value="#{scrollBean.selectedChild.lastName}"/>
 
-                        <p:tab title="#{msgs.tabsTextEditorLabel}">
-                            <p:panel>
-                                <p:editor value="#{richBean.text}" widgetVar="editor" width="600"/>
-                                <h:panelGrid columns="2" style="margin-top:10px">
-                                    <p:commandButton id="richButton" value="#{msgs.save}" update="comment" ajax="true"/>
-                                    <p:commandButton type="button" value="#{msgs.clear}" onclick="editor.clear();"/>
-                                </h:panelGrid>
-                                <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
-                                    <h:outputLabel for="comment" value="#{msgs.comment}: "/>
-                                    <h:outputText id="comment" value="#{richBean.text}"/>
-                                </h:panelGrid>
-                            </p:panel>
-                        </p:tab>
-                    </p:tabView>
-                </p:panel>
-            </h:form>
-        </h:panelGroup>
-    </h:body>
+                    <h:outputText value="#{msgs.age}:"/>
+                    <h:outputText value="#{scrollBean.selectedChild.age}"/>
+
+                    <h:outputText value="#{msgs.sex}:"/>
+                    <h:outputText value="#{scrollBean.selectedChild.sex}"/>
+                </h:panelGrid>
+            </p:panel>
+        </p:panel>
+    </p:tab>
+
+    <p:tab title="#{msgs.tabsTextEditorLabel}">
+        <p:panel>
+            <p:editor value="#{richBean.text}" widgetVar="editor" width="600"/>
+            <h:panelGrid columns="2" style="margin-top:10px">
+                <p:commandButton id="richButton" value="#{msgs.save}" update="comment" ajax="true"/>
+                <p:commandButton type="button" value="#{msgs.clear}" onclick="editor.clear();"/>
+            </h:panelGrid>
+            <h:panelGrid columns="2" columnClasses="column" cellpadding="5">
+                <h:outputLabel for="comment" value="#{msgs.comment}: "/>
+                <h:outputText id="comment" value="#{richBean.text}"/>
+            </h:panelGrid>
+        </p:panel>
+    </p:tab>
+</p:tabView>
+</h:form>
+</h:panelGroup>
+</h:body>
 </f:view>
 </html>
