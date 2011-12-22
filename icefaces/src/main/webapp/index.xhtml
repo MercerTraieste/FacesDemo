@@ -37,7 +37,7 @@
                         <ice:panelTab label="#{msgs.tabsFormLabel}">
                             <ice:panelGrid columns="3">
                                 <ice:outputLabel for="date" value="#{msgs.calendar}: "/>
-                                <ice:selectInputDate id="date" renderAsPopup="true" value="#{richBean.calendar}"/>
+                                <ice:selectInputDate id="date" renderAsPopup="true" value="#{richBean.calendar}" />
                                 <ice:message id="dateMessage" for="date"/>
 
                                 <ice:outputLabel for="firstName" value="#{msgs.firstName}: "/>
@@ -49,6 +49,14 @@
                                 <ice:outputLabel for="lastName" value="#{msgs.lastName}: "/>
                                 <ice:inputText id="lastName" value="#{richBean.lastName}"/>
                                 <ice:message id="lastNameMessage" for="lastName"/>
+
+                                <ice:outputLabel for="email" value="#{msgs.email}: "/>
+                                <ice:inputText id="email"  value="#{richBean.email}">
+                                    <ace:ajax event="blur" execute="@this" render="emailMessage"/>
+                                    <f:validator  validatorId="uniqueEmail" />
+                                </ice:inputText>
+                                <ice:message id="emailMessage" for="email"/>
+
                             </ice:panelGrid>
 
                             <ace:fileEntry id="myfileupload"
