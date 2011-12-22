@@ -16,7 +16,7 @@ import java.util.List;
 public class DataTableBean implements Serializable {
 
     private static final int CAPACITY = 10;
-    private List<Child> children = new ArrayList<Child>(CAPACITY);
+    private List<Child> children = new ArrayList<Child>();
 
     public DataTableBean() {
         loadData();
