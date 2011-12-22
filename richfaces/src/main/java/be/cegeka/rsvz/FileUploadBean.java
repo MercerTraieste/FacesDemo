@@ -15,7 +15,9 @@ import java.util.List;
 @ManagedBean(name = "fileUpload")
 @SessionScoped
 public class FileUploadBean implements Serializable {
+
     private static final String BASE_FILE_PATH = "c:/files/";
+
     List<UploadedFile> files = new ArrayList<UploadedFile>();
 
     public void uploadFileListener(FileUploadEvent event) {

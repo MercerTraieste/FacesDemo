@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+        >
+
+    <rich:panel header="#{text['insz']}">
+        <h:panelGrid columns="3">
+            <h:outputLabel value="#{text['insz']}: " for="insz"/>
+            <h:inputText id="insz" value="#{formBean.insz}">
+                <rich:validator/>
+            </h:inputText>
+            <rich:message for="insz"/>
+        </h:panelGrid>
+    </rich:panel>
+    <br/>
+    <rich:panel header="#{text['personalData']}">
+        <h:panelGrid columns="3">
+            <h:outputText value="#{text['firstName']}: "/>
+            <h:inputText id="firstNameInput" value="#{formBean.firstName}">
+                <rich:validator/>
+            </h:inputText>
+            <rich:message for="firstNameInput"/>
+
+            <h:outputText value="#{text['lastName']}: "/>
+            <h:inputText id="lastNameInput" value="#{formBean.lastName}">
+                <rich:validator/>
+            </h:inputText>
+            <rich:message for="lastNameInput"/>
+
+            <h:outputText value="#{text['birthdate']}: "/>
+            <rich:calendar id="calendarRich" value="#{formBean.birthdate}">
+                <rich:validator/>
+            </rich:calendar>
+            <rich:message for="calendarRich"/>
+
+            <h:outputText value="#{text['married']}: "/>
+            <h:selectBooleanCheckbox id="married" value="#{formBean.married}"/>
+            <span/>
+        </h:panelGrid>
+    </rich:panel>
+    <br/>
+    <rich:panel header="#{text['address']}">
+        <h:panelGrid columns="2">
+            <h:outputText value="#{text['streetName']}: "/>
+            <h:inputText id="streetName" value="#{formBean.streetName}"/>
+
+            <h:outputText value="#{text['streetNumber']}: "/>
+            <h:inputText id="streetNumber" value="#{formBean.streetNumber}"/>
+
+            <h:outputText value="#{text['city']}: "/>
+            <rich:select id="selectCity" value="#{formBean.city}">
+                <f:selectItems value="#{formBean.cities}"/>
+            </rich:select>
+        </h:panelGrid>
+    </rich:panel>
+    <br/>
+    <rich:panel header="#{text['children']}">
+        <ui:include src="editableTable.xhtml"/>
+    </rich:panel>
+    <br/>
+    <rich:panel header="#{text['document']}">
+        <a4j:outputPanel title="#{text['uploadFileTitle']}">
+            <rich:fileUpload fileUploadListener="#{fileUpload.uploadFileListener}"
+                             addLabel="#{text['chooseFile']}"
+                             clearAllLabel="#{text['clearAllFiles']}"
+                             uploadLabel="#{text['uploadFiles']}"
+                             deleteLabel="#{text['deleteFile']}"/>
+        </a4j:outputPanel>
+    </rich:panel>
+    <br/>
+    <rich:panel header="#{text['other']}">
+        <h:panelGrid columns="2">
+            <h:outputText value="#{text['income']}: "/>
+            <h:inputText id="income" value="#{formBean.income}"/>
+
+            <h:outputText value="#{text['chooseMessage']}: "/>
+            <rich:select id="chooseMessage" value="#{formBean.message.valueOf}">
+                <f:selectItems value="#{formBean.message}"/>
+            </rich:select>
+
+            <h:outputText value="#{text['kbo']}: "/>
+            <h:inputText id="kbo" value="#{formBean.kbo}"/>
+        </h:panelGrid>
+    </rich:panel>
+    <br/>
+    <h:panelGrid columns="2">
+        <h:commandButton value="#{text['submit']}"/>
+        <h:commandButton value="#{text['cancel']}"/>
+    </h:panelGrid>
+
+
+</ui:composition>

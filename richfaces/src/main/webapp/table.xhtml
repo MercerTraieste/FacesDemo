@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+        >
+    <h:panelGrid columns="1">
+        <rich:extendedDataTable value="#{tableBean.children}"
+                                var="child"
+                                style="height:300px; width:510px">
+            <a4j:ajax event="selectionchange" listener="#{tableBean.showSelectionDetails}"
+                      render="childDetails"/>
+            <f:facet name="header">
+                <h:outputText value="#{text['tabsTableLabel']}"/>
+            </f:facet>
+            <rich:column sortBy="#{child.id}" style="width:75px">
+                <f:facet name="header">
+                    <h:outputText value="#{text['id']}"/>
+                </f:facet>
+                <h:outputText value="#{child.id}"/>
+            </rich:column>
+            <rich:column sortBy="#{child.firstName}" style="width:175px">
+                <f:facet name="header">
+                    <h:outputText value="#{text['firstName']}"/>
+                </f:facet>
+                <h:outputText value="#{child.firstName}"/>
+            </rich:column>
+            <rich:column sortBy="#{child.lastName}" style="width:175px">
+                <f:facet name="header">
+                    <h:outputText value="#{text['lastName']}"/>
+                </f:facet>
+                <h:outputText value="#{child.lastName}"/>
+            </rich:column>
+            <rich:column sortBy="#{child.age}" style="width:75px">
+                <f:facet name="header">
+                    <h:outputText value="#{text['age']}"/>
+                </f:facet>
+                <h:outputText value="#{child.age}"/>
+            </rich:column>
+            <rich:column sortBy="#{child.sex}" style="width:75px">
+                <f:facet name="header">
+                    <h:outputText value="#{text['sex']}"/>
+                </f:facet>
+                <h:outputText value="#{child.sex}"/>
+            </rich:column>
+        </rich:extendedDataTable>
+
+        <rich:dataGrid value="#{tableBean.selectedChildren}"
+                       id="childDetails"
+                       var="child">
+            <rich:panel style="width:500px; height:150px;"
+                        header="Child Details">
+                <h:panelGrid columns="2" cellpadding="4">
+                    <h:outputText value="#{text.id}:"/>
+                    <h:outputText value="#{child.id}"/>
+
+                    <h:outputText value="#{text.firstName}:"/>
+                    <h:outputText value="#{child.firstName}"/>
+
+                    <h:outputText value="#{text.lastName}:"/>
+                    <h:outputText value="#{child.lastName}"/>
+
+                    <h:outputText value="#{text.age}:"/>
+                    <h:outputText value="#{child.age}"/>
+
+                    <h:outputText value="#{text.sex}:"/>
+                    <h:outputText value="#{child.sex}"/>
+                </h:panelGrid>
+            </rich:panel>
+        </rich:dataGrid>
+    </h:panelGrid>
+</ui:composition>
