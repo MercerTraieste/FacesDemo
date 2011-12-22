@@ -39,6 +39,8 @@
 <p:tabView effect="fade" effectDuration="fast" onTabShow="editor.init()" id="tabView">
     <p:tab title="#{msgs.tabsFormLabel}">
 
+        <h:outputText value="#{msgs['simple-form-fields']}" />
+
         <p:panel id="inszPanel" header="#{msgs.insz}">
             <h:panelGrid columns="5" header="#{msgs.insz}">
                 <h:outputLabel for="insz" value="#{msgs.insz}:"/>
