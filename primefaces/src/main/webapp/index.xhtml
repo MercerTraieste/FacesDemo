@@ -58,7 +58,7 @@
             <p:commandButton image="help" onclick="inszHelp.show()"/>
             <p:commandButton value="#{msgs.send}" update=":form:tabView:inszPanel"/>
             <p:message id="msgInsz" for="insz"/>
-             <p:confirmDialog message="#{msgs['insz-is-the-social-security']}"
+            <p:confirmDialog message="#{msgs['insz-is-the-social-security']}"
                              header="Initiating destroy process" severity="info" widgetVar="inszHelp">
                 <p:commandButton value="Ok" onclick="inszHelp.hide()"/>
             </p:confirmDialog>
@@ -70,13 +70,13 @@
     <p:panel header="#{msgs['personal-data-fieldds']}">
         <h:panelGrid columns="3" cellpadding="5">
             <h:outputLabel id="firstNameLabel" for="firstName" value="#{msgs.firstName}"/>
-            <p:inputText id="firstName" value="#{richBean.firstName}">
-                <p:ajax event="blur" process="@form" update="msgFirstName" listener="#{richBean.validateFirstName}"/>
-            </p:inputText>
+            <p:inputText id="firstName" value="#{richBean.firstName}"/>
             <p:message id="msgFirstName" for="firstName"/>
 
             <h:outputLabel id="lastNameLabel" for="lastName" value="#{msgs.lastName}"/>
-            <p:inputText id="lastName" value="#{richBean.lastName}" styleClass="mandatory"/>
+            <p:inputText id="lastName" value="#{richBean.lastName}" styleClass="mandatory">
+                <p:ajax event="blur" process="@this" update="msgLasttName"/>
+            </p:inputText>
             <p:message id="msgLastName" for="lastName"/>
 
             <h:outputLabel id="calendarLabel" for="cal" value="#{msgs['birth-date']}"/>
