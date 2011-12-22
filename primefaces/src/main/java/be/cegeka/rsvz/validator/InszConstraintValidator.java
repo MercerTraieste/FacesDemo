@@ -11,7 +11,6 @@ public class InszConstraintValidator implements ConstraintValidator<Insz, String
 
     public boolean isValid(String value, ConstraintValidatorContext context) {
         return !inszShouldHaveThirteenCharacters(value) && !inszShouldContainOnlyNumbers(value);
-
     }
 
     private boolean inszShouldContainOnlyNumbers(String value) {
