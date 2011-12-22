@@ -10,6 +10,12 @@ public class InszConstraintValidator implements ConstraintValidator<Insz, String
     }
 
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        try{
+            Integer.parseInt(value);
+        }catch(NumberFormatException ex){
+            return false;
+        }
+
+        return true;
     }
 }
