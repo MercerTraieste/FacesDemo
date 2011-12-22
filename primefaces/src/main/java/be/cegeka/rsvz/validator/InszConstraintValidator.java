@@ -6,16 +6,24 @@ import javax.validation.ConstraintValidatorContext;
 public class InszConstraintValidator implements ConstraintValidator<Insz, String> {
 
     public void initialize(Insz constraintAnnotation) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        // nothing to do here, we don't accept parameters
     }
 
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        try{
-            Integer.parseInt(value);
-        }catch(NumberFormatException ex){
-            return false;
-        }
+        return !inszShouldHaveThirteenCharacters(value) && !inszShouldContainOnlyNumbers(value);
 
-        return true;
+    }
+
+    private boolean inszShouldContainOnlyNumbers(String value) {
+        try {
+            Double.parseDouble(value);
+        } catch (NumberFormatException ex) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean inszShouldHaveThirteenCharacters(String value) {
+        return value.length() != 11;
     }
 }

@@ -5,7 +5,8 @@ import org.junit.Test;
 
 public class InszConstraintValidatorTest {
     @Test
-    public void testIsValid() throws Exception {
-        Assert.assertTrue(new InszConstraintValidator().isValid("113322", null));
+    public void insqShouldBeValid() throws Exception {
+        Assert.assertFalse(new InszConstraintValidator().isValid("113322", null));
+        Assert.assertTrue(new InszConstraintValidator().isValid("11111111110", null));
     }
 }
