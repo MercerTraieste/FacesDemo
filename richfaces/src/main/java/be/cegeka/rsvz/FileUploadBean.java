@@ -16,7 +16,7 @@ import java.util.List;
 @SessionScoped
 public class FileUploadBean implements Serializable {
 
-    private static final String BASE_FILE_PATH = "c:/files/";
+    private static final String BASE_FILE_PATH = System.getProperty("java.io.tmpdir") + System.getProperty("file.separator");
 
     List<UploadedFile> files = new ArrayList<UploadedFile>();
 
@@ -27,6 +27,7 @@ public class FileUploadBean implements Serializable {
     }
 
     private void saveFileToDisk(UploadedFile file) {
+
         File diskFile = new File(BASE_FILE_PATH + file.getName());
         FileOutputStream fileOut = null;
         try {

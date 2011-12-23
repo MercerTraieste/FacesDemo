@@ -64,6 +64,8 @@
     <rich:panel header="#{text['document']}">
         <a4j:outputPanel title="#{text['uploadFileTitle']}">
             <rich:fileUpload fileUploadListener="#{fileUpload.uploadFileListener}"
+                             maxFilesQuantity="1"
+                             style="height: 80px; width:100%;"
                              addLabel="#{text['chooseFile']}"
                              clearAllLabel="#{text['clearAllFiles']}"
                              uploadLabel="#{text['uploadFiles']}"
@@ -88,7 +90,9 @@
     <br/>
     <h:panelGrid columns="2">
         <h:commandButton value="#{text['submit']}"/>
-        <h:commandButton value="#{text['cancel']}"/>
+        <h:commandButton value="#{text['reset']}">
+            <a4j:ajax event="click" execute="@this" render="@form" listener="#{formBean.reset}" immediate="true"/>
+        </h:commandButton>
     </h:panelGrid>
 
 
