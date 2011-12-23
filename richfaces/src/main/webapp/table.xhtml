@@ -8,7 +8,7 @@
     <h:panelGrid columns="1">
         <rich:extendedDataTable value="#{tableBean.children}"
                                 var="child"
-                                style="height:300px; width:510px">
+                                style="height:300px; width:610px">
             <a4j:ajax event="selectionchange" listener="#{tableBean.showSelectionDetails}"
                       render="childDetails"/>
             <f:facet name="header">
@@ -20,13 +20,15 @@
                 </f:facet>
                 <h:outputText value="#{child.id}"/>
             </rich:column>
-            <rich:column sortBy="#{child.firstName}" style="width:175px">
+            <rich:column sortBy="#{child.firstName}"
+                         style="width:175px">
                 <f:facet name="header">
                     <h:outputText value="#{text['firstName']}"/>
                 </f:facet>
                 <h:outputText value="#{child.firstName}"/>
             </rich:column>
-            <rich:column sortBy="#{child.lastName}" style="width:175px">
+            <rich:column sortBy="#{child.lastName}"
+                         style="width:175px">
                 <f:facet name="header">
                     <h:outputText value="#{text['lastName']}"/>
                 </f:facet>
@@ -38,18 +40,26 @@
                 </f:facet>
                 <h:outputText value="#{child.age}"/>
             </rich:column>
-            <rich:column sortBy="#{child.sex}" style="width:75px">
+            <rich:column sortBy="#{child.birthdate}" style="width:175px">
                 <f:facet name="header">
-                    <h:outputText value="#{text['sex']}"/>
+                    <h:outputText value="#{text['birthdate']}"/>
                 </f:facet>
-                <h:outputText value="#{child.sex}"/>
+                <h:outputText value="#{child.birthdate}">
+                    <f:convertDateTime type="date" dateStyle="short"/>
+                </h:outputText>
+            </rich:column>
+            <rich:column sortBy="#{child.pocketMoney}" style="width:75px">
+                <f:facet name="header">
+                    <h:outputText value="#{text['pocketMoney']}"/>
+                </f:facet>
+                <h:outputText value="#{child.pocketMoney}"/>
             </rich:column>
         </rich:extendedDataTable>
 
         <rich:dataGrid value="#{tableBean.selectedChildren}"
                        id="childDetails"
                        var="child">
-            <rich:panel style="width:500px; height:150px;"
+            <rich:panel style="width:600px; height:200px;"
                         header="Child Details">
                 <h:panelGrid columns="2" cellpadding="4">
                     <h:outputText value="#{text.id}:"/>
@@ -64,8 +74,13 @@
                     <h:outputText value="#{text.age}:"/>
                     <h:outputText value="#{child.age}"/>
 
-                    <h:outputText value="#{text.sex}:"/>
-                    <h:outputText value="#{child.sex}"/>
+                    <h:outputText value="#{text.birthdate}:"/>
+                    <h:outputText value="#{child.birthdate}">
+                        <f:convertDateTime type="date" dateStyle="short"/>
+                    </h:outputText>
+
+                    <h:outputText value="#{text.pocketMoney}:"/>
+                    <h:outputText value="#{child.pocketMoney}"/>
                 </h:panelGrid>
             </rich:panel>
         </rich:dataGrid>
